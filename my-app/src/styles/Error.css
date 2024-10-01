@@ -1,0 +1,21 @@
+.ErrorContainer {
+    padding: 5%;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    height: 100vh;
+}
+
+.ErrorContainer p,
+.ErrorContainer .ErrorBackLink {
+    padding: 10px 40px;
+}
+
+.ErrorContainer .ErrorBackLink {
+    display: block;
+    color: rgb(0, 0, 0);
+    background-color: aquamarine;
+    border-radius: 5px;
+    width: fit-content;
+    margin-left: 40px;
+
+}
