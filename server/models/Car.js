@@ -19,7 +19,7 @@ const carSchema = new mongoose.Schema({
 });
 
 
-carSchema.plugin(AutoIncrement, { inc_field: 'rentId' });
+carSchema.plugin(AutoIncrement, { inc_field: 'carId', start_seq: 1 });
 
 const Car = mongoose.model('Car', carSchema);
 module.exports = Car;

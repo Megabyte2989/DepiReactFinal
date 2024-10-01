@@ -14,7 +14,7 @@ const MaintainSchema = new mongoose.Schema({
 
 })
 
-MaintainSchema.plugin(AutoIncrement, { inc_field: 'maintenanceId' });
+MaintainSchema.plugin(AutoIncrement, { inc_field: 'maintenanceId', start_seq: 1 });
 
 
 const Maintenance = mongoose.model('Maintenance', MaintainSchema);

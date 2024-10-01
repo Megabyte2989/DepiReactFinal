@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
 });
 
 
-userSchema.plugin(AutoIncrement, { inc_field: 'userId' });
+userSchema.plugin(AutoIncrement, { inc_field: 'userId', start_seq: 1 });
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

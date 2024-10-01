@@ -21,7 +21,7 @@ const rentSchema = new mongoose.Schema({
     status: { type: String, enum: ['ongoing', 'completed'], default: 'ongoing' },
 });
 
-rentSchema.plugin(AutoIncrement, { inc_field: 'rentId' });
+rentSchema.plugin(AutoIncrement, { inc_field: 'rentId', start_seq: 1 });
 
 
 const Rent = mongoose.model('Rent', rentSchema);
