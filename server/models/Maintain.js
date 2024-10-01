@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
+
 
 const MaintainSchema = new mongoose.Schema({
     maintenanceId: { type: Number, required: true, unique: true },
@@ -11,6 +13,9 @@ const MaintainSchema = new mongoose.Schema({
     remaining: { type: Number, required: true },
 
 })
+
+MaintainSchema.plugin(AutoIncrement, { inc_field: 'maintenanceId' });
+
 
 const Maintenance = mongoose.model('Maintenance', MaintainSchema);
 module.exports = Maintenance;

@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
+
+
 
 const rentSchema = new mongoose.Schema({
-    rentId: { type: String, required: true, unique: true },
+    rentId: { type: Number, required: true, unique: true },
     customerName: { type: String, required: true },
     phone: { type: String, required: true },
     nationalId: { type: String, required: true },
@@ -17,6 +20,9 @@ const rentSchema = new mongoose.Schema({
     remaining: { type: Number, required: true },
     status: { type: String, enum: ['ongoing', 'completed'], default: 'ongoing' },
 });
+
+rentSchema.plugin(AutoIncrement, { inc_field: 'rentId' });
+
 
 const Rent = mongoose.model('Rent', rentSchema);
 module.exports = Rent;

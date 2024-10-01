@@ -2,9 +2,9 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Dashboard from './components/Dashboard';
-import Errorcomp from './components/Errorcomp';
-import Layout from './components/Layout';
+import Dashboard from './admin_components/Dashboard';
+import Errorcomp from './admin_components/Errorcomp';
+import Layout from './admin_components/Layout';
 
 
 // function App() {

@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
+
 
 
 const carSchema = new mongoose.Schema({
-  carId: { type: String, required: true, unique: true },
+  carId: { type: Number, required: true, unique: true },
   carName: { type: String, required: true },
   model: { type: String, required: true },
   brand: { type: String, required: true },
@@ -15,6 +17,9 @@ const carSchema = new mongoose.Schema({
   kilosRightNow: { type: Number, required: true }, // Kilos right now
   lastOilChangeDate: { type: Date, required: true }, // Date of last oil change
 });
+
+
+carSchema.plugin(AutoIncrement, { inc_field: 'rentId' });
 
 const Car = mongoose.model('Car', carSchema);
 module.exports = Car;
