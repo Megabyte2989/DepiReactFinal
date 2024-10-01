@@ -8,7 +8,7 @@ const router = express.Router();
 
 // User Registration
 router.post('/register', async (req, res) => {
-    const { userId, firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password } = req.body; // Removed userId from request
 
     try {
         // Check if user already exists
@@ -21,7 +21,7 @@ router.post('/register', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user
-        const user = new User({ userId, firstName, lastName, email, password: hashedPassword });
+        const user = new User({ firstName, lastName, email, password: hashedPassword }); // Removed userId
         await user.save();
 
         res.status(201).json({ message: 'User registered successfully' });
@@ -30,6 +30,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
+// User Login
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -49,12 +50,18 @@ router.post('/login', async (req, res) => {
         // Generate a JWT
         const token = jwt.sign({ email: user.email }, "PhPuZRIQFtZ4QmfbW1TZxiybpcLDDQB5", { expiresIn: '1h' });
 
-        res.status(200).json({ token, user: { userId: user.userId, firstName: user.firstName, lastName: user.lastName, role: user.role } });
+        res.status(200).json({
+            token,
+            user: {
+                userId: user._id, // Use _id as the userId if it's an ObjectId
+                firstName: user.firstName,
+                lastName: user.lastName,
+                role: user.role
+            }
+        });
     } catch (error) {
         res.status(500).json({ message: 'Error logging in', error });
     }
 });
 
-
 module.exports = router;
-

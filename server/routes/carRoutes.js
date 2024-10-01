@@ -6,17 +6,17 @@ const path = require('path');
 const router = express.Router();
 const fs = require('fs');
 
-
 // Serve static images
 router.use("/images", express.static(path.join(__dirname, "../upload/images")));
 
 // Add a new car
 router.post('/add', upload.single('carImage'), async (req, res) => {
-    const { carId, carName, carPlate, model, brand, year, rentalRate, isAvailable, ownerName, kilosRightNow, lastOilChangeDate } = req.body;
+    const { carName, carPlate, model, brand, year, rentalRate, isAvailable, ownerName, kilosRightNow, lastOilChangeDate } = req.body;
     const imageUrl = req.file ? req.file.filename : null; // Get image URL from the uploaded file (optional)
+
     try {
+        // No need to include carId since it's auto-incremented
         const car = new Car({
-            carId,
             carName,
             carPlate,
             model,
@@ -28,22 +28,12 @@ router.post('/add', upload.single('carImage'), async (req, res) => {
             ownerName,
             kilosRightNow,
             lastOilChangeDate,
-
         });
-        await car.save();
-        res.status(201).json({ message: "Car added successfully" });
-    } catch (error) {
-        res.status(500).json({ message: "Error adding car", error });
-    }
-});
 
-// Get all cars
-router.get('/', async (req, res) => {
-    try {
-        const cars = await Car.find();
-        res.json(cars);
+        await car.save();
+        res.status(201).json({ message: "Car added successfully", car });
     } catch (error) {
-        res.status(500).json({ message: 'Error fetching cars', error });
+        res.status(500).json({ message: "Error adding car", error: error.message });
     }
 });
 
@@ -80,7 +70,7 @@ router.put('/update/:id', upload.single('carImage'), async (req, res) => {
 
         res.status(200).json({ message: "Car updated successfully", updatedCar });
     } catch (error) {
-        res.status(500).json({ message: "Error updating car", error });
+        res.status(500).json({ message: "Error updating car", error: error.message });
     }
 });
 

@@ -2,7 +2,7 @@
 const express = require('express');
 const Rent = require('../models/Rent'); // Assuming you have a Rent model
 const validateJWT = require('../middlewares/validateJWT');
-const User = require('../models/User')
+const User = require('../models/User');
 
 const router = express.Router();
 
@@ -38,7 +38,7 @@ router.post("/add", validateJWT, async (req, res) => {
         await rent.save(); // Save the new rent directly
         res.status(201).json({ message: "Rent added successfully", data: rent });
     } catch (error) {
-        res.status(500).json({ message: "Error adding rent", error });
+        res.status(500).json({ message: "Error adding rent", error: error.message });
     }
 });
 
@@ -54,7 +54,7 @@ router.put("/update/:id", async (req, res) => {
         }
         res.status(200).json({ message: "Rent updated successfully", data: updatedRent });
     } catch (error) {
-        res.status(500).json({ message: "Error updating rent", error });
+        res.status(500).json({ message: "Error updating rent", error: error.message });
     }
 });
 
@@ -69,7 +69,7 @@ router.delete("/delete/:id", async (req, res) => {
         }
         res.status(200).json({ message: "Rent record deleted successfully" });
     } catch (error) {
-        res.status(500).json({ message: "Error deleting rent", error });
+        res.status(500).json({ message: "Error deleting rent", error: error.message });
     }
 });
 

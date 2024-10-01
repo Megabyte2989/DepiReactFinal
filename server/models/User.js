@@ -5,7 +5,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 const userSchema = new mongoose.Schema({
     // Defining schema properties with required fields
-    userId: { type: Number, required: true, unique: true }, // Optional field
+    userId: { type: Number, unique: true }, // Optional field
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true },

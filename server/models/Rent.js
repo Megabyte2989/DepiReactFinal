@@ -4,7 +4,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 
 const rentSchema = new mongoose.Schema({
-    rentId: { type: Number, required: true, unique: true },
+    rentId: { type: Number, unique: true },
     customerName: { type: String, required: true },
     phone: { type: String, required: true },
     nationalId: { type: String, required: true },

@@ -3,7 +3,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 
 const MaintainSchema = new mongoose.Schema({
-    maintenanceId: { type: Number, required: true, unique: true },
+    maintenanceId: { type: Number, unique: true },
     carId: { type: String, ref: 'Car', required: true },
     dateOfMaintenance: { type: Date, required: true, default: Date.now },
     workshopName: { type: String, required: true },

@@ -4,7 +4,7 @@ const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 
 const carSchema = new mongoose.Schema({
-  carId: { type: Number, required: true, unique: true },
+  carId: { type: Number, unique: true },
   carName: { type: String, required: true },
   model: { type: String, required: true },
   brand: { type: String, required: true },
