@@ -1,0 +1,109 @@
+/* import font */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+/* reset general*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 0 10px;
+}
+/* background image */
+
+body {
+  background:  linear-gradient(to bottom, rgba(0, 0, 0, 0.151), rgba(0, 0, 0, 0.0)), 
+  url("../Images/sign.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+/* wrapper styles*/
+.wrapper {
+  width: 400px;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.homeNav {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 25px;
+  padding: 5px;
+  border: 2px solid #efefef;
+  border-radius: 10px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs .MuiTextField-root {
+    margin: 10px 0;
+}
+
+.MuiFormLabel-root{
+    color: rgb(0, 0, 0) !important;
+}
+
+  .css-r5in8e-MuiInputBase-root-MuiInput-root::after{
+    border-bottom:2px solid #ffffff !important;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.forget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0 35px 0;
+  color: #fff;
+}
+
+.forget label {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper a {
+  color: #efefef;
+  text-decoration: none;
+}
+
+.wrapper a:hover {
+  text-decoration: underline;
+}
+
+.register {
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+}
+
+.register p {
+  margin: 5px 0;
+}
+
+.message {
+  height: 1px;
+  margin-top: 20px;
+}
