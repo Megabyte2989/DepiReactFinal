@@ -16,10 +16,6 @@
   min-height: 100vh;
   width: 100%;
   padding: 0 10px;
-}
-/* background image */
-
-body {
   background:  linear-gradient(to bottom, rgba(0, 0, 0, 0.151), rgba(0, 0, 0, 0.0)), 
   url("../Images/sign.jpg");
   background-repeat: no-repeat;
@@ -27,6 +23,7 @@ body {
   background-position: center;
   background-size: cover;
 }
+
 /* wrapper styles*/
 .wrapper {
   width: 400px;
@@ -53,16 +50,16 @@ body {
   flex-direction: column;
 }
 
-.inputs .MuiTextField-root {
-    margin: 10px 0;
+:global(.MuiTextField-root) {
+  margin: 10px 0 !important;
 }
 
-.MuiFormLabel-root{
-    color: rgb(0, 0, 0) !important;
+:global(.css-nmluci-MuiFormLabel-root-MuiInputLabel-root.Mui-focused) {
+  color:navajowhite !important;
 }
 
-  .css-r5in8e-MuiInputBase-root-MuiInput-root::after{
-    border-bottom:2px solid #ffffff !important;
+:global(.css-r5in8e-MuiInputBase-root-MuiInput-root::after) {
+  border-bottom:2px solid #ffffff !important;
 }
 
 h2 {
@@ -93,13 +90,13 @@ h2 {
   text-decoration: underline;
 }
 
-.register {
+.join-us {
   text-align: center;
   margin-top: 30px;
   color: #fff;
 }
 
-.register p {
+.join-us p {
   margin: 5px 0;
 }
 

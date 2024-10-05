@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Login.css";
+import styles from "../styles/Login.module.css";
 import { Link } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -23,7 +23,7 @@ function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async () => {
     if (!formData.email || !formData.password) {
       setSeverity("error");
       setMessage("Both fields are required");
@@ -69,26 +69,29 @@ function Login() {
   }, []);
 
   return (
-    <div className="login">
-      <div className="wrapper">
-        <Link className="homeNav" to="/">
-          <i class="fas fa-home"></i>
+    <div className={styles.login}>
+      <div className={styles.wrapper}>
+        <Link className={styles.homeNav} to="/">
+          <i className="fas fa-home"></i>
         </Link>
 
         <h2>Login</h2>
 
-        <div className="inputs">
+        <div className={styles.inputs}>
           <TextField
-            required
             onChange={handleChange}
             value={formData.email}
             id="standard"
             name="email"
             label="Enter your email"
+            type="email"
             variant="standard"
             sx={{
               input: {
                 color: "white",
+              },
+              label: {
+                color: "navajowhite",
               },
             }}
           />
@@ -105,11 +108,14 @@ function Login() {
               input: {
                 color: "white",
               },
+              label: {
+                color: "navajowhite",
+              },
             }}
           />
         </div>
 
-        <div className="forget">
+        <div className={styles.forget}>
           <FormControlLabel
             control={
               <Checkbox
@@ -130,14 +136,14 @@ function Login() {
           Log In
         </Button>
 
-        <div className="register">
+        <div className={styles["join-us"]}>
           <p>
             Don't have an account? <Link to="/register">join-us</Link>
           </p>
         </div>
       </div>
 
-      <div className="message">
+      <div className={styles.message}>
         {message && (
           <Alert style={{ width: 500 }} severity={severity}>
             {message}
