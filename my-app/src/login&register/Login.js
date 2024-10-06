@@ -8,8 +8,12 @@ import Button from "@mui/material/Button";
 import { loginApi } from "./api/loginApi";
 import Cookies from "js-cookie";
 import Alert from "@mui/material/Alert";
+import { getCurrentUser } from "./services/getCurrentUser";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+
   const initialState = {
     email: "",
     password: "",
@@ -19,39 +23,56 @@ function Login() {
   const [severity, setSeverity] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
+  // handle inpuuts changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // handle submit
   const handleSubmit = async () => {
+    //alert error when inputs is empty
     if (!formData.email || !formData.password) {
       setSeverity("error");
       setMessage("Both fields are required");
       return;
     }
 
+    //send request api user data
     const response = await loginApi(formData);
 
+    // handle errors from API response
     if (response.status === 400 || response.status === 500) {
       setSeverity("warning");
       setMessage(response.data.message);
       return;
     }
 
+    // handle success from API response
     if (response.status === 200) {
       setSeverity("success");
       setMessage(`Welcome back ${response.data.user.firstName}`);
     }
 
+    // Store token in cookies
     if (rememberMe) {
       Cookies.set("authToken", response.data.token, { expires: 30 }); // Cookie expires in 30 days
     } else {
       Cookies.set("authToken", response.data.token); // Session cookie
     }
+
+    // Redirect user to appropriate page based on their role
+    if (response.data.user.role === "admin") {
+      navigate("/dashboard", { replace: true });
+    }
+
+    //remove userPage and put real route
+    if (response.data.user.role === "user") {
+      navigate("/userPage", { replace: true });
+    }
   };
 
+  // Clear the message after 3 seconds
   useEffect(() => {
-    // Clear the message after 3 seconds
     if (message) {
       const timer = setTimeout(() => {
         setMessage("");
@@ -61,11 +82,17 @@ function Login() {
     }
   }, [message]);
 
+  // Check if user is already logged in and redirect them to appropriate page
   useEffect(() => {
-    const token = Cookies.get("authToken");
-    if (token) {
-      // Redirect to user page
+    const currentUser = getCurrentUser();
+    if (currentUser?.role === "admin") {
+      navigate("/dashboard", { replace: true });
     }
+
+    if (currentUser?.role === "user") {
+      navigate("/userPage", { replace: true });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
