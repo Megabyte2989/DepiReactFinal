@@ -9,10 +9,22 @@ const fs = require('fs');
 // Serve static images
 router.use("/images", express.static(path.join(__dirname, "../upload/images")));
 
+
+
+router.get('/', async (req, res) => {
+    try {
+        const cars = await Car.find(); // Fetch all rents directly
+        res.status(200).json(cars);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching cars', error });
+    }
+})
+
+
 // Add a new car
 router.post('/add', upload.single('carImage'), async (req, res) => {
     const { carName, carPlate, model, brand, year, rentalRate, isAvailable, ownerName, kilosRightNow, lastOilChangeDate } = req.body;
-    const imageUrl = req.file ? req.file.filename : null; // Get image URL from the uploaded file (optional)
+    const imageUrl = req.file ? req.file.filename : null;
 
     try {
         // No need to include carId since it's auto-incremented
@@ -84,7 +96,7 @@ router.delete('/:id', async (req, res) => {
 
         // Delete the image file from the server if it exists
         if (deletedCar.imageUrl) {
-            const imagePath = path.join(__dirname, '../upload/images', deletedCar.imageUrl);
+            const imagePath = path.join(__dirname, '../../my-app/src/media', path.basename(deletedCar.imageUrl)); // Correct the path to match the new storage location
             fs.unlink(imagePath, (err) => {
                 if (err) {
                     console.error("Error deleting the image:", err);

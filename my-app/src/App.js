@@ -1,13 +1,22 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+
 import Login from "./login&register/Login";
 import Register from "./login&register/Register";
-import Dashboard from "./admin_components/Dashboard";
-import Errorcomp from "./admin_components/Errorcomp";
-import Layout from "./admin_components/Layout";
 import ProtectedRoute from "./login&register/ProtectedRoute";
 import TestUserPage from "./login&register/TestUserPage";
+
+
+import React from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Carspage from './admin_components/CarsBigPage';
+import Dashboard from './admin_components/Dashboard';
+import Errorcomp from './admin_components/Errorcomp';
+import Layout from './admin_components/Layout';
+import RentParent from './admin_components/RentParent';
+
+import Maintain from './admin_components/Maintain';
+import store from './redux/store';
 
 // function App() {
 //   // const [message, setMessage] = useState('');
@@ -29,6 +38,7 @@ import TestUserPage from "./login&register/TestUserPage";
 //   // );
 
 //}
+
 
 function App() {
   return (
@@ -66,6 +76,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </>
+
   );
 }
 

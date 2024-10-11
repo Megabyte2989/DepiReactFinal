@@ -1,0 +1,612 @@
+/*Start MainSection FOr the rent */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.819);
+    backdrop-filter: blur(5px);
+    /* Semi-transparent background */
+    visibility: hidden;
+    /* Hidden initially */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 30;
+}
+
+.overlayShow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.819);
+    backdrop-filter: blur(5px);
+    transition: opacity 0.3s ease;
+    z-index: 30;
+    visibility: visible;
+    opacity: 1;
+}
+
+.MainSection {
+    background-color: #2C323D;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.MainSection .RentSection .headingData {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.MainSection .RentSection .ExportPart {
+    color: white;
+    padding: 20px;
+}
+
+.MainSection .RentSection .RightSideContent {
+    display: flex;
+    align-items: center;
+}
+
+.MainSection .RentSection .RightSideContent .ExportPart {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #3452b6;
+    border: none;
+    font-size: 1.4em;
+}
+
+.MainSection .RentSection .RightSideContent .ExportPart i {
+    font-size: 1.1rem;
+}
+
+.MainSection .RentSection .RightSideContent #searchInput {
+
+    min-width: 120px;
+    margin: 10px 5px 10px 0;
+}
+
+/*End MainSection FOr the rent */
+
+
+
+/* Start the Content styles for the Recent Rents */
+.MainContent .container {
+    position: relative;
+    min-height: -webkit-fill-available;
+    width: 99%;
+    margin: 20px auto;
+    background-color: #59768fd6;
+    padding: 20px;
+    border-radius: 8px;
+    height: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.MainContent .container h2 {
+    margin-bottom: 20px;
+}
+
+.MainContent .container .controls {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+
+}
+
+.MainContent .container .controls button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1.3em;
+    border: none;
+    padding: 8px 16px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.MainContent .container .controls button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Start Rent Table PReview */
+.MainContent .container table {
+    border-radius: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.MainContent .container table th,
+table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #bababa;
+
+}
+
+.MainContent .container table th {
+    font-weight: bold;
+}
+
+.MainContent .container table tr:hover {
+    background-color: #d9d9d9;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.edit_btn {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    background: #42a4ff;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+
+.delete_btn {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    background: #ff3333;
+    border: none;
+    color: black;
+}
+
+.status.completed {
+    font-size: 0.9em;
+    background-color: #e5f8e3;
+    color: #28a745;
+}
+
+.status.ongoing {
+    font-size: 0.9em;
+    background-color: #fce6e6;
+    color: #dc3545;
+}
+
+.details-btn,
+.assign-btn {
+    background-color: transparent;
+    border: 1px solid #007bff;
+    color: #007bff;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.details-btn:hover,
+.assign-btn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+input#searchInputRent {
+    min-width: 230px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+#RentTable {
+    position: relative;
+}
+
+/* End Rent Table PReview */
+
+
+
+
+
+
+/* Start the adding New Rent Part */
+
+.RentOpener {
+    position: fixed;
+    left: 98.8%;
+    background: #007bff;
+    border-radius: 50%;
+    padding: 8px;
+    z-index: 8;
+    cursor: pointer;
+    color: white;
+    /* font-size: 2em; */
+    top: 50%;
+    outline: 7px solid #2C323D;
+    /* outline: 9px double #59768fd6; */
+    transform: translate(-50%, -50%);
+}
+
+.RentOpener::before {
+    content: '\f055';
+    font-family: 'Font Awesome 5 Free';
+    font-size: 1.2em;
+}
+
+
+.RentContainer {
+    position: fixed;
+    top: 50%;
+    right: -120%;
+    transform: translateY(-50%);
+    min-width: 35vw;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.5s ease;
+    z-index: 60;
+}
+
+.TwiceParent {
+    display: block;
+}
+
+
+.FormRent {
+    background: #9da7a4e6;
+    padding: 10px 20px;
+    color: #00264e;
+    font-size: 0.6em;
+}
+
+input.SubmitRent,
+input.DoneRentEdit {
+    margin: 10px 0;
+    background-color: #1558c4b8;
+}
+
+input.DoneRentEdit {
+    display: none;
+}
+
+input.DoneRentEdit.active {
+    display: block;
+}
+
+
+/* Overlay for the background when the new rent is being displayed */
+
+
+.RentContainerShow {
+    right: 3%;
+    transition: 0.5s;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    min-width: 35vw;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 60;
+}
+
+
+#RentFormContainer {
+    font-size: 1em;
+    /* padding: 1px 20px; */
+    padding: 5px;
+    background: #000000e0;
+}
+
+#RentFormContainer input,
+#RentFormContainer textarea {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 8px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* End the adding New Rent Part */
+
+
+
+
+/* Start Responsive for the Rent page */
+
+
+
+@media screen and (max-width:1250px) {
+    .MainSection .container #RentTable {
+        font-size: 0.7em;
+    }
+}
+
+
+@media screen and (max-width:1180px) {
+
+    .MainContent .container table th,
+    table td {
+        padding: 7px;
+    }
+
+    .MaintainSection {
+        padding: 0;
+    }
+
+    .CounterContainer {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .sploit {
+        display: block;
+    }
+
+    .CarPlace img {
+        display: none;
+    }
+
+    .MaintainSection {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(45deg, #1d1515, #153654);
+    }
+
+    .table-container {
+        margin: 0;
+        min-height: 500px;
+    }
+
+    .form {
+        padding: 10px 20px;
+        font-size: 1.5em;
+    }
+
+    .nest {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
+
+    .pair {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 48%;
+    }
+
+    .form input,
+    .form textarea {
+        margin-bottom: 5px;
+    }
+
+    #maintenanceTable td {
+        font-size: 0.9em;
+        color: #ff8a4a;
+        border-right: 1px solid #a9a9a91f;
+        padding: 10px;
+    }
+
+
+}
+
+
+@media screen and (min-width:1400px) {
+
+    #RentFormContainer input,
+    #RentFormContainer textarea {
+        width: 100%;
+        padding: 5px;
+        margin: 1px;
+        border: none;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width:1400px) {
+
+
+
+    .MainSection {
+        grid-template-columns: repeat(2, minmax(auto, 1fr));
+        grid-template-rows: repeat(13, minmax(252px, 1fr));
+        height: 100%;
+    }
+
+    .MainContent {
+        height: fit-content;
+        display: block;
+        min-height: 100%;
+    }
+
+
+
+
+    .logo {
+        padding: 10px 10px;
+        margin: 0;
+        font-size: 1em;
+    }
+
+    .SideBarUl {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3em;
+        padding: 7px;
+    }
+
+    .SideBarLi {
+        margin: 0px 3vw;
+        font-size: 0.8em;
+        padding: 3px 5px;
+    }
+
+    .SideBarLi .SideBarIcon {
+        display: none;
+    }
+
+    .SideBarLi:last-child::after {
+        display: none;
+    }
+
+
+    .SideBarLogOut div {
+        display: none;
+    }
+
+    .SideBarLi:first-child:before {
+        display: none;
+    }
+
+    .SideBarLi p {
+        padding: 5px 5px;
+    }
+
+    .nest {
+        display: block;
+    }
+
+    .CarModel img {
+
+        top: -11%;
+    }
+
+    th,
+    td {
+        padding: 5px 10px;
+    }
+
+    .card {
+        padding: 10px 0;
+        font-size: 0.8em;
+    }
+
+    .cardData {
+        margin-bottom: 10px;
+    }
+
+
+
+    .SquareContainer {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+
+
+    .TableLatestRents {
+        overflow: auto;
+        padding: 10px;
+    }
+
+    .TableNotif {
+        padding: 10px;
+    }
+
+    .active::before {
+        display: none;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        /* Allow horizontal scrolling */
+    }
+
+
+    .MainContent .container table th,
+    table td {
+        padding: 10px 7px;
+    }
+
+    .MainSection .container #RentTable {
+        font-size: 1em;
+    }
+
+    .CarPlace img {
+        max-width: 199%;
+    }
+
+
+}
+
+@media only screen and (max-width:930px) {
+    .RentTableHolder {
+
+        overflow: auto;
+    }
+}
+
+@media screen and (max-width:500px) {
+    input#searchInputRent {
+        min-width: 133px;
+    }
+
+    .MainContent .container .controls button {
+        font-size: 1em;
+    }
+
+
+}
+
+
+input#SignedTrust {
+    width: fit-content;
+    accent-color: #0084ff;
+}
+
+.SubmitRent,
+.DoneRentEdit {
+    margin: 10px 0;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+
+
+.inputEdit {
+    padding: 5px;
+    font-size: 0.8em;
+    width: 100%;
+    background: #d98337cf;
+    border: 1px solid antiquewhite;
+    border-radius: 5px;
+}
+
+button,
+[type="button"],
+[type="reset"] {
+    -webkit-appearance: button;
+    padding: 5px;
+    border-radius: 5px;
+    background: #35b835;
+    color: white;
+    border: 1px solid;
+}
+
+
+.RentTableHolder {
+    overflow: auto;
+}
+
+/* End Responsive for the Rent page */
