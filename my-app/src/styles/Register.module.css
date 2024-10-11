@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
 }
 
 .register {
@@ -42,11 +41,11 @@
 }
 
 :global(.css-nmluci-MuiFormLabel-root-MuiInputLabel-root.Mui-focused) {
-  color:navajowhite !important;
+  color: navajowhite !important;
 }
 
 :global(.css-r5in8e-MuiInputBase-root-MuiInput-root::after) {
-  border-bottom:2px solid #ffffff !important;
+  border-bottom: 2px solid #ffffff !important;
 }
 
 /* wrapper styles*/
@@ -69,6 +68,7 @@ h2 {
 .wrapper a {
   color: #efefef;
   text-decoration: none;
+  width: fit-content;
 }
 
 .wrapper a:hover {

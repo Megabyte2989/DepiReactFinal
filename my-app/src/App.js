@@ -1,82 +1,47 @@
-
-import Login from "./login&register/Login";
-import Register from "./login&register/Register";
-import ProtectedRoute from "./login&register/ProtectedRoute";
-import TestUserPage from "./login&register/TestUserPage";
-
-
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
 import Carspage from './admin_components/CarsBigPage';
 import Dashboard from './admin_components/Dashboard';
 import Errorcomp from './admin_components/Errorcomp';
 import Layout from './admin_components/Layout';
-import RentParent from './admin_components/RentParent';
-
 import Maintain from './admin_components/Maintain';
+import RentParent from './admin_components/RentParent';
+import './App.css';
+import Login from "./login&register/Login";
+import ProtectedRoute from "./login&register/ProtectedRoute";
+import Register from "./login&register/Register";
+import TestUserPage from "./login&register/TestUserPage";
 import store from './redux/store';
-
-// function App() {
-//   // const [message, setMessage] = useState('');
-//   // useEffect(() => {
-//   //   axios.get("http://localhost:5000/")
-//   //     .then((Response) => {
-//   //       setMessage(Response.data)
-//   //     })
-//   //     .catch(err => {
-//   //       console.log("Error fetching data from backend", err)
-//   //     })
-//   // })
-
-//   // return (
-//   //   <div>
-//   //     <h1>Backend Response:</h1>
-//   //     <p>{message}</p>
-//   //   </div>
-//   // );
-
-//}
-
 
 function App() {
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path='/' element={<Layout />}>
-    //       <Route index element={<Dashboard />} />
-    //       <Route path='/cars' />
-    //       <Route path='/maintenance' />
-    //     </Route>
-    //     <Route path="*" element={<Errorcomp />} />
-    //   </Routes>
-
-    // </BrowserRouter>
-    <>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Login />} />
+          {/* Public Routes */}
+          <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<Errorcomp />} />
 
+          {/* Protected Routes for Admin */}
           <Route element={<ProtectedRoute requiredRole="admin" />}>
-            <Route path="/" element={<Layout />}>
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="/cars" />
-              <Route path="/maintenance" />
+            <Route path="/dashboard" element={<Layout />}>
+              <Route index element={<Dashboard />} /> {/* Dashboard component rendered at /dashboard */}
+              <Route path="cars" element={<Carspage />} /> {/* Relative path */}
+              <Route path="maintenance" element={<Maintain />} /> {/* Relative path */}
+              <Route path="rents" element={<RentParent />} /> {/* Relative path */}
             </Route>
           </Route>
 
+          {/* Protected Routes for User */}
           <Route element={<ProtectedRoute requiredRole="user" />}>
             <Route path="/userPage" element={<TestUserPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
-
+    </Provider>
   );
 }
 

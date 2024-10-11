@@ -1,11 +1,11 @@
 /* import font */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
 /* reset general*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
 }
 
 .login {
@@ -16,8 +16,8 @@
   min-height: 100vh;
   width: 100%;
   padding: 0 10px;
-  background:  linear-gradient(to bottom, rgba(0, 0, 0, 0.151), rgba(0, 0, 0, 0.0)), 
-  url("../Images/sign.jpg");
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.151), rgba(0, 0, 0, 0.0)),
+    url("../Images/sign.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -55,11 +55,11 @@
 }
 
 :global(.css-nmluci-MuiFormLabel-root-MuiInputLabel-root.Mui-focused) {
-  color:navajowhite !important;
+  color: navajowhite !important;
 }
 
 :global(.css-r5in8e-MuiInputBase-root-MuiInput-root::after) {
-  border-bottom:2px solid #ffffff !important;
+  border-bottom: 2px solid #ffffff !important;
 }
 
 h2 {
@@ -84,6 +84,7 @@ h2 {
 .wrapper a {
   color: #efefef;
   text-decoration: none;
+  width: fit-content;
 }
 
 .wrapper a:hover {
