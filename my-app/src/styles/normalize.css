@@ -84,7 +84,9 @@ a {
     background-color: transparent;
 }
 
-
+*::placeholder {
+    color: rgb(92, 92, 92);
+}
 
 /**
    * 1. Remove the bottom border in Chrome 57-

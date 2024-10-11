@@ -180,9 +180,9 @@ a:visited {
 .CounterContainer {
     display: grid;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
-    background-color: #0c4e80;
-    gap: 20px;
-    padding: 20px;
+    background-color: #3d6289;
+    gap: 10px;
+    padding: 10px;
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -205,6 +205,7 @@ a:visited {
 
 .card p {
     margin: 10px 0;
+    font-size: 0.8em;
     font-weight: bold;
 }
 
@@ -230,13 +231,23 @@ a:visited {
 .SquareContainer {
     display: flex;
     flex: 1;
-    margin-top: 20px;
+    margin-top: 10px;
     /* flex-direction: column; */
-    gap: 20px;
+    gap: 10px;
+    height: 30%;
 }
 
+.DashboardAllFlex {
+    display: flex;
+    flex-direction: column;
 
+}
 
+@media screen and (max-width:900px) {
+    .DashboardAllFlex {
+        max-height: 60%;
+    }
+}
 
 .SquareBox {
     flex: 1;
@@ -275,9 +286,10 @@ a:visited {
 
 .SquareBox {
     flex: 1;
-    background-color: #d7d7d7;
+    background-color: #e5e5e5;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-size: 0.6rem;
     padding: 20px;
     overflow-y: auto;
     margin: 10px 0;
@@ -309,6 +321,8 @@ tbody tr:hover {
 
 tbody tr {
     background-color: #f9f9f9;
+    border-bottom: 1px solid #a9a9a9;
+    font-size: 1.4em;
 }
 
 tbody tr:last-child td {
@@ -334,7 +348,8 @@ tbody tr:hover {
 }
 
 
-.notification-item {
+.notification-item,
+.notification-car {
     cursor: pointer;
     background-color: beige;
     display: flex;
@@ -351,19 +366,25 @@ tbody tr:hover {
 }
 
 
-.notification-item:hover {
+.notification-item:hover,
+.notification-car:hover {
     background-color: #051f34;
     transform: translateY(-2px);
 
 }
 
-.notification-item:before {
+.notification-item:before,
+.notification-car::before {
     content: "\f0f3";
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     color: #3498db;
     margin: 0 5px 0 -7px;
+}
 
+
+.notification-car::before {
+    content: '\f0ad';
 }
 
 .SquareBox p {
@@ -386,212 +407,6 @@ tbody tr:hover {
 
 
 
-
-
-/* --------------------------------------------------------------------------------------------- */
-/* Start the Maintain Page styles */
-/* --------------------------------------------------------------------------------------------- */
-
-.MaintainSection {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: repeat(2, minmax(250px, 1fr));
-
-}
-
-.EnterMaintainContainer {
-    background: linear-gradient(45deg, #1d1515, #153654);
-    border-radius: 10px;
-    box-shadow: -3px 4px 10px 3px rgb(0 0 0 / 60%);
-}
-
-.MaintainSection {
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 100%;
-}
-
-.EnterMaintainContainer {
-    padding: 20px;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #ffffff;
-}
-
-/* Flex container for the Input Part and the Table part 
-* sploit is the parent of the two sections used in the maintain part
-*
-*/
-.sploit {
-    color: white;
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-/*Start Form of the first input document in the maintain page */
-.form {
-    flex: 1;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    padding: 0 20px;
-    font-size: 1.2em;
-}
-
-.form label {
-    display: block;
-    font-weight: bold;
-    margin: 10px 0 8px;
-}
-
-.form input,
-.form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.form input[type="datetime-local"] {
-    width: 100%;
-}
-
-.form textarea {
-    height: 100px;
-    resize: vertical;
-}
-
-.submitMaintain {
-    color: #ffffff;
-    background-color: #4b9442b8;
-    margin-bottom: 20px;
-}
-
-.form input:focus,
-.form textarea:focus {
-    outline: none;
-    border-color: #4b9442;
-    box-shadow: 0 0 5px rgba(75, 148, 66, 0.5);
-}
-
-.form [type="submit"]:hover {
-    background-color: #408738;
-    transition: background-color 0.3s ease-in-out;
-}
-
-/*End Form of the first input document in the maintain page */
-
-
-
-
-/* Start 3d Car Image effect behind the form  */
-
-.CarPlace {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1000px;
-}
-
-.CarPlace img {
-    max-width: 175%;
-    height: auto;
-    transform: rotate3d(1, -1, 0, 15deg) translateX(-100px) translateZ(-50px);
-    border-radius: 10px;
-    box-shadow: -5px 3px 14px 8px rgba(0, 0, 0, 0.1);
-    z-index: -2;
-    animation: bounce 10s ease-in-out infinite;
-}
-
-
-
-/* End 3d Car Image effect behind the form  */
-
-
-
-
-/* Start the second section that will handle the table data preview  */
-
-.table-container {
-
-    width: 100%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #273f4e;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Table Styling */
-#maintenanceTable {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Cairo';
-    border-radius: 10px;
-    border: none;
-}
-
-#maintenanceTable th,
-#maintenanceTable td {
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-#maintenanceTable tr {
-    border-radius: 5px;
-    color: #0c4e80;
-    background: #333333;
-}
-
-#maintenanceTable th {
-    font-weight: 600;
-    color: #ffffff;
-    text-transform: uppercase;
-}
-
-#maintenanceTable tr:nth-child(even) {
-    background-color: #f2f2f269;
-}
-
-#maintenanceTable tr:hover {
-    background-color: #336495;
-    cursor: pointer;
-}
-
-#maintenanceTable td {
-    color: #ff8a4a;
-    font-size: 1.3em;
-    border-right: 1px solid #a9a9a91f;
-}
-
-table td:nth-child(5) {
-    max-width: 200px;
-    word-wrap: break-word;
-    white-space: normal;
-}
-
-#searchInput {
-    min-width: 300px;
-    padding: 10px;
-    margin: 20px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* End the second section that will handle the table data preview  */
 
 
 
@@ -904,22 +719,6 @@ input.DoneRentEdit.active {
 }
 
 
-/* Overlay for the background when the new rent is being displayed */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.819);
-    backdrop-filter: blur(5px);
-    /* Semi-transparent background */
-    visibility: hidden;
-    /* Hidden initially */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 30;
-}
 
 .RentContainer.show {
     right: 3%;
@@ -927,10 +726,6 @@ input.DoneRentEdit.active {
 
 }
 
-.overlay.show {
-    visibility: visible;
-    opacity: 1;
-}
 
 
 /* End the adding New Rent Part */
@@ -1039,12 +834,12 @@ input.DoneRentEdit.active {
     }
 
     .logo {
+        margin-left: 10px;
         padding: 10px 10px;
         margin: 0;
     }
 
     .SideBarUl {
-        background-color: #15326de0;
         flex-direction: row;
         align-items: center;
         justify-content: center;
@@ -1114,7 +909,6 @@ input.DoneRentEdit.active {
     .SquareContainer {
         display: flex;
         flex: 1;
-        margin-top: 42px;
         flex-direction: column;
     }
 
@@ -1143,9 +937,6 @@ input.DoneRentEdit.active {
         padding: 10px 7px;
     }
 
-    .MainSection .container #RentTable {
-        font-size: 1em;
-    }
 
     .CarPlace img {
         max-width: 199%;
@@ -1169,6 +960,19 @@ input.DoneRentEdit.active {
     .MainContent .container .controls button {
         font-size: 1em;
     }
+
+    .logo {
+        font-size: 1em;
+    }
+
+    .SideBarUl {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3em;
+        padding: 7px;
+    }
+
 
 
 }

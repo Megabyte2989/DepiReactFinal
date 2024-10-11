@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path')
 
 const userRoutes = require('./routes/userRoutes')
 const carRoutes = require('./routes/carRoutes')
@@ -17,8 +18,11 @@ app.use(express.json());  //parse JSON
 
 app.use('/api/cars', carRoutes)
 app.use('/api/rents', rentRoutes)
-app.use('/api/maintain', maintainRoutes)
+app.use('/api/maintenance', maintainRoutes)
 app.use('/api/user', userRoutes)
+app.use('/images', express.static(path.join(__dirname, '../my-app/src/media')));
+app.use('/imagesStages', express.static(path.join(__dirname, '../my-app/src/media/stages')));
+
 
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })

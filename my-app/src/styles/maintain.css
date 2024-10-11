@@ -1,0 +1,501 @@
+/* --------------------------------------------------------------------------------------------- */
+/* Start the Maintain Page styles */
+/* --------------------------------------------------------------------------------------------- */
+
+.MainSectionMaintain {
+    height: 100%;
+    background-color: #2C323D;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.MaintainSection {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(250px, 1fr));
+
+}
+
+.EnterMaintainContainer {
+    background: linear-gradient(45deg, #1d1515, #153654);
+    border-radius: 10px;
+    box-shadow: -3px 4px 10px 3px rgb(0 0 0 / 60%);
+}
+
+.MaintainSection {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+}
+
+.EnterMaintainContainer {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+/* Flex container for the Input Part and the Table part 
+* sploit is the parent of the two sections used in the maintain part
+*
+*/
+
+
+.sploit {
+    color: white;
+    gap: 40px;
+    flex-wrap: wrap;
+    display: block;
+}
+
+@media screen and (min-width:1180px) {
+
+    .sploit {
+        display: flex;
+    }
+
+}
+
+.FormRent input {
+    background-color: #fdfdfd;
+}
+
+.FormRent form {
+    background-color: #184c78;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    /* Softer shadow for a sleek look */
+    border-radius: 12px;
+    /* Slightly more rounded corners */
+
+    /* Light transparent background */
+    backdrop-filter: blur(12px);
+    /* Subtle blur effect */
+    padding: 20px;
+    /* Increased padding for breathing room */
+    color: #ffffff;
+}
+
+.FormRent,
+.form {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 0 20px;
+    font-size: 1.2em;
+}
+
+.FormRent label,
+.form label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 8px;
+}
+
+.FormRent input,
+.FormRent textarea,
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.FormRent input[type="datetime-local"],
+.form input[type="datetime-local"] {
+    width: 100%;
+}
+
+.FormRent textarea .form textarea {
+    height: 100px;
+    resize: vertical;
+    color: #ffffff;
+    background-color: #060606;
+}
+
+.FormRent textarea::placeholder,
+.form textarea::placeholder {
+    color: #b0b0b0;
+
+}
+
+
+.FormRent textarea:focus,
+.form textarea:focus {
+    border-color: #1a73e8;
+    background-color: #314174;
+    /* Highlight input on focus with a blue border */
+    outline: none;
+    /* Remove default outline */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Enhance shadow on focus */
+}
+
+
+/*Start Form of the first input document in the maintain page */
+.FormRent,
+.form {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    /* Softer shadow for a sleek look */
+    border-radius: 12px;
+    /* Slightly more rounded corners */
+
+    /* Light transparent background */
+    backdrop-filter: blur(12px);
+    /* Subtle blur effect */
+    padding: 20px;
+    /* Increased padding for breathing room */
+    font-size: 1.2em;
+    color: #ffffff;
+    /* White text for better contrast */
+}
+
+.FormRent label,
+.form label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 8px;
+    color: #ffffff;
+    /* Softer gray for labels */
+}
+
+.FormRent label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 8px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.FormRent input,
+.FormRent textarea,
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 12px;
+    /* More padding for input fields */
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    /* More rounded corners */
+    box-sizing: border-box;
+    /* Dark transparent background */
+
+    /* Light gray text for readability */
+    font-size: 1em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Smooth transition on hover */
+}
+
+.FormRent input,
+.FormRent textarea {
+    color: #818181;
+}
+
+
+.form input,
+.form textarea {
+    color: #b5b5b5;
+}
+
+
+.FormRent input[type="datetime-local"],
+.form input[type="datetime-local"] {
+    width: 100%;
+    /* Match other inputs */
+
+    /* White text for visibility */
+}
+
+.FormRent textarea,
+.form textarea {
+    height: 120px;
+    /* Slightly taller textarea */
+    resize: vertical;
+    background-color: rgb(33 58 97 / 70%);
+    /* Dark transparent background */
+    color: #ffffff;
+    /* White text */
+    border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transitions */
+}
+
+.FormRent textarea::placeholder,
+.form textarea::placeholder {
+    color: #b0b0b0;
+    /* Lighter gray for placeholder */
+}
+
+
+.FormRent textarea:focus,
+.FormRent input:focus,
+.form textarea:focus,
+.form input:focus {
+    border: none;
+    /* Remove any default border */
+    background-color: rgba(0, 0, 0, 0.85);
+    /* Darken background on focus */
+    outline: none;
+    /* Remove default outline */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 8px #4a90e2;
+    /* Add blue glow effect */
+}
+
+.submitMaintain {
+    color: #000000;
+    background-color: #36bf25b8;
+    margin-bottom: 20px;
+}
+
+.submitMaintain:hover {
+    background-color: #1fff01b8;
+    ;
+}
+
+.FormRent input:focus,
+.FormRent textarea:focus,
+.form input:focus,
+.form textarea:focus {
+    outline: none;
+    border-color: #4b9442;
+    box-shadow: 0 0 5px rgba(75, 148, 66, 0.5);
+}
+
+.FormRent [type="submit"]:hover,
+.form[type="submit"]:hover {
+    background-color: #408738;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/*End Form of the first input document in the maintain page */
+
+
+
+
+/* Start 3d Car Image effect behind the form  */
+
+.CarPlace {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.CarPlace img {
+    max-width: 175%;
+    height: auto;
+    transform: rotate3d(1, -1, 0, 15deg) translateX(-100px) translateZ(-50px);
+    border-radius: 10px;
+    box-shadow: -5px 3px 14px 8px rgba(0, 0, 0, 0.1);
+    z-index: -2;
+    animation: bounce 10s ease-in-out infinite;
+}
+
+
+
+/* End 3d Car Image effect behind the form  */
+
+
+
+
+/* Start the second section that will handle the table data preview  */
+
+.table-container {
+
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #273f4e;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styling */
+#maintenanceTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Cairo';
+    border-radius: 10px;
+    border: none;
+}
+
+#maintenanceTable th,
+#maintenanceTable td {
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#maintenanceTable tr {
+    border-radius: 5px;
+    font-size: 0.7em;
+    color: #0c4e80;
+    background: #131c32;
+}
+
+#maintenanceTable th {
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    padding: 15px;
+
+}
+
+#maintenanceTable tr:hover {
+    background-color: #2e4f9ae3;
+    cursor: pointer;
+}
+
+#maintenanceTable td {
+    color: #fffdfc;
+    font-size: 1.3em;
+    border-right: none;
+}
+
+table td:nth-child(5) {
+    max-width: 200px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+#searchInput {
+    min-width: 300px;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* End the second section that will handle the table data preview  */
+
+
+.CarPlace {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.CarPlace img {
+    max-width: 175%;
+    height: auto;
+    transform: rotate3d(1, -1, 0, 15deg) translateX(-100px) translateZ(-50px);
+    border-radius: 10px;
+    box-shadow: -5px 3px 14px 8px rgba(0, 0, 0, 0.1);
+    z-index: -2;
+    animation: bounce 10s ease-in-out infinite;
+}
+
+.ButtonDelete {
+    cursor: pointer;
+    color: #fffdfc;
+    background-color: #4b9442;
+    border: 1px solid #fff8dc96;
+    font-weight: 600;
+}
+
+button,
+[type="button"],
+[type="reset"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+    /* margin: 0 auto; */
+    padding: 5px;
+    border-radius: 5px;
+    background: #35b835;
+    color: white;
+    border: 1px solid;
+    margin-right: 3px;
+    font-size: 0.73em;
+}
+
+
+
+
+@media screen and (max-width:400px) {
+    .CarModel .CarImage {
+        top: 33%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 130px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    form.AddCarForm {
+        padding: 5px;
+    }
+
+    h2 {
+        text-align: center;
+        margin: 5px;
+        font-size: 12px;
+        color: #ffffff;
+    }
+
+    .CarModel .CarImage {
+        top: 33%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 140px;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .sploit {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form,
+    .CarPlace {
+        flex: none;
+        width: 100%;
+    }
+
+    .CarPlace img {
+        max-width: 100%;
+        transform: none;
+        animation: none;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: rotate3d(1, -1, 0, 2deg) translateX(-290px) translateZ(-50px);
+    }
+
+    50% {
+        transform: rotate3d(1, -1, 0, 8deg) translateX(-300px) translateY(-20px) translateZ(-40px) scale(1.005);
+    }
+}

@@ -8,7 +8,7 @@ const rentSchema = new mongoose.Schema({
     customerName: { type: String, required: true },
     phone: { type: String, required: true },
     nationalId: { type: String, required: true },
-    carId: { type: String, required: true, ref: 'Car' },
+    carId: { type: mongoose.Schema.Types.ObjectId, ref: 'Car', required: true }, // Change to ObjectId
     carPlate: { type: String, required: true },
     carName: { type: String, required: true },
     kilosBeforeRent: { type: Number, required: true },
@@ -17,8 +17,14 @@ const rentSchema = new mongoose.Schema({
     signedTrust: { type: Boolean, required: true, default: false },
     totalPrice: { type: Number, required: true },
     paid: { type: Number, required: true },
-    remaining: { type: Number, required: true },
+    remaining: { type: Number },
     status: { type: String, enum: ['ongoing', 'completed'], default: 'ongoing' },
+});
+
+
+rentSchema.pre('save', function (next) {
+    this.remaining = this.totalPrice - this.paid;
+    next();
 });
 
 rentSchema.plugin(AutoIncrement, { inc_field: 'rentId', start_seq: 1 });
