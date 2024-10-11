@@ -1,4 +1,10 @@
 
+import Login from "./login&register/Login";
+import Register from "./login&register/Register";
+import ProtectedRoute from "./login&register/ProtectedRoute";
+import TestUserPage from "./login&register/TestUserPage";
+
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -36,23 +42,41 @@ import store from './redux/store';
 
 function App() {
   return (
-    <Provider store={store}>
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path='/' element={<Layout />}>
+    //       <Route index element={<Dashboard />} />
+    //       <Route path='/cars' />
+    //       <Route path='/maintenance' />
+    //     </Route>
+    //     <Route path="*" element={<Errorcomp />} />
+    //   </Routes>
+
+    // </BrowserRouter>
+    <>
       <BrowserRouter>
         <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="register" element={<Register />} />
 
-
-          <Route path='/' element={<Layout />}>
-            <Route index element={<Dashboard />} />
-            <Route path='/cars' element={<Carspage />} />
-            <Route path='/maintenance' element={<Maintain />} />
-            <Route path='/rents' element={<RentParent />} />
-          </Route>
           <Route path="*" element={<Errorcomp />} />
 
-        </Routes>
+          <Route element={<ProtectedRoute requiredRole="admin" />}>
+            <Route path="/" element={<Layout />}>
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="/cars" />
+              <Route path="/maintenance" />
+            </Route>
+          </Route>
 
+          <Route element={<ProtectedRoute requiredRole="user" />}>
+            <Route path="/userPage" element={<TestUserPage />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
-    </Provider>
+    </>
+
   );
 }
 

@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  padding: 0 10px;
+  background: url("../Images/join.jpg"), #000;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.homeNav {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 25px;
+  padding: 5px;
+  border: 2px solid #efefef;
+  border-radius: 10px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+:global(.MuiTextField-root) {
+  margin: 10px 0 !important;
+}
+
+:global(.css-nmluci-MuiFormLabel-root-MuiInputLabel-root.Mui-focused) {
+  color:navajowhite !important;
+}
+
+:global(.css-r5in8e-MuiInputBase-root-MuiInput-root::after) {
+  border-bottom:2px solid #ffffff !important;
+}
+
+/* wrapper styles*/
+.wrapper {
+  width: 400px;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.wrapper a {
+  color: #efefef;
+  text-decoration: none;
+}
+
+.wrapper a:hover {
+  text-decoration: underline;
+}
+
+.sign-in {
+  text-align: center;
+  margin-top: 30px;
+  color: #fff;
+}
+
+.message {
+  height: 1px;
+  margin-top: 20px;
+}

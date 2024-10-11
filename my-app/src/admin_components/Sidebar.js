@@ -1,13 +1,15 @@
+
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLogout } from "../login&register/customHooks/useLogout ";
 
 export default function Sidebar() {
+  const logout = useLogout();
     const location = useLocation(); // Get the current location
 
     return (
         <div className="SideBar">
             <div className="logo">Ramy Rent
-                <div className="SideBarLogOut">
+        <div onClick={logout} className="SideBarLogOut">
                     <i className="fas fa-sign-out-alt SideBarIcon"></i>
                     <div>Logout</div>
                 </div>
@@ -32,4 +34,5 @@ export default function Sidebar() {
             </ul>
         </div>
     );
+
 }
