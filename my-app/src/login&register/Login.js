@@ -27,6 +27,16 @@ function Login() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // const handleLogout = () => {
+  //   // Remove the auth token from cookies
+  //   Cookies.remove("authToken");
+
+  //   // Redirect to the login page
+  //   navigate("/login", { replace: true });
+
+  //   // Optionally, you can clear any other state or context related to the user
+  // };
+
   // handle submit
   const handleSubmit = async () => {
     //alert error when inputs is empty
@@ -66,7 +76,7 @@ function Login() {
 
     //remove userPage and put real route
     if (response.data.user.role === "user") {
-      navigate("/userPage", { replace: true });
+      navigate("/home", { replace: true });
     }
   };
 
@@ -89,7 +99,7 @@ function Login() {
     }
 
     if (currentUser?.role === "user") {
-      navigate("/userPage", { replace: true });
+      navigate("/home", { replace: true });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

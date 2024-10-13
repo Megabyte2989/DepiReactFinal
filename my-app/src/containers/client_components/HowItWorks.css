@@ -1,0 +1,88 @@
+/* How It Works Section Styles */
+.how-it-works {
+  padding: 50px 0;
+  align-items: center;
+  text-align: center;
+  background-color: #161616;
+}
+
+.how-it-works-header h1 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-block-start: 10px;
+  font-weight: 500;
+}
+
+.how-it-works-btn {
+  background-color: #e0edff;
+  color: #003b7e;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: default;
+  font-size: 14px;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-around;
+  margin-block-start: 30px;
+}
+
+.step {
+  background-color: #f0f6ff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  inline-size: 30%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step img {
+  inline-size: 50px;
+  block-size: 50px;
+}
+
+.step h2 {
+  font-size: 18px;
+  color: #333;
+  margin: 15px 0;
+}
+
+.step p {
+  color: #1b1b1b;
+  font-size: 14px;
+}
+
+/* Media Queries */
+
+/* For screens with a maximum width of 768px (tablets) */
+@media (max-width: 768px) {
+  .steps {
+    flex-direction: column;
+  }
+  .step {
+    inline-size: 80%;
+    margin: 20px auto;
+  }
+}
+
+/* For screens with a maximum width of 480px (mobile devices) */
+@media (max-width: 480px) {
+  .how-it-works-header h1 {
+    font-size: 18px;
+  }
+  .step {
+    inline-size: 90%;
+    padding: 20px 15px;
+  }
+  .step img {
+    inline-size: 40px;
+    block-size: 40px;
+  }
+  .step h2 {
+    font-size: 16px;
+  }
+  .step p {
+    font-size: 12px;
+  }
+}

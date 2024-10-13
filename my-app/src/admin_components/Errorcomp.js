@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/Error.css'
 
+// Error component for any UnRouted page
 export default function Errorcomp() {
     return (
         <div className='ErrorContainer'>

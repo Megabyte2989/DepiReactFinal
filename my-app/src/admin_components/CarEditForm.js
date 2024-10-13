@@ -1,52 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateCar } from '../slices/carsSlice'; // Import the updateCar action
-import '../styles/editForm.css';
+import { updateCar } from '../slices/carsSlice'; // Import the action to update a car
+import '../styles/editForm.css'; // Import the CSS styles for the form
 
 const CarEditForm = ({ car, onClose }) => {
+    // Initialize state to hold form data based on the car details
+    // Provide default value if undefined
     const [formData, setFormData] = useState({
-        carName: car.carName,
-        model: car.model,
-        brand: car.brand,
-        year: car.year,
-        rentalRate: car.rentalRate,
-        ownerName: car.ownerName,
-        kilosRightNow: car.kilosRightNow,
-        lastOilChangeDate: car.lastOilChangeDate,
+        carName: car.carName || '',
+        model: car.model || '',
+        brand: car.brand || '',
+        year: car.year || '',
+        rentalRate: car.rentalRate || '',
+        ownerName: car.ownerName || '',
+        kilosRightNow: car.kilosRightNow || '',
+        lastOilChangeDate: car.lastOilChangeDate || '',
     });
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); // Get the dispatch function from Redux
 
+    // Handle changes in the input fields
     const handleInputChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target; // Get the input's name and value
         setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
+            // if you wanna do any changes then you need to copy the whole
+            // and change in it you can't change it without new one it must be pure
+            ...prevData, // Keep previous data
+            [name]: value, // Update the specific field with new value
         }));
     };
 
+    // Handle form submission
     const handleSubmit = (e) => {
-        e.preventDefault();
-        // Dispatch the updateCar action with the updated car details
-        dispatch(updateCar({ id: car._id, ...formData }));
-        onClose(); // Close the form after submitting
+        e.preventDefault(); // Prevent default sendingg
+        dispatch(updateCar({ id: car._id, ...formData })); // Dispatch action to update the car
+        onClose(); // Close after submition
     };
 
+    // Effect to prevent body scrolling when the modal is open
     useEffect(() => {
-        // Prevent scrolling when the modal is open
-        document.body.style.overflow = 'hidden';
-
-        // Cleanup the effect
+        document.body.style.overflow = 'hidden'; // Hide scrollbar
         return () => {
-            document.body.style.overflow = 'unset';
+            document.body.style.overflow = 'unset'; // Restore scrollbar on cleanup
         };
     }, []);
 
     return (
-        <div className="backdrop" onClick={onClose}>
-            <div className="editForm" onClick={(e) => e.stopPropagation()}>
-                <form onSubmit={handleSubmit}>
-                    <h2 className='EditCarH2'>{car.carName}</h2>
+        <div className="backdrop" onClick={onClose}> {/* Backdrop to close the form */}
+            <div className="editForm" onClick={(e) => e.stopPropagation()}> {/* Prevent closing when clicking inside the form */}
+                <form onSubmit={handleSubmit}> {/* Form element */}
+                    <h2 className='EditCarH2'>{car.carName}</h2> {/* Display the car name as a heading */}
                     <input
                         type="text"
                         name="carName"
@@ -108,14 +111,13 @@ const CarEditForm = ({ car, onClose }) => {
                         name="lastOilChangeDate"
                         value={formData.lastOilChangeDate}
                         onChange={handleInputChange}
-                        placeholder="Last Oil Change Date"
                         required
                     />
-                    <button className='sumbitFormAddButton' type="submit">Update Car</button>
+                    <button className='submitFormAddButton' type="submit">Update Car</button> {/* Submit button */}
                 </form>
             </div>
         </div>
     );
 };
 
-export default CarEditForm;
+export default CarEditForm; // Export the component for use in other parts of the application

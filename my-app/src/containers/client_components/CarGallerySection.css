@@ -1,0 +1,203 @@
+/* Car Gallery */
+:root {
+    --primary-color: #020758;
+    --secondary-color: #ffffff;
+    --accent-color: #f9f9f9;
+    --text-color: #333;
+    --button-color: rgba(10, 103, 146, 0.815);
+    --button-hover-color: #4b4b5e;
+    --filter-bg-color: #f1f1f1;
+  }
+.car-gallery {
+    background-color: rgb(255, 255, 255);
+    padding: 40px 20px;
+    margin-block-end: 10%;
+  }
+  
+  .car-gallery .container {
+    max-inline-size: 1200px;
+    margin: 0 auto;
+  }
+  /* Filters */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #000;
+    gap: 20px;
+    margin-block-end: 30px;
+    margin-block-start: 5%;
+    padding-block-start: 3%;
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filter-group label {
+    margin-block-end: 5px;
+    font-weight: bold;
+  }
+  
+  .filter-group select,
+  .filter-group input[type="range"] {
+    inline-size: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--filter-bg-color);
+    transition: border-color 0.3s;
+  }
+  
+  .filter-group select:focus,
+  .filter-group input[type="range"]:focus {
+    border-color: var(--primary-color);
+  }
+  
+  .price-slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  #price-value {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  .filter-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .filterbtn {
+    background-color: var(--button-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .filterbtn:hover {
+    background-color: var(--button-hover-color);
+  }
+  /* car Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 2fr));
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .grid-item {
+    background-color: var(--secondary-color);
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    max-inline-size: 350px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .grid-item img {
+    inline-size: 100%;
+    block-size: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-block-end: 15px;
+  }
+  
+  .grid-item p {
+    margin-block-end: 10px;
+    font-size: 14px;
+    color: #000;
+  }
+  
+  
+  .grid-item .book-now-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 8px 10px;
+    margin-block-end: 5%;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .grid-item .book-now-btn:hover {
+    background-color: var(--button-color);
+  }
+  @media (max-inline-size: 480px) {
+ 
+    .car-gallery {
+      margin-block-start: 0rem;
+      padding-block-start: 0rem;
+    }
+  
+    .grid-item {
+      background-color: var(--secondary-color);
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      inline-size: 100%;
+      justify-content: center;
+    }
+    @media (max-inline-size: 360px) {
+  
+      .car-gallery {
+        margin-block-start: 0rem;
+        padding-block-start: 0rem;
+      }
+  
+      .filter-buttons {
+        padding: 0 30% 0 30%;
+      }
+  
+      .filters {
+        flex-direction: column;
+      }
+  
+      .filter-group {
+        margin-block-end: 20px;
+        align-items: center;
+      }
+  
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+  
+      .grid-item {
+        background-color: var(--secondary-color);
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        text-align: center;
+        transition: transform 0.3s, box-shadow 0.3s;
+        inline-size: 100%;
+        justify-content: center;
+      }
+  
+      .grid-item img {
+        block-size: 150px;
+      }
+    }
+  }

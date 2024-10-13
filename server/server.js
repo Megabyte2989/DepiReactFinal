@@ -25,12 +25,14 @@ app.use('/api/maintenance', maintainRoutes)
 app.use('/api/user', userRoutes)
 app.use('/images', express.static(path.join(__dirname, '../my-app/src/media')));
 app.use('/imagesStages', express.static(path.join(__dirname, '../my-app/src/media/stages')));
+app.use('/Images', express.static(path.join(__dirname, 'public', 'images')));
+app.use('/ImagesGallery', express.static(path.join(__dirname, '../../media')));
 
 
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB is connected and ready'))
-    .catch(err => console.error('MongoDB connection failed:', err));
+  .then(() => console.log('MongoDB is connected and ready'))
+  .catch(err => console.error('MongoDB connection failed:', err));
 
 app.use("/api/cars", carRoutes);
 app.use("/api/rents", rentRoutes);

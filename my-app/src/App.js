@@ -8,10 +8,12 @@ import Layout from './admin_components/Layout';
 import Maintain from './admin_components/Maintain';
 import RentParent from './admin_components/RentParent';
 import './App.css';
+import CarQuizApp from './containers/client_components/CarQuizApp';
+import Gallery from './containers/Gallery/Gallery';
+import Home from './containers/Home/Home';
 import Login from "./login&register/Login";
 import ProtectedRoute from "./login&register/ProtectedRoute";
 import Register from "./login&register/Register";
-import TestUserPage from "./login&register/TestUserPage";
 import store from './redux/store';
 
 function App() {
@@ -37,7 +39,10 @@ function App() {
 
           {/* Protected Routes for User */}
           <Route element={<ProtectedRoute requiredRole="user" />}>
-            <Route path="/userPage" element={<TestUserPage />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/quiz" element={<CarQuizApp />} />
+
           </Route>
         </Routes>
       </BrowserRouter>

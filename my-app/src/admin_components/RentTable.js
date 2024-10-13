@@ -7,7 +7,7 @@ import { fetchCars } from '../slices/carsSlice';
 import { deleteRent, fetchRents, updateRent, updateRentStatus } from '../slices/rentsSlice';
 import '../styles/rents.css';
 
-
+// Main States selection and redux and hooks
 const RentTable = () => {
     const dispatch = useDispatch();
     const { rents, loading, error } = useSelector((state) => state.rents);
@@ -15,17 +15,58 @@ const RentTable = () => {
     const [updatingRentId, setUpdatingRentId] = useState(null);
     const [editedRent, setEditedRent] = useState(null);
     const [searchTerm, setSearchTerm] = useState(""); // State for search input
+    const [sortColumn, setSortColumn] = useState('');
+    const [sortOrder, setSortOrder] = useState('asc');
 
 
+    // fucntion that handle the status and dispatch the UpdateRents status
+    // which will adjust the rent row to switch it between 
+    //completed and on going 
     const handleStatusClick = (rent) => {
         const newStatus = rent.status === 'ongoing' ? 'completed' : 'ongoing';
         setUpdatingRentId(rent._id);
-        dispatch(updateRentStatus({ rentId: rent._id, newStatus }))
-            .finally(() => setUpdatingRentId(null));
+        dispatch(updateRentStatus({ rentId: rent._id, newStatus })) // dispatch the updatestatus
+            .finally(() => setUpdatingRentId(null)); // reset the state for future use
+    };
+
+    const sortRents = (rents) => {
+        // If no sortColumn is specified, return the original rents array unmodified
+
+        if (!sortColumn) return rents;
+
+        // Create a shallow copy of the rents array to avoid mutating the original array during sorting
+        // no mutation allowed in react
+        return [...rents].sort((a, b) => {
+            const aValue = a[sortColumn];
+            const bValue = b[sortColumn];
+
+            // Check if the sortColumn is related to dates (rentDate or returnDate)
+            // Convert date strings to Date objects and compare them
+
+            if (sortColumn === 'rentDate' || sortColumn === 'returnDate') {
+                return sortOrder === 'asc' ? new Date(aValue) - new Date(bValue) : new Date(bValue) - new Date(aValue);
+            }
+
+
+            // For numerical values, compare them directly
+            if (typeof aValue === 'number' && typeof bValue === 'number') {
+                return sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
+            }
+
+            return sortOrder === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+        });
     };
 
 
 
+    // sort handler function to put on the table tr
+    const handleSort = (column) => {
+        const newOrder = sortColumn === column && sortOrder === 'asc' ? 'desc' : 'asc';
+        setSortColumn(column);
+        setSortOrder(newOrder);
+    };
+
+    // delete handler for all tables that usees sweet alert 2
     const handleDelete = (rentId) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -52,20 +93,28 @@ const RentTable = () => {
 
     }, [dispatch]);
 
+
+
     const handleEdit = (rent) => {
-        setEditedRent(rent);
+        setEditedRent(rent); // update the rent term based ont he input
     };
+
 
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value); // Update the search term based on input
     };
 
+
+    // update the ui change based on the states
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setEditedRent((prevRent) => ({ ...prevRent, [name]: value }));
     };
 
 
+    //  handle the save function that will be dispatching the update rent 
+    // and then fetch the rents to update the ui with the new rents after
+    // updating
     const handleSave = () => {
         try {
             if (editedRent) {
@@ -79,9 +128,13 @@ const RentTable = () => {
         }
     };
 
+
+    // filtering function that will return the rent data based on
+    // the filtering conditions
     const filteredRents = searchTerm ? rents.filter((rent) => {
         const searchValue = searchTerm.toLowerCase();
         return (
+            // lowercase and then .includes (the serach term) to compare them
             rent.customerName?.toLowerCase().includes(searchValue) ||
             rent.nationalId?.toLowerCase().includes(searchValue) ||
             rent.carModel?.toLowerCase().includes(searchValue) ||
@@ -96,25 +149,31 @@ const RentTable = () => {
         dispatch(fetchRents());
     }, [dispatch]);
 
+    // function for exporting table files
     // so we are creating a workbook and then transfering my datainto json then bind the data to my book and may give it a name
     //This line writes the workbook (which now contains your data as a sheet) into an actual file and initiates a download on the user's device
     const handleExport = () => {
 
         const workbook = XLSX.utils.book_new();
         const DataJson = XLSX.utils.json_to_sheet(filteredRents)
-        const RentFileXLSX = XLSX.utils.book_append_sheet(workbook, DataJson, "RentData")
+        XLSX.utils.book_append_sheet(workbook, DataJson, "RentData")
         XLSX.writeFile(workbook, 'RentFileXLSX')
 
     };
 
 
+    // for loading return the loading ui
     if (loading) {
         return <p>Loading rents...</p>;
     }
 
+    // for error return the error ui
+
     if (error) {
         return <p style={{ color: 'red' }}>Error: {error}</p>;
     }
+
+    const sortedRents = sortRents(filteredRents);
 
     return (
 
@@ -131,24 +190,30 @@ const RentTable = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>National ID</th>
+                        <th onClick={() => handleSort('customerName')}>Name <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('nationalId')}>National ID <i class="fas fa-sort"></i></th>
                         <th>Car Model</th>
-                        <th>Car Plate</th>
-                        <th>Rent Date</th>
-                        <th>Return Date</th>
-                        <th>Kilos Before Rent</th>
-                        <th>Total Price</th>
-                        <th>Paid</th>
-                        <th>Remaining</th>
-                        <th>Status</th>
+                        <th onClick={() => handleSort('carPlate')}>Car Plate <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('rentDate')}>Rent Date <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('returnDate')}>Return Date <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('kilosBeforeRent')}>Kilos Before Rent <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('totalPrice')}>Total Price <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('paid')}>Paid <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('remaining')}>Remaining <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('status')}>Status <i class="fas fa-sort"></i></th>
                         <th>Edit</th>
                         <th>Delete</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {filteredRents.map((rent) => (
+
+                    {/* map through the sortedRents we made
+                    general thing that we will see
+                    if we are on the editing mode we will return the 
+                    text inputs to start the updating methods 
+                    if not we will return the data as it is */}
+                    {sortedRents.map((rent) => (
                         <tr key={rent._id}>
                             <td>
                                 {editedRent && editedRent._id === rent._id ? (
@@ -295,6 +360,7 @@ const RentTable = () => {
                                 </span>
                             </td>
                             <td>
+                                {/* put the handlers */}
                                 {editedRent && editedRent._id === rent._id ? (
                                     <button className="save_btn" onClick={handleSave}>Save</button>
                                 ) : (

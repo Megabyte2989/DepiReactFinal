@@ -181,7 +181,7 @@ a:visited {
     display: grid;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
     background-color: #3d6289;
-    gap: 10px;
+    gap: 13px;
     padding: 10px;
     width: 100%;
     border-radius: 10px;
@@ -190,6 +190,7 @@ a:visited {
 
 
 .card {
+    color: black;
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
@@ -275,9 +276,9 @@ a:visited {
 .SquareBox table th,
 .SquareBox table td {
     padding: 8px;
-    border: 1px solid #e0e0e0;
+    border-bottom: thick;
     text-align: left;
-    font-size: 0.8em;
+    font-size: 1rem;
 }
 
 .SquareBox p {
@@ -358,7 +359,7 @@ tbody tr:hover {
     background-color: #3d677a;
     border-radius: 5px;
     padding: 15px;
-    font-size: 1.2em;
+    font-size: 1rem;
     margin: 10px 0;
     position: relative;
     transition: background-color 0.3s ease, transform 0.3s ease;

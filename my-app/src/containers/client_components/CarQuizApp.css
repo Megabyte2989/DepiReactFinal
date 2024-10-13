@@ -1,0 +1,106 @@
+.car-quiz-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.car-quiz-container {
+    background-image: url('../../media/texture.jpg');
+    height: 100vh;
+}
+
+.car-quiz-form {
+    background-color: #727070bb;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.car-quiz-title {
+    text-shadow: 2px 2px #000000, 4px 4px #6c6666;
+}
+
+.car-quiz-question {
+    margin-bottom: 20px;
+}
+
+.car-quiz-question label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.car-quiz-question select,
+.car-quiz-question input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.car-quiz-submit {
+    background-color: rgb(15, 3, 190);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.car-quiz-submit:hover {
+    background-color: #090630;
+}
+
+.car-quiz-result {
+    text-align: center;
+    max-width: 400px;
+    padding: 15px 50px;
+    border-radius: 10px;
+    background-color: #727070bb;
+}
+
+.car-quiz-result h2 {
+    font-size: 28px;
+    color: #d76422;
+
+}
+
+.car-quiz-result p {
+    font-size: 18px;
+    color: #fff;
+}
+
+.car-quiz-result-image {
+    border-radius: 10px;
+    width: 70%;
+    max-width: 700px;
+    margin: auto;
+}
+
+.car-quiz-retake {
+    background-color: rgb(3, 0, 0);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 50%;
+    margin: 20px 0;
+    transition: background-color 0.3s;
+}
+
+.car-quiz-retake:hover {
+    background-color: rgb(11, 0, 158);
+}

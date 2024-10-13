@@ -1,0 +1,55 @@
+/* Brand Logos */
+
+.brand-logos {
+  background-color: #151516;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px 0;
+  flex-wrap: wrap; /* Add this to wrap logos to the next line on smaller screens */
+}
+
+.brand-logos img {
+  block-size: 3rem;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  margin: 10px; /* Add some margin to separate logos */
+}
+
+.brand-logos img:hover {
+  opacity: 1;
+}
+
+/* Media Queries */
+
+/* For screens with a maximum width of 768px (tablets) */
+@media (max-width: 768px) {
+  .brand-logos img {
+    inline-size: 20%;
+    margin: 20px auto; /* Adjust margin to center logos */
+  }
+  #honda{
+    display: none;
+  }
+}
+
+/* For screens with a maximum width of 480px (mobile devices) */
+@media (max-width: 480px) {
+  .brand-logos img {
+    inline-size: 10%; /* Increase size of logos on mobile devices */
+    margin: 10px auto; /* Adjust margin to center logos */
+  }
+  #honda{
+    display: none;
+  }
+}
+/* For screens with a maximum width of 320px (small mobile devices) */
+@media (max-width: 320px) {
+  .brand-logos img {
+    inline-size: 10%; /* Increase size of logos on small mobile devices */
+    margin: 10px auto; /* Adjust margin to center logos */
+  }
+  #honda{
+    display: none;
+  }
+}

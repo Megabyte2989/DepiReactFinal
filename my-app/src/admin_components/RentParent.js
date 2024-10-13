@@ -4,6 +4,7 @@ import store from '../redux/store'
 import RentForm from './RentForm'
 import RentTable from './RentTable'
 
+// Rent Page Parent that will hold hte form and the table
 export default function RentParent() {
     return (
         <Provider store={store}>

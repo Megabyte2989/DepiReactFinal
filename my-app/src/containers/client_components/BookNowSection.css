@@ -1,0 +1,71 @@
+/* Book Now Section */
+.book-now-section {
+    background-color: #161616;
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .book-now-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    inline-size: 100%;
+    padding: 20px;
+  }
+  
+  .book-now-text {
+    max-inline-size: 50%;
+    justify-content: left;
+  }
+  
+  .book-now-text h2 {
+    font-size: 150%;
+    color: #ffffff;
+    margin-block-end: 15px;
+    text-shadow: 2px 2px 4px #005db4;
+  }
+  
+  .book-now-text p {
+    font-size: 18px;
+    margin-block-end: 20px;
+    color: #8a8a8a;
+  }
+  
+  .book-now-link-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #009ffd;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .book-now-link-btn:hover {
+    background-color: #006fbc;
+  }
+  
+  .book-now-image img {
+    max-inline-size: 95%;
+    border-radius: 10px;
+  }
+  
+  @media screen and (max-inline-size: 768px) {
+    .book-now-container {
+      flex-direction: column;
+      text-align: center;
+    }
+    .book-now-text {
+      max-inline-size: 80%;
+      margin-block-end: 20px;
+    }
+  
+    .book-now-image {
+      max-inline-size: 100%;
+      margin: 0 auto;
+    }
+  }

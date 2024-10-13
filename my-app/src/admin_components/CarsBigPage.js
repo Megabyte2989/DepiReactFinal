@@ -122,15 +122,6 @@ export default function Carspage() {
         });
     };
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setNewCar({
-                ...newCar,
-                imageUrl: file, // Store the file object in the state
-            });
-        }
-    };
 
     // Format date for better readability
     const formatDate = (dateString) => {

@@ -349,7 +349,7 @@ h2 {
 
 #maintenanceTable tr {
     border-radius: 5px;
-    font-size: 0.7em;
+    font-size: 1rem;
     color: #0c4e80;
     background: #131c32;
 }
@@ -370,8 +370,17 @@ h2 {
 
 #maintenanceTable td {
     color: #fffdfc;
-    font-size: 1.3em;
+    font-size: 1rem;
     border-right: none;
+}
+
+#maintenanceTable td:last-child {
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+#maintenanceTable td:last-child button {
+    padding: 3px;
 }
 
 table td:nth-child(5) {

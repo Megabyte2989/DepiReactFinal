@@ -1,0 +1,45 @@
+/* Hero Section Styles */
+
+.hero-section {
+    position: relative;
+    block-size: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .overlay-text {
+    font-family: 'Poppins', sans-serif;
+    font-style: italic;
+    font-size: 180%;
+    font-weight: 300;
+    inset-inline-start: 6%;
+    inset-block-start: 17%;
+    color: #fff;
+    padding: 1.2;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 5;
+    letter-spacing: 5px;
+  }
+  
+  .hero-section .car-image img {
+    inline-size: 100%;
+    block-size: auto;
+    object-fit: fill;
+  }
+  
+  /* Responsive Hero Section */
+  @media (max-inline-size: 768px) {
+    .overlay-text h1 {
+      font-size: 48px;
+    }
+  }
+  
+  @media (max-inline-size: 480px) {
+    .overlay-text h1 {
+      font-size: 36px;
+    }
+  }
+  

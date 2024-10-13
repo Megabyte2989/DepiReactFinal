@@ -30,10 +30,7 @@ router.get("/getUserRents", validateJWT, async (req, res) => {
 });
 
 // Create a rent
-// router.post("/add", validateJWT, async (req, res) => {
-// const userId = req.user._id;
-// const renterName = ${req.user.firstName} 
-// Assuming you have already imported the necessary modules and defined the Rent and Car models
+
 router.post("/add", async (req, res) => {
     const rentData = req.body;
     console.log("Received rent data:", rentData);

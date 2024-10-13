@@ -1,0 +1,77 @@
+/* Bmodal */
+/* Car Gallery */
+:root {
+  --primary-color: #020758;
+  --secondary-color: #ffffff;
+  --accent-color: #f9f9f9;
+  --text-color: #333;
+  --button-color: rgba(10, 103, 146, 0.815);
+  --button-hover-color: #4b4b5e;
+  --filter-bg-color: #f1f1f1;
+}
+.Bmodal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1000;
+  inset-inline-start: 0;
+  inset-block-start: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Bmodal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  inline-size: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: inline-end;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.Bmodal-content h2 {
+  margin-block-end: 20px;
+  color: var(--primary-color);
+}
+
+.Bmodal-content label {
+  display: block;
+  margin-block-end: 5px;
+  font-weight: bold;
+}
+
+.Bmodal-content input[type="date"],
+.Bmodal-content input[type="time"],
+.Bmodal-content input[type="text"] {
+  inline-size: 100%;
+  padding: 10px;
+  margin-block-end: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.Bmodal-content .book-now-btn {
+  inline-size: 100%;
+  padding: 12px;
+  font-size: 16px;
+}
+
+.Bmodal-content .book-now-btn:hover {
+  background-color: var(--button-hover-color);
+}

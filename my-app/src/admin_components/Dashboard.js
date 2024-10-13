@@ -22,8 +22,8 @@ const Dashboard = () => {
         dispatch(fetchMaintenance())
     }, [dispatch]);
 
-    const { cars, loading: loadingCars, error: errorCars } = useSelector((state) => state.cars);
-    const { rents, loading: loadingRents, error: errorRents } = useSelector((state) => state.rents);
+    const { cars } = useSelector((state) => state.cars);
+    const { rents } = useSelector((state) => state.rents);
     const { maintenanceRecords } = useSelector((state) => state.maintenance);
 
     const totalIncome = rents ? rents.reduce((sum, rent) => sum + rent.paid, 0) : 0;

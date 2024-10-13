@@ -4,13 +4,14 @@ import { addRent } from '../slices/rentsSlice';
 import '../styles/rents.css';
 
 const RentForm = () => {
-
+    // general states and dispatchers and hooks
     const [isOpen, setIsOpen] = useState(false);
-
-    const dispatch = useDispatch();
     const { loading, error } = useSelector((state) => state.rents);
     const { cars } = useSelector((state) => state.cars); // Assuming cars are fetched and stored in state
+    const dispatch = useDispatch();
 
+
+    // declare the usestate with the object that will hold the form data
     const [formData, setFormData] = useState({
         customerName: '',
         phone: '',
@@ -25,6 +26,7 @@ const RentForm = () => {
         totalPrice: '',
         paid: '',
     });
+
 
     const handleChange = (e) => {
         const { name, type, value, checked } = e.target;
@@ -58,6 +60,10 @@ const RentForm = () => {
     const handleOverlayClick = () => setIsOpen(false);
 
 
+    // submit handler that will prevent the sending part
+    // then dipatch the new rent
+    // and close the modal
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // Validate form data before dispatching
@@ -73,6 +79,7 @@ const RentForm = () => {
 
     return (
         <>
+            {/* we have an overlay that will be apllied if we open the rent modal */}
             <div className="RentOpener" onClick={toggleForm}></div>
             <div className={`overlay${isOpen ? 'Show' : ''}`} onClick={handleOverlayClick}></div>
             <div className={isOpen ? "RentContainerShow" : "RentContainer"}>
@@ -114,6 +121,9 @@ const RentForm = () => {
                             </div>
                             <div className="pair">
                                 <label>Car</label>
+                                {/* here we have options for the cars 
+                                so the user can select from multiple without caring about typing
+                                or remembering the car names */}
                                 <select
                                     name="carId"
                                     value={formData.carId}
@@ -221,6 +231,7 @@ const RentForm = () => {
                             </div>
                         </div>
 
+                        {/* if submit is going stop the loading and change the ui based */}
                         <button className="SubmitRent" type="submit" disabled={loading}>
                             {loading ? 'Submitting...' : 'Submit'}
                         </button>

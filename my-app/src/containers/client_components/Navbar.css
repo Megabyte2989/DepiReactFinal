@@ -1,0 +1,225 @@
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: absolute;
+  inset-block-start: 0px;
+  inline-size: 100%;
+  z-index: 10;
+}
+
+.logoHome img {
+  inline-size: 20%;
+  block-size: auto;
+}
+
+
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu ul li a {
+  color: inherit;
+  text-decoration: none;
+  padding: 13px 16px;
+  background-color: #00000044;
+  border: 2px solid #000000;
+  border-radius: 25px;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+
+.menu ul li a:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.menu ul li a.sign:hover {
+  background-color: #005db4;
+  color: #fff;
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  gap: 5px;
+  inline-size: 100%;
+  /* Full width for better touch targets */
+  inset-inline-start: 10%;
+}
+
+.hamburger-menu span {
+  display: block;
+  inline-size: 25px;
+  block-size: 3px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar .menu ul {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    cursor: pointer;
+  }
+
+  .menu ul.active {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    inset-block-start: 50px;
+    inset-inline-start: 60%;
+    inline-size: 30%;
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    z-index: 5;
+  }
+
+  .menu ul li a {
+    color: #000;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    inline-size: 20%;
+  }
+
+  .menu ul li a {
+    padding: 3px 17px;
+    font-size: 12px;
+    padding-block-end: 0%;
+    border-block-end: 0%;
+  }
+}
+
+/* Modal Styles */
+.numbers,
+.email {
+  font-size: 0.8rem;
+}
+
+.modal {
+  display: none;
+  z-index: 1001;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.modal.show {
+  display: block;
+  position: fixed;
+  animation: slideIn 0.2s ease forwards;
+  opacity: 1;
+}
+
+.lmodal-content {
+  background-color: #242424;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 15px;
+  inline-size: 50%;
+  max-inline-size: 600px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%);
+}
+
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.modal a {
+  text-decoration: none;
+  color: rgb(228, 168, 91);
+  inset-block-end: 20%;
+}
+
+/* Responsive Design for Modal */
+@media (max-width: 768px) {
+  .lmodal-content {
+    inline-size: 50%;
+    /* Take 80% of the screen width for smaller screens */
+    inset-inline-start: 50%;
+    inset-block-start: 50%;
+    border-radius: 10px;
+    padding: 15px;
+    /* Adjust padding */
+    max-inline-size: none;
+    /* Remove max-width restriction */
+  }
+
+  .lmodal-content h2,
+  /* Example heading */
+  .lmodal-content p {
+    /* Example paragraph */
+    font-size: 14px;
+    /* Smaller font size */
+  }
+}
+
+@media (max-width: 350px) {
+  .lmodal-content {
+    inline-size: 80%;
+    /* Maintain 80% width for very small screens */
+    inset-inline-start: 50%;
+    inset-block-start: 50%;
+    border-radius: 7px;
+    padding: 10px;
+    /* Reduce padding */
+  }
+
+  .lmodal-content h2,
+  /* Example heading */
+  .lmodal-content p {
+    /* Example paragraph */
+    font-size: 12px;
+    /* Smaller font size */
+  }
+
+  .close {
+    font-size: 18px;
+    /* Smaller close button */
+  }
+}
+
+/* End of Responsive Design for Modal */
