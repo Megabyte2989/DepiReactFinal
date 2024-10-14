@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-
 // Define the initial state of the cars slice
 const initialState = {
     cars: [], // Array to hold the list of cars

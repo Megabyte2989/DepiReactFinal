@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addRent } from '../slices/rentsSlice';
+import { addRent } from '../slices/rentsSlice.js';
 import '../styles/rents.css';
 
 const RentForm = () => {
