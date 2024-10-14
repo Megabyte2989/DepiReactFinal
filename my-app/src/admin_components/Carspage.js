@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import hiddenCarImage from '../media/hiddencar.png';
-import { deleteCar } from '../slices/carsSlice';
+import { deleteCar } from '../slices/carsSlice.js';
 import '../styles/cars.css';
-import CarEditForm from './CarEditForm'; // Import the new CarEditForm
+import CarEditForm from './CarEditForm.js'; // Import the new CarEditForm
 
 const Car = ({ car, onClick }) => {
 

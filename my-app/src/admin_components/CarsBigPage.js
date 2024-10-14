@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCar, fetchCars } from '../slices/carsSlice';
-import { fetchMaintenance } from '../slices/maintainSlice';
-import { fetchRents } from '../slices/rentsSlice';
+import { addCar, fetchCars } from '../slices/carsSlice.js';
+import { fetchMaintenance } from '../slices/maintainSlice.js';
+import { fetchRents } from '../slices/rentsSlice.js';
 
 import '../styles/cars.css';
-import Car from './Carspage';
+import Car from './Carspage.js';
 
 export default function Carspage() {
     const [DetailsOpen, setDetailsOpen] = useState(false);

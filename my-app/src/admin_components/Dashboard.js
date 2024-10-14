@@ -2,14 +2,14 @@
 import React, { useEffect } from 'react';
 // import '../styles/all.min.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCars } from '../slices/carsSlice';
-import { fetchMaintenance } from '../slices/maintainSlice';
-import { fetchRents } from '../slices/rentsSlice';
+import { fetchCars } from '../slices/carsSlice.js';
+import { fetchMaintenance } from '../slices/maintainSlice.js';
+import { fetchRents } from '../slices/rentsSlice.js';
 import '../styles/dashboard.css';
 import '../styles/normalize.css';
-import DashboardCard from './Dashboardcard';
-import DashboardComingsoon from './DashboardComingsoon';
-import LatestRents from './Dashboardrents';
+import DashboardCard from './Dashboardcard.js';
+import DashboardComingsoon from './DashboardComingsoon.js';
+import LatestRents from './Dashboardrents.js';
 
 
 const Dashboard = () => {

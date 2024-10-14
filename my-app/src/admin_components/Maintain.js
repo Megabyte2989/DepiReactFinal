@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 
 
-import { fetchCars } from '../slices/carsSlice';
-import { addMaintenance, deleteMaintenance, fetchMaintenance, updateMaintenance } from '../slices/maintainSlice';
+import { fetchCars } from '../slices/carsSlice.js';
+import { addMaintenance, deleteMaintenance, fetchMaintenance, updateMaintenance } from '../slices/maintainSlice.js';
 
 import Image3D from '../media/stages/cerato2018black.png';
 import '../styles/maintain.css';

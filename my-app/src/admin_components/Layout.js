@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import '../styles/normalize.css';
 import '../styles/sidebar.css';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar.js';
 
 // Main layour for all components 
 // Outlet is like saving a place for any upcoming components

@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import Modal from "./Modal"; // Import the modal component
+import Modal from "./Modal.js"; // Import the modal component
 import "./Navbar.css";
 
 const Navbar = () => {

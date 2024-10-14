@@ -7,8 +7,8 @@ import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/Login.module.css";
-import { loginApi } from "./api/loginApi";
-import { getCurrentUser } from "./services/getCurrentUser";
+import { loginApi } from "./api/loginApi.js";
+import { getCurrentUser } from "./services/getCurrentUser.js";
 
 function Login() {
   const navigate = useNavigate();

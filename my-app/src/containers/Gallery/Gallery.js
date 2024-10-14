@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import BookingFormBmodal from "../client_components/BookingFormModal";
-import GallerySection from "../client_components/CarGallerySection";
-import FloatingIcon from "../client_components/FloatingIcon";
-import Footer from "../client_components/Footer";
-import GalleryHero from "../client_components/GalleryHero";
-import NavbarDark from "../client_components/NavbarDark";
+import BookingFormBmodal from "../client_components/BookingFormModal.js";
+import GallerySection from "../client_components/CarGallerySection.js";
+import FloatingIcon from "../client_components/FloatingIcon.js";
+import Footer from "../client_components/Footer.js";
+import GalleryHero from "../client_components/GalleryHero.js";
+import NavbarDark from "../client_components/NavbarDark.js";
 import "./gallery.css";
 
 function Gallery() {

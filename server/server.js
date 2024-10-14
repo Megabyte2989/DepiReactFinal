@@ -29,11 +29,6 @@ app.use('/Images', express.static(path.join(__dirname, 'public', 'images')));
 app.use('/ImagesGallery', express.static(path.join(__dirname, '../../media')));
 
 
-
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB is connected and ready'))
-  .catch(err => console.error('MongoDB connection failed:', err));
-
 app.use("/api/cars", carRoutes);
 app.use("/api/rents", rentRoutes);
 app.use("/api/maintain", maintainRoutes);
@@ -47,11 +42,7 @@ mongoose
   .then(() => console.log("MongoDB is connected and ready"))
   .catch((err) => console.error("MongoDB connection failed:", err));
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "Connection error:"));
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-});
+
 
 app.get("/", (req, res) => {
   res.send("API is running...");

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
-import { fetchCars } from '../slices/carsSlice';
-import { deleteRent, fetchRents, updateRent, updateRentStatus } from '../slices/rentsSlice';
+import { fetchCars } from '../slices/carsSlice.js';
+import { deleteRent, fetchRents, updateRent, updateRentStatus } from '../slices/rentsSlice.js';
 import '../styles/rents.css';
 
 // Main States selection and redux and hooks
@@ -190,17 +190,17 @@ const RentTable = () => {
             <table>
                 <thead>
                     <tr>
-                        <th onClick={() => handleSort('customerName')}>Name <i class="fas fa-sort"></i></th>
-                        <th onClick={() => handleSort('nationalId')}>National ID <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('customerName')}>Name <i className="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('nationalId')}>National ID <i className="fas fa-sort"></i></th>
                         <th>Car Model</th>
-                        <th onClick={() => handleSort('carPlate')}>Car Plate <i class="fas fa-sort"></i></th>
-                        <th onClick={() => handleSort('rentDate')}>Rent Date <i class="fas fa-sort"></i></th>
-                        <th onClick={() => handleSort('returnDate')}>Return Date <i class="fas fa-sort"></i></th>
-                        <th onClick={() => handleSort('kilosBeforeRent')}>Kilos Before Rent <i class="fas fa-sort"></i></th>
-                        <th onClick={() => handleSort('totalPrice')}>Total Price <i class="fas fa-sort"></i></th>
-                        <th onClick={() => handleSort('paid')}>Paid <i class="fas fa-sort"></i></th>
-                        <th onClick={() => handleSort('remaining')}>Remaining <i class="fas fa-sort"></i></th>
-                        <th onClick={() => handleSort('status')}>Status <i class="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('carPlate')}>Car Plate <i className="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('rentDate')}>Rent Date <i className="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('returnDate')}>Return Date <i className="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('kilosBeforeRent')}>Kilos Before Rent <i className="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('totalPrice')}>Total Price <i className="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('paid')}>Paid <i className="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('remaining')}>Remaining <i className="fas fa-sort"></i></th>
+                        <th onClick={() => handleSort('status')}>Status <i className="fas fa-sort"></i></th>
                         <th>Edit</th>
                         <th>Delete</th>
                         <th></th>

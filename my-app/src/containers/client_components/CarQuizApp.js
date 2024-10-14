@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import hiddencar from '../../media/hiddencar.png';
-import { fetchCars } from '../../slices/carsSlice'; // Make sure you import the fetchCars action
+import { fetchCars } from '../../slices/carsSlice.js'; // Make sure you import the fetchCars action
 import './CarQuizApp.css';
 
 const CarQuizApp = () => {

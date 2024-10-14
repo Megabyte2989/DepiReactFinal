@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateCar } from '../slices/carsSlice'; // Import the action to update a car
+import { updateCar } from '../slices/carsSlice.js'; // Import the action to update a car
 import '../styles/editForm.css'; // Import the CSS styles for the form
 
 const CarEditForm = ({ car, onClose }) => {

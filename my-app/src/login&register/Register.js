@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
-import styles from "../styles/Register.module.css";
+import Alert from '@mui/material/Alert'; // Corrected import with .js extension
+import Button from '@mui/material/Button'; // Import with .js extension
+import TextField from '@mui/material/TextField'; // Import with .js extension
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { registerApi } from "./api/registerApi";
-import Cookies from "js-cookie";
-import Alert from "@mui/material/Alert";
+import styles from "../styles/Register.module.css";
+import { registerApi } from "./api/registerApi.js";
 
 function Register() {
   // initial State for register form
