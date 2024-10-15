@@ -34,15 +34,11 @@ app.use("/api/rents", rentRoutes);
 app.use("/api/maintain", maintainRoutes);
 app.use("/api/user", userRoutes);
 
-mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/carRents", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB is connected and ready"))
-  .catch((err) => console.error("MongoDB connection failed:", err));
+const uri = process.env.MONGO_URI; // Use the environment variable
 
-
+mongoose.connect(uri)
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 app.get("/", (req, res) => {
   res.send("API is running...");

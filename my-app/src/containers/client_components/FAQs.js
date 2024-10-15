@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import './FAQs.css';
- import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const FAQs = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -36,7 +33,7 @@ const FAQs = () => {
       </div>
     </section>
   );
-  
+
 };
 
 export default FAQs;

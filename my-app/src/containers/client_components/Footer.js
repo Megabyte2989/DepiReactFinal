@@ -24,37 +24,37 @@ const Footer = () => {
       {/* Social Media Links */}
       <ul className="social-icon">
         <li className="social-icon__item">
-          <a className="social-icon__link" href="#">
+          <Link className="social-icon__link" to="#">
             <IonIcon icon={logoFacebook} />
-          </a>
+          </Link>
         </li>
         <li className="social-icon__item">
-          <a className="social-icon__link" href="#">
+          <Link className="social-icon__link" to="#">
             <IonIcon icon={logoTwitter} />
-          </a>
+          </Link>
         </li>
         <li className="social-icon__item">
-          <a className="social-icon__link" href="#">
+          <Link className="social-icon__link" to="#">
             <IonIcon icon={logoLinkedin} />
-          </a>
+          </Link>
         </li>
         <li className="social-icon__item">
-          <a className="social-icon__link" href="#">
+          <Link className="social-icon__link" to="#">
             <IonIcon icon={logoInstagram} />
-          </a>
+          </Link>
         </li>
       </ul>
       {/* Links Menu */}
       <ul className="menu">
         <li className="menu__item">
-          <a className="menu__link" href="#hero-section">
+          <Link className="menu__link" to="#hero-section">
             Home
-          </a>
+          </Link>
         </li>
         <li className="menu__item">
-          <a className="menu__link" href="#about-us-section">
+          <Link className="menu__link" to="#about-us-section">
             About-us
-          </a>
+          </Link>
         </li>
         <li className="menu__item">
           <Link className="menu__link" to="/gallery">
@@ -67,9 +67,9 @@ const Footer = () => {
           </Link>
         </li>
         <li className="menu__item">
-          <a className="menu__link contactUsBtn" href="#contact-us">
+          <Link className="menu__link contactUsBtn" to="#contact-us">
             Contact-us
-          </a>
+          </Link>
         </li>
       </ul>
       {/* Copyright */}
