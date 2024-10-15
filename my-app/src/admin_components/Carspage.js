@@ -12,7 +12,7 @@ const Car = ({ car, onClick }) => {
     const dispatch = useDispatch();
     const [isEditing, setIsEditing] = useState(false); // State to toggle edit form
 
-    const resolvedImageUrl = `http://localhost:5000/images/${imageUrl}`;
+    const resolvedImageUrl = `https://depi-react-final.vercel.app/images/${imageUrl}`;
 
 
 
