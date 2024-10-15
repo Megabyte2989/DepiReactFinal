@@ -15,6 +15,8 @@ const maintainRoutes = require("./routes/maintainRoutes");
 dotenv.config(); // load the env data
 
 const app = express();
+
+
 app.use(cors());
 
 app.use(express.json());  //parse JSON 
@@ -28,7 +30,7 @@ app.use('/ImagesGallery', express.static(path.join(__dirname, '../../media')));
 
 app.use("/api/cars", carRoutes);
 app.use("/api/rents", rentRoutes);
-app.use("/api/maintain", maintainRoutes);
+app.use("/api/maintenance", maintainRoutes);
 app.use("/api/user", userRoutes);
 
 const uri = process.env.MONGO_URI; // Use the environment variable
