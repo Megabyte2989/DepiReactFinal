@@ -305,7 +305,22 @@ input.DoneRentEdit.active {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 60;
+    overflow: scroll;
+    max-height: 93vh;
 }
+
+
+.selectRentInput {
+
+    text-transform: none;
+    background: #122C34;
+    color: white;
+    border-radius: 5px;
+    padding: 3px;
+    right: -3px;
+    position: relative;
+}
+
 
 
 #RentFormContainer {

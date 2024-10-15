@@ -97,6 +97,7 @@ const RentTable = () => {
 
     const handleEdit = (rent) => {
         setEditedRent(rent); // update the rent term based ont he input
+
     };
 
 
@@ -121,11 +122,12 @@ const RentTable = () => {
                 const { _id, ...updates } = editedRent; // Extract _id and updates
                 dispatch(updateRent({ _id, ...updates })); // Use _id here
                 setEditedRent(null);
-                dispatch(fetchRents());
+
             }
         } catch (error) {
             console.error('Error updating rent:', error);
         }
+        dispatch(fetchRents());
     };
 
 
@@ -262,7 +264,7 @@ const RentTable = () => {
                                         name="carPlate"
                                         value={editedRent.carPlate}
                                         onChange={handleInputChange}
-                                        className='inputEdit'
+                                        className='inputEdit selectRentInput'
                                     >
                                         <option value="" disabled>Select a car plate</option>
                                         {cars.map(car => (

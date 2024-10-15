@@ -66,11 +66,11 @@ h2 {
 }
 
 .FormRent input {
-    background-color: #fdfdfd;
+    background-color: #122C34;
 }
 
 .FormRent form {
-    background-color: #184c78;
+    background-color: #268bc7;
     position: relative;
     z-index: 2;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -215,7 +215,7 @@ h2 {
 
 .form input,
 .form textarea {
-    color: #b5b5b5;
+    color: #ffffff;
 }
 
 
