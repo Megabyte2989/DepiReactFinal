@@ -40,7 +40,7 @@ describe('rentsSlice', () => {
 
     it('should fetch rents successfully', async () => {
         const mockRents = [{ _id: '1', name: 'Test Rent' }];
-        mock.onGet('http://localhost:5000/api/rents').reply(200, mockRents);
+        mock.onGet('https://depi-react-final.vercel.app/api/rents').reply(200, mockRents);
 
         await store.dispatch(fetchRents());
 
@@ -51,7 +51,7 @@ describe('rentsSlice', () => {
     });
 
     it('should handle fetch rents failure', async () => {
-        mock.onGet('http://localhost:5000/api/rents').reply(500);
+        mock.onGet('https://depi-react-final.vercel.app/api/rents').reply(500);
 
         await store.dispatch(fetchRents());
 
@@ -63,8 +63,8 @@ describe('rentsSlice', () => {
 
     it('should add a new rent successfully', async () => {
         const newRent = { _id: '2', name: 'New Rent' };
-        mock.onPost('http://localhost:5000/api/rents/add').reply(200, newRent);
-        mock.onGet('http://localhost:5000/api/rents').reply(200, [newRent]);
+        mock.onPost('https://depi-react-final.vercel.app/api/rents/add').reply(200, newRent);
+        mock.onGet('https://depi-react-final.vercel.app/api/rents').reply(200, [newRent]);
 
         await store.dispatch(addRent(newRent));
 
@@ -76,7 +76,7 @@ describe('rentsSlice', () => {
 
     it('should delete a rent successfully', async () => {
         const rentId = '1';
-        mock.onDelete(`http://localhost:5000/api/rents/delete/${rentId}`).reply(200);
+        mock.onDelete(`https://depi-react-final.vercel.app/api/rents/delete/${rentId}`).reply(200);
 
         await store.dispatch(deleteRent(rentId));
 
@@ -89,12 +89,12 @@ describe('rentsSlice', () => {
     it('should update rent details successfully', async () => {
         // Step 1: Set up an initial state with a rent
         const initialRent = { _id: '2', name: 'Initial Rent' };
-        mock.onGet('http://localhost:5000/api/rents').reply(200, [initialRent]);
+        mock.onGet('https://depi-react-final.vercel.app/api/rents').reply(200, [initialRent]);
         await store.dispatch(fetchRents()); // Fetch initial rents to populate the state
 
         // Step 2: Prepare the updated rent
         const updatedRent = { _id: '2', name: 'Updated Rent' };
-        mock.onPut(`http://localhost:5000/api/rents/update/${updatedRent._id}`).reply(200, updatedRent);
+        mock.onPut(`https://depi-react-final.vercel.app/api/rents/update/${updatedRent._id}`).reply(200, updatedRent);
 
         // Step 3: Dispatch the update action
         await store.dispatch(updateRent(updatedRent));

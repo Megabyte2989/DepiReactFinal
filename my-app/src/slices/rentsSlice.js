@@ -5,33 +5,33 @@ import axios from 'axios';
 
 // Async thunk to fetch all rents
 const fetchRents = createAsyncThunk('rents/fetchRents', async () => {
-    const response = await axios.get('http://localhost:5000/api/rents');
+    const response = await axios.get('https://depi-react-final.vercel.app/api/rents');
     return response.data;
 });
 
 // Async thunk to add a new rent
 const addRent = createAsyncThunk('rents/addRent', async (rentData, { dispatch }) => {
-    const response = await axios.post('http://localhost:5000/api/rents/add', rentData);
+    const response = await axios.post('https://depi-react-final.vercel.app/api/rents/add', rentData);
     dispatch(fetchRents()); // Refresh rents after adding
     return response.data;
 });
 
 // Async thunk to delete a rent by ID
 const deleteRent = createAsyncThunk('rents/deleteRent', async (rentId) => {
-    await axios.delete(`http://localhost:5000/api/rents/delete/${rentId}`);
+    await axios.delete(`https://depi-react-final.vercel.app/api/rents/delete/${rentId}`);
     return rentId; // Return ID for removal
 });
 
 // Async thunk to update the status of a rent
 const updateRentStatus = createAsyncThunk('rents/updateRentStatus', async ({ rentId, newStatus }) => {
-    const response = await axios.put(`http://localhost:5000/api/rents/updateStatus/${rentId}`, { status: newStatus });
+    const response = await axios.put(`https://depi-react-final.vercel.app/api/rents/updateStatus/${rentId}`, { status: newStatus });
     return response.data; // Return updated rent
 });
 
 // Async thunk to update rent details
 const updateRent = createAsyncThunk('rents/updateRent', async (rentData) => {
     const { _id, ...updates } = rentData; // Get rent ID and updates
-    const response = await axios.put(`http://localhost:5000/api/rents/update/${_id}`, updates);
+    const response = await axios.put(`https://depi-react-final.vercel.app/api/rents/update/${_id}`, updates);
     return response.data; // Return updated rent
 });
 

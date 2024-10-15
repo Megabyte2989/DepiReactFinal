@@ -36,12 +36,12 @@ export default function Carspage() {
 
     const checkImage = (imageUrl) => {
         const img = new Image();
-        img.src = `http://localhost:5000/imagesStages/${imageUrl}`;
+        img.src = `https://depi-react-final.vercel.app/imagesStages/${imageUrl}`;
         img.onload = () => {
-            setBackgroundImage(`url("http://localhost:5000/imagesStages/${imageUrl}")`);
+            setBackgroundImage(`url("https://depi-react-final.vercel.app/imagesStages/${imageUrl}")`);
         };
         img.onerror = () => {
-            setBackgroundImage(`url("http://localhost:5000/imagesStages/MainStageForNoCars.png")`);
+            setBackgroundImage(`url("https://depi-react-final.vercel.app/imagesStages/MainStageForNoCars.png")`);
         };
     };
 

@@ -18,7 +18,7 @@ describe('carSlice', () => {
 
     test('should fetch cars successfully', async () => {
         const mockCars = [{ _id: '1', name: 'Car A' }, { _id: '2', name: 'Car B' }];
-        mockAxios.onGet('http://localhost:5000/api/cars').reply(200, mockCars);
+        mockAxios.onGet('https://depi-react-final.vercel.app/api/cars').reply(200, mockCars);
 
         await store.dispatch(fetchCars()); // Dispatch the fetchCars action
 
@@ -30,7 +30,7 @@ describe('carSlice', () => {
     });
 
     test('should handle fetch cars error', async () => {
-        mockAxios.onGet('http://localhost:5000/api/cars').reply(500);
+        mockAxios.onGet('https://depi-react-final.vercel.app/api/cars').reply(500);
 
         await store.dispatch(fetchCars()); // Dispatch the fetchCars action
 
@@ -44,7 +44,7 @@ describe('carSlice', () => {
     test('should add a new car', async () => {
         const newCar = { name: 'Car C' };
         const addedCar = { _id: '3', ...newCar };
-        mockAxios.onPost('http://localhost:5000/api/cars/add').reply(200, { car: addedCar });
+        mockAxios.onPost('https://depi-react-final.vercel.app/api/cars/add').reply(200, { car: addedCar });
 
         await store.dispatch(addCar(newCar)); // Dispatch the addCar action
 
@@ -60,7 +60,7 @@ describe('carSlice', () => {
         const mockCars = [{ _id: carId, name: 'Car A' }];
         store.dispatch({ type: 'cars/fetchCars/fulfilled', payload: mockCars }); // Pre-populate the state
 
-        mockAxios.onDelete(`http://localhost:5000/api/cars/${carId}`).reply(200);
+        mockAxios.onDelete(`https://depi-react-final.vercel.app/api/cars/${carId}`).reply(200);
 
         await store.dispatch(deleteCar(carId)); // Dispatch the deleteCar action
 
@@ -75,7 +75,7 @@ describe('carSlice', () => {
         store.dispatch({ type: 'cars/fetchCars/fulfilled', payload: mockCars }); // Pre-populate the state
 
         const updatedCar = { name: 'Updated Car A' };
-        mockAxios.onPut(`http://localhost:5000/api/cars/update/${carId}`).reply(200, { updatedCar: { _id: carId, ...updatedCar } });
+        mockAxios.onPut(`https://depi-react-final.vercel.app/api/cars/update/${carId}`).reply(200, { updatedCar: { _id: carId, ...updatedCar } });
 
         await store.dispatch(updateCar({ id: carId, ...updatedCar })); // Dispatch the updateCar action
 

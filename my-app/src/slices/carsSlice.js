@@ -11,25 +11,25 @@ const initialState = {
 // Notice that the action.payload will be the return of the AsyncThunk function
 // Async thunk to add a new car
 const addCar = createAsyncThunk('cars/addCar', async (newCar) => {
-    const response = await axios.post('http://localhost:5000/api/cars/add', newCar);
+    const response = await axios.post('https://depi-react-final.vercel.app/api/cars/add', newCar);
     return response.data.car; // Return the newly added car
 });
 
 // Async thunk to fetch the list of cars
 const fetchCars = createAsyncThunk('cars/fetchCars', async () => {
-    const response = await axios.get('http://localhost:5000/api/cars');
+    const response = await axios.get('https://depi-react-final.vercel.app/api/cars');
     return response.data; // Return the list of cars fetched from the API
 });
 
 // Async thunk to delete a car by ID
 const deleteCar = createAsyncThunk('cars/deleteCar', async (carId) => {
-    await axios.delete(`http://localhost:5000/api/cars/${carId}`);
+    await axios.delete(`https://depi-react-final.vercel.app/api/cars/${carId}`);
     return carId; // Return the ID of the deleted car
 });
 
 // Async thunk to update a car's details
 const updateCar = createAsyncThunk('cars/updateCar', async ({ id, ...updatedData }) => {
-    const response = await axios.put(`http://localhost:5000/api/cars/update/${id}`, updatedData);
+    const response = await axios.put(`https://depi-react-final.vercel.app/api/cars/update/${id}`, updatedData);
     return response.data.updatedCar; // Return the updated car
 });
 

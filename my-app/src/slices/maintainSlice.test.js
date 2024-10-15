@@ -18,7 +18,7 @@ describe('maintainSlice', () => {
 
     test('should fetch maintenance records successfully', async () => {
         const mockMaintenanceRecords = [{ _id: '1', description: 'Oil Change' }, { _id: '2', description: 'Tire Rotation' }];
-        mockAxios.onGet('http://localhost:5000/api/maintenance').reply(200, mockMaintenanceRecords);
+        mockAxios.onGet('https://depi-react-final.vercel.app/api/maintenance').reply(200, mockMaintenanceRecords);
 
         await store.dispatch(fetchMaintenance()); // Dispatch the fetchMaintenance action
 
@@ -30,7 +30,7 @@ describe('maintainSlice', () => {
     });
 
     test('should handle fetch maintenance error', async () => {
-        mockAxios.onGet('http://localhost:5000/api/maintenance').reply(500);
+        mockAxios.onGet('https://depi-react-final.vercel.app/api/maintenance').reply(500);
 
         await store.dispatch(fetchMaintenance()); // Dispatch the fetchMaintenance action
 
@@ -44,7 +44,7 @@ describe('maintainSlice', () => {
     test('should add a new maintenance record', async () => {
         const newRecord = { description: 'Brake Inspection' };
         const addedRecord = { _id: '3', ...newRecord };
-        mockAxios.onPost('http://localhost:5000/api/maintenance/add').reply(200, { maintenance: addedRecord });
+        mockAxios.onPost('https://depi-react-final.vercel.app/api/maintenance/add').reply(200, { maintenance: addedRecord });
 
         await store.dispatch(addMaintenance(newRecord)); // Dispatch the addMaintenance action
 
@@ -60,7 +60,7 @@ describe('maintainSlice', () => {
         const mockRecords = [{ _id: maintenanceId, description: 'Oil Change' }];
         store.dispatch({ type: 'maintain/fetchMaintenance/fulfilled', payload: mockRecords }); // Pre-populate the state
 
-        mockAxios.onDelete(`http://localhost:5000/api/maintenance/${maintenanceId}`).reply(200);
+        mockAxios.onDelete(`https://depi-react-final.vercel.app/api/maintenance/${maintenanceId}`).reply(200);
 
         await store.dispatch(deleteMaintenance(maintenanceId)); // Dispatch the deleteMaintenance action
 

@@ -7,27 +7,27 @@ import axios from 'axios';
 // Notice that the action.payload will be the return of the AsyncThunk function
 // Create async thunk for fetching maintenance records
 const fetchMaintenance = createAsyncThunk('maintenance/fetchMaintenance', async () => {
-    const response = await axios.get('http://localhost:5000/api/maintenance'); // Fetch maintenance records from the API
+    const response = await axios.get('https://depi-react-final.vercel.app/api/maintenance'); // Fetch maintenance records from the API
     return response.data; // Return the fetched data
 });
 
 // Create async thunk for adding a maintenance record
 const addMaintenance = createAsyncThunk('maintenance/addMaintenance', async (maintenanceData, { dispatch }) => {
-    const response = await axios.post('http://localhost:5000/api/maintenance/add', maintenanceData); // Post new maintenance record to the API
+    const response = await axios.post('https://depi-react-final.vercel.app/api/maintenance/add', maintenanceData); // Post new maintenance record to the API
     dispatch(fetchMaintenance()); // Refresh the list of maintenance records after adding
     return response.data; // Return the newly added maintenance record
 });
 
 // Create async thunk for deleting a maintenance record
 const deleteMaintenance = createAsyncThunk('maintenance/deleteMaintenance', async (maintenanceId) => {
-    await axios.delete(`http://localhost:5000/api/maintenance/${maintenanceId}`); // Delete the maintenance record by ID
+    await axios.delete(`https://depi-react-final.vercel.app/api/maintenance/${maintenanceId}`); // Delete the maintenance record by ID
     return maintenanceId; // Return the maintenanceId to use in the fulfilled case
 });
 
 // Create async thunk for updating a maintenance record
 const updateMaintenance = createAsyncThunk('maintenance/updateMaintenance', async (maintenanceData) => {
     const { maintenanceId, ...updates } = maintenanceData; // Destructure to get maintenanceId and the rest as updates
-    const response = await axios.put(`http://localhost:5000/api/maintenance/update/${maintenanceId}`, updates); // Update the record in the API
+    const response = await axios.put(`https://depi-react-final.vercel.app/api/maintenance/update/${maintenanceId}`, updates); // Update the record in the API
     return response.data; // Return the updated maintenance record
 });
 

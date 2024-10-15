@@ -17,7 +17,7 @@ dotenv.config(); // load the env data
 const app = express();
 
 
-app.use(cors());
+app.use(cors({ origin: '*' }));
 
 app.use(express.json());  //parse JSON 
 
