@@ -19,10 +19,7 @@ app.use(cors());
 
 app.use(express.json());  //parse JSON 
 
-app.use('/api/cars', carRoutes)
-app.use('/api/rents', rentRoutes)
-app.use('/api/maintenance', maintainRoutes)
-app.use('/api/user', userRoutes)
+
 app.use('/images', express.static(path.join(__dirname, '../my-app/src/media')));
 app.use('/imagesStages', express.static(path.join(__dirname, '../my-app/src/media/stages')));
 app.use('/Images', express.static(path.join(__dirname, 'public', 'images')));
