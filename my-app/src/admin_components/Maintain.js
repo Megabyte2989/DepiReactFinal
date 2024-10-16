@@ -7,8 +7,8 @@ import Swal from 'sweetalert2';
 import { fetchCars } from '../slices/carsSlice.js';
 import { addMaintenance, deleteMaintenance, fetchMaintenance, updateMaintenance } from '../slices/maintainSlice.js';
 
-import Image3D from '../media/stages/cerato2018black.png';
 import '../styles/maintain.css';
+const Image3d = '/media/stages/cerato2018black.png';
 
 export default function Maintain() {
 
@@ -263,7 +263,7 @@ export default function Maintain() {
                             </div>
 
                             <div className="CarPlace">
-                                <img src={Image3D} alt='carImage' />
+                                <img src={Image3d} alt='carImage' />
                             </div>
                         </div>
                     </div>

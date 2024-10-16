@@ -4,8 +4,8 @@ import Swal from 'sweetalert2';
 import { deleteCar } from '../slices/carsSlice.js';
 import '../styles/cars.css';
 import CarEditForm from './CarEditForm.js'; // Import the new CarEditForm
-import hiddenCarImage from '/media/hiddencar.png';
 
+const hiddenCarImage = '/media/hiddencar.png'
 const Car = ({ car, onClick }) => {
 
     const { imageUrl = hiddenCarImage, carName, year, rentalRate, _id } = car;

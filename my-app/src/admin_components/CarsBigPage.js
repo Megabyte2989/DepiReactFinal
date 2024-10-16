@@ -27,7 +27,6 @@ export default function Carspage() {
     }, [dispatch]);
 
 
-
     useEffect(() => {
         if (selectedCar) {
             checkImage(selectedCar.imageUrl);
@@ -36,12 +35,12 @@ export default function Carspage() {
 
     const checkImage = (imageUrl) => {
         const img = new Image();
-        img.src = `https://depi-react-final.vercel.app/imagesStages/${imageUrl}`;
+        img.src = `/media/stages/${imageUrl}`;
         img.onload = () => {
-            setBackgroundImage(`url("https://depi-react-final.vercel.app/imagesStages/${imageUrl}")`);
+            setBackgroundImage(`url("/media/stages/${imageUrl}")`);
         };
         img.onerror = () => {
-            setBackgroundImage(`url("https://depi-react-final.vercel.app/imagesStages/MainStageForNoCars.png")`);
+            setBackgroundImage(`url("/media/stages/MainStageForNoCars.png")`);
         };
     };
 
@@ -84,7 +83,7 @@ export default function Carspage() {
 
     const handleInputChange = (e) => {
         const { name, value, files } = e.target;
-        if (name === 'carImage') {
+        if (name === 'imageUrl') {
             setNewCar({
                 ...newCar,
                 [name]: files[0], // Store the file object
@@ -118,7 +117,7 @@ export default function Carspage() {
             ownerName: '',
             kilosRightNow: '',
             lastOilChangeDate: '',
-            image: null,
+            imageUrl: null,
         });
     };
 
@@ -148,7 +147,7 @@ export default function Carspage() {
                         backgroundImage: backgroundImage,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        height: '100vh',
+                        height: '87.4vh',
                         width: '100%',
                     }}
                 >
@@ -304,7 +303,7 @@ export default function Carspage() {
                         <input type="text" name="ownerName" placeholder="Owner Name" value={newCar.ownerName} onChange={handleInputChange} required />
                         <input type="number" name="kilosRightNow" placeholder="Kilos Right Now" value={newCar.kilosRightNow} onChange={handleInputChange} required />
                         <input type="date" name="lastOilChangeDate" value={newCar.lastOilChangeDate} onChange={handleInputChange} required />
-                        <input type="file" name="carImage" onChange={handleInputChange} required /> {/* Add file input */}
+                        <input type="file" name="imageUrl" onChange={handleInputChange} required /> {/* Add file input */}
                         <button type="submit">Add Car</button>
                     </form>
 

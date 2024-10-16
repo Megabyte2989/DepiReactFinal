@@ -1,53 +1,30 @@
 import React, { useState } from 'react';
 import './CarGallerySection.css';
 
-import img16 from '/media/ad 2020 dark grey (frany).png';
-import img19 from '/media/Bmw2016BLack.png';
-import img13 from '/media/cerato2018black.png';
-import img6 from '/media/Elenetra white 2020.png';
-import img7 from '/media/Elentra 2021 Grey F3.png';
-import img10 from '/media/ELentra 2021 pepsi.png';
-import img12 from '/media/Elentra Ad 2017 champaigne.png';
-import img1 from '/media/Elentra CN7 F4.png';
-import img4 from '/media/Elentra Md 2014 frany.png';
-import img3 from '/media/Honda civic.png';
-import img20 from '/media/Kia  Cerato 2018 K4.png';
-import img2 from '/media/kia copet 2010.png';
-import img5 from '/media/Kia Grand Cerato.png';
-import img11 from '/media/Kia k3 2015.png';
-import img14 from '/media/Lancer Shark rose.png';
-import img15 from '/media/newcerato.png';
-import img17 from '/media/sportage2018.png';
-import img18 from '/media/Toyota 2020.png';
-import img22 from '/media/Toyota Corolla White 2021.png';
-import img8 from '/media/Tuscan Nx4 .png';
-import img9 from '/media/tuscanpepsi.png';
-import img21 from '/media/Tuscna 2019 grey 2.png';
-
 const CarGallerySection = ({ onBookNowClick }) => {
   const [cars] = useState([
-    { make: 'Hyundai', model: 'Cn7 f4', year: 2021, seatingCapacity: 5, luggageSpace: 'Medium', price: 1800, img: img1 },
-    { make: 'Kia', model: 'Kia cop', year: 2010, seatingCapacity: 4, luggageSpace: 'Small', price: 1000, img: img2 },
-    { make: 'Honda', model: 'Honda civic', year: 2009, seatingCapacity: 5, luggageSpace: 'Medium', price: 1000, img: img3 },
-    { make: 'Hyundai', model: 'Elantra md', year: 2014, seatingCapacity: 5, luggageSpace: 'Medium', price: 1200, img: img4 },
-    { make: 'Kia', model: 'Grand cerato', year: 2019, seatingCapacity: 5, luggageSpace: 'Large', price: 1400, img: img5 },
-    { make: 'Hyundai', model: 'Elantra AD white', year: 2019, seatingCapacity: 5, luggageSpace: 'Medium', price: 1600, img: img6 },
-    { make: 'Hyundai', model: 'Elantra Cn7 f3', year: 2021, seatingCapacity: 5, luggageSpace: 'Medium', price: 1800, img: img7 },
-    { make: 'Hyundai', model: 'Tousan nx4', year: 2021, seatingCapacity: 5, luggageSpace: 'Large', price: 2000, img: img8 },
-    { make: 'Hyundai', model: 'Tousan 2019 zahry', year: 2019, seatingCapacity: 5, luggageSpace: 'Large', price: 2000, img: img9 },
-    { make: 'Hyundai', model: 'Elantra Cn7 pepsi', year: 2021, seatingCapacity: 5, luggageSpace: 'Medium', price: 1800, img: img10 },
-    { make: 'Kia', model: 'Kia cerato k3', year: 2014, seatingCapacity: 5, luggageSpace: 'Medium', price: 1200, img: img11 },
-    { make: 'Hyundai', model: 'Elantra AD', year: 2017, seatingCapacity: 5, luggageSpace: 'Medium', price: 1500, img: img12 },
-    { make: 'Kia', model: 'Cerato', year: 2018, seatingCapacity: 5, luggageSpace: 'Medium', price: 1200, img: img13 },
-    { make: 'Mitsubishi', model: 'Lancer shark', year: 2015, seatingCapacity: 5, luggageSpace: 'Small', price: 1200, img: img14 },
-    { make: 'Kia', model: 'new cerato', year: 2018, seatingCapacity: 5, luggageSpace: 'Medium', price: 1200, img: img15 },
-    { make: 'Hyundai', model: 'Elantra 2020 frany', year: 2020, seatingCapacity: 5, luggageSpace: 'Medium', price: 1600, img: img16 },
-    { make: 'Kia', model: 'Kia Sportage', year: 2020, seatingCapacity: 5, luggageSpace: 'Large', price: 2000, img: img17 },
-    { make: 'Toyota', model: 'Toyota', year: 2020, seatingCapacity: 5, luggageSpace: 'Medium', price: 1800, img: img18 },
-    { make: 'BMW', model: 'BMW', year: 2016, seatingCapacity: 5, luggageSpace: 'Large', price: 3500, img: img19 },
-    { make: 'Kia', model: 'Cerato 2018 black', year: 2018, seatingCapacity: 5, luggageSpace: 'Medium', price: 1200, img: img20 },
-    { make: 'Hyundai', model: 'Tousan 2019 gray', year: 2019, seatingCapacity: 5, luggageSpace: 'Large', price: 2000, img: img21 },
-    { make: 'Toyota', model: 'Toyota', year: 2021, seatingCapacity: 5, luggageSpace: 'Medium', price: 1800, img: img22 }
+    { make: 'Frany', model: 'Ad 2020 Dark Grey', year: 2020, img: '/media/ad 2020 dark grey (frany).png', seatingCapacity: 5, luggageSpace: '450L', price: 1500 },
+    { make: 'BMW', model: '2016 Black', year: 2016, img: '/media/Bmw2016BLack.png', seatingCapacity: 5, luggageSpace: '500L', price: 1800 },
+    { make: 'Kia', model: 'Cerato 2018 Black', year: 2018, img: '/media/cerato2018black.png', seatingCapacity: 5, luggageSpace: '450L', price: 1700 },
+    { make: 'Elantra', model: 'White 2020', year: 2020, img: '/media/Elenetra white 2020.png', seatingCapacity: 5, luggageSpace: '470L', price: 1600 },
+    { make: 'Elantra', model: '2021 Grey F3', year: 2021, img: '/media/Elentra 2021 Grey F3.png', seatingCapacity: 5, luggageSpace: '470L', price: 1750 },
+    { make: 'Elantra', model: '2021 Pepsi', year: 2021, img: '/media/ELentra 2021 pepsi.png', seatingCapacity: 5, luggageSpace: '470L', price: 1800 },
+    { make: 'Elantra', model: 'Ad 2017 Champagne', year: 2017, img: '/media/Elentra Ad 2017 champaigne.png', seatingCapacity: 5, luggageSpace: '470L', price: 1550 },
+    { make: 'Elantra', model: 'CN7 F4', year: 2021, img: '/media/Elentra CN7 F4.png', seatingCapacity: 5, luggageSpace: '470L', price: 1900 },
+    { make: 'Elantra', model: 'Md 2014 Frany', year: 2014, img: '/media/Elentra Md 2014 frany.png', seatingCapacity: 5, luggageSpace: '450L', price: 1400 },
+    { make: 'Honda', model: 'Civic', year: 2020, img: '/media/Honda civic.png', seatingCapacity: 5, luggageSpace: '450L', price: 1600 },
+    { make: 'Kia', model: 'Cerato 2018 K4', year: 2018, img: '/media/Kia  Cerato 2018 K4.png', seatingCapacity: 5, luggageSpace: '450L', price: 1700 },
+    { make: 'Kia', model: 'Copet 2010', year: 2010, img: '/media/kia copet 2010.png', seatingCapacity: 5, luggageSpace: '400L', price: 1300 },
+    { make: 'Kia', model: 'Grand Cerato', year: 2020, img: '/media/Kia Grand Cerato.png', seatingCapacity: 5, luggageSpace: '470L', price: 1850 },
+    { make: 'Kia', model: 'K3 2015', year: 2015, img: '/media/Kia k3 2015.png', seatingCapacity: 5, luggageSpace: '450L', price: 1600 },
+    { make: 'Lancer', model: 'Shark Rose', year: 2020, img: '/media/Lancer Shark rose.png', seatingCapacity: 5, luggageSpace: '450L', price: 1500 },
+    { make: 'Kia', model: 'New Cerato', year: 2020, img: '/media/newcerato.png', seatingCapacity: 5, luggageSpace: '450L', price: 1550 },
+    { make: 'Sportage', model: '2018', year: 2018, img: '/media/sportage2018.png', seatingCapacity: 5, luggageSpace: '480L', price: 1900 },
+    { make: 'Toyota', model: '2020', year: 2020, img: '/media/Toyota 2020.png', seatingCapacity: 5, luggageSpace: '470L', price: 1800 },
+    { make: 'Toyota', model: 'Corolla White 2021', year: 2021, img: '/media/Toyota Corolla White 2021.png', seatingCapacity: 5, luggageSpace: '470L', price: 1850 },
+    { make: 'Tuscan', model: 'NX4', year: 2021, img: '/media/Tuscan Nx4 .png', seatingCapacity: 5, luggageSpace: '480L', price: 1900 },
+    { make: 'Tuscan', model: 'Pepsi', year: 2021, img: '/media/tuscanpepsi.png', seatingCapacity: 5, luggageSpace: '480L', price: 1900 },
+    { make: 'Tuscan', model: '2019 Grey 2', year: 2019, img: '/media/Tuscna 2019 grey 2.png', seatingCapacity: 5, luggageSpace: '480L', price: 1900 },
   ]);
 
 
