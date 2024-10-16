@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
 import './CarGallerySection.css';
 
-import img16 from '../../media/ad 2020 dark grey (frany).png';
-import img19 from '../../media/Bmw2016BLack.png';
-import img13 from '../../media/cerato2018black.png';
-import img6 from '../../media/Elenetra white 2020.png';
-import img7 from '../../media/Elentra 2021 Grey F3.png';
-import img10 from '../../media/ELentra 2021 pepsi.png';
-import img12 from '../../media/Elentra Ad 2017 champaigne.png';
-import img1 from '../../media/Elentra CN7 F4.png';
-import img4 from '../../media/Elentra Md 2014 frany.png';
-import img3 from '../../media/Honda civic.png';
-import img20 from '../../media/Kia  Cerato 2018 K4.png';
-import img2 from '../../media/kia copet 2010.png';
-import img5 from '../../media/Kia Grand Cerato.png';
-import img11 from '../../media/Kia k3 2015.png';
-import img14 from '../../media/Lancer Shark rose.png';
-import img15 from '../../media/newcerato.png';
-import img17 from '../../media/sportage2018.png';
-import img18 from '../../media/Toyota 2020.png';
-import img22 from '../../media/Toyota Corolla White 2021.png';
-import img8 from '../../media/Tuscan Nx4 .png';
-import img9 from '../../media/tuscanpepsi.png';
-import img21 from '../../media/Tuscna 2019 grey 2.png';
+import img16 from '/media/ad 2020 dark grey (frany).png';
+import img19 from '/media/Bmw2016BLack.png';
+import img13 from '/media/cerato2018black.png';
+import img6 from '/media/Elenetra white 2020.png';
+import img7 from '/media/Elentra 2021 Grey F3.png';
+import img10 from '/media/ELentra 2021 pepsi.png';
+import img12 from '/media/Elentra Ad 2017 champaigne.png';
+import img1 from '/media/Elentra CN7 F4.png';
+import img4 from '/media/Elentra Md 2014 frany.png';
+import img3 from '/media/Honda civic.png';
+import img20 from '/media/Kia  Cerato 2018 K4.png';
+import img2 from '/media/kia copet 2010.png';
+import img5 from '/media/Kia Grand Cerato.png';
+import img11 from '/media/Kia k3 2015.png';
+import img14 from '/media/Lancer Shark rose.png';
+import img15 from '/media/newcerato.png';
+import img17 from '/media/sportage2018.png';
+import img18 from '/media/Toyota 2020.png';
+import img22 from '/media/Toyota Corolla White 2021.png';
+import img8 from '/media/Tuscan Nx4 .png';
+import img9 from '/media/tuscanpepsi.png';
+import img21 from '/media/Tuscna 2019 grey 2.png';
 
 const CarGallerySection = ({ onBookNowClick }) => {
   const [cars] = useState([

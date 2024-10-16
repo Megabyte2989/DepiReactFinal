@@ -22,7 +22,6 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());  //parse JSON 
 
 
-app.use('/images', express.static(path.join(__dirname, '../my-app/src/media')));
 app.use('/imagesStages', express.static(path.join(__dirname, '../my-app/src/media/stages')));
 app.use('/Images', express.static(path.join(__dirname, 'public', 'images')));
 app.use('/ImagesGallery', express.static(path.join(__dirname, '../../media')));

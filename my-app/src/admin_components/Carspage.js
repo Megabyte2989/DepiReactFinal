@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
-import hiddenCarImage from '../media/hiddencar.png';
 import { deleteCar } from '../slices/carsSlice.js';
 import '../styles/cars.css';
 import CarEditForm from './CarEditForm.js'; // Import the new CarEditForm
+import hiddenCarImage from '/media/hiddencar.png';
 
 const Car = ({ car, onClick }) => {
 
@@ -12,7 +12,7 @@ const Car = ({ car, onClick }) => {
     const dispatch = useDispatch();
     const [isEditing, setIsEditing] = useState(false); // State to toggle edit form
 
-    const resolvedImageUrl = `https://depi-react-final.vercel.app/images/${imageUrl}`;
+    const resolvedImageUrl = `/media/${imageUrl}`;
 
 
 
