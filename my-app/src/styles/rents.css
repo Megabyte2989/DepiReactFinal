@@ -80,13 +80,11 @@
 /* Start the Content styles for the Recent Rents */
 .MainContent .container {
     position: relative;
-    min-height: -webkit-fill-available;
     width: 99%;
     margin: 20px auto;
     background-color: #59768fd6;
     padding: 20px;
     border-radius: 8px;
-    min-height: 100vh;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
 }
@@ -139,7 +137,7 @@ table td {
 .MainContent .container table th {
     font-weight: bold;
     cursor: pointer;
-    border-right: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d975;
 }
 
 
@@ -153,6 +151,13 @@ table td {
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 0.9rem;
+}
+
+.InputRentCar {
+    width: 100%;
+    border-radius: 4px;
+    color: #85898b;
+    background: #122c34;
 }
 
 .edit_btn {
@@ -301,7 +306,6 @@ input.DoneRentEdit.active {
     top: 50%;
     transform: translateY(-50%);
     min-width: 35vw;
-    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 60;

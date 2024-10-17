@@ -129,6 +129,7 @@ const RentForm = () => {
                                     value={formData.carId}
                                     onChange={handleChange}
                                     required
+                                    className='InputRentCar'
                                 >
                                     <option value="">Select a car</option>
                                     {cars && cars.map((car) => (

@@ -147,7 +147,7 @@ export default function Carspage() {
                         backgroundImage: backgroundImage,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
-                        height: '87.4vh',
+                        minHeight: '100vh',
                         width: '100%',
                     }}
                 >

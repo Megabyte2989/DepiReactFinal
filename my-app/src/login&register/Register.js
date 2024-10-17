@@ -195,7 +195,7 @@ function Register() {
             },
           }}
         >
-          Log In
+          Register
         </Button>
 
         <div className={styles["sign-in"]}>

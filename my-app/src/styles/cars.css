@@ -139,7 +139,9 @@
     margin-right: 0;
     margin: 0 auto;
     overflow-y: auto;
+    margin-top: 85px;
     padding: 0;
+
 }
 
 
@@ -373,7 +375,7 @@ form button:active {
     display: flex;
     margin: 10px 10px 0 auto;
     position: absolute;
-    top: 109px;
+    top: 128px;
     align-items: center;
     right: 0.1vw;
     gap: 10px;
@@ -578,8 +580,7 @@ i.fas.fa-bars.MainMenuOpener {
 
     .CarStageContent {
         font-size: 0.6em;
-        flex-direction: column-reverse;
-        top: 10%;
+        top: 25%;
         align-items: flex-end;
 
     }
