@@ -9,7 +9,74 @@ const fs = require('fs');
 // Serve static images
 router.use("/images", express.static(path.join(__dirname, "../upload/images")));
 
-
+/**
+ * @swagger
+ * /api/cars/:
+ *   get:
+ *     summary: Get all cars
+ *     description: Fetches a list of all cars available in the system.
+ *     tags:
+ *      - car
+ *     responses:
+ *       200:
+ *         description: A list of cars
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   carId:
+ *                     type: number
+ *                     description: The car's unique identifier
+ *                   carName:
+ *                     type: string
+ *                     description: The name of the car
+ *                   model:
+ *                     type: string
+ *                     description: The model of the car
+ *                   brand:
+ *                     type: string
+ *                     description: The brand of the car
+ *                   year:
+ *                     type: number
+ *                     description: The year the car was manufactured
+ *                   carPlate:
+ *                     type: string
+ *                     description: The car's license plate
+ *                   rentalRate:
+ *                     type: number
+ *                     description: Rental price per day for the car
+ *                   isAvailable:
+ *                     type: boolean
+ *                     description: Availability status of the car
+ *                   imageUrl:
+ *                     type: string
+ *                     description: URL of the car image
+ *                   ownerName:
+ *                     type: string
+ *                     description: The owner's name
+ *                   kilosRightNow:
+ *                     type: number
+ *                     description: Current kilometers on the car
+ *                   lastOilChangeDate:
+ *                     type: string
+ *                     format: date
+ *                     description: Date of the car's last oil change
+ *       500:
+ *         description: Error fetching cars
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Error fetching cars
+ *                 error:
+ *                   type: string
+ */
 
 router.get('/', async (req, res) => {
     try {
@@ -21,8 +88,123 @@ router.get('/', async (req, res) => {
 })
 
 
+/**
+ * @swagger
+ * /api/cars/add:
+ *   post:
+ *     summary: Add a new car
+ *     description: Adds a new car to the system with details like name, plate, model, brand, rental rate, and more. An image can also be uploaded.
+ *     tags:
+ *      - car
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - carName
+ *               - carPlate
+ *               - model
+ *               - brand
+ *               - year
+ *               - rentalRate
+ *               - ownerName
+ *               - kilosRightNow
+ *               - lastOilChangeDate
+ *             properties:
+ *               carName:
+ *                 type: string
+ *                 description: The name of the car
+ *               carPlate:
+ *                 type: string
+ *                 description: The car's license plate
+ *               model:
+ *                 type: string
+ *                 description: The car model
+ *               brand:
+ *                 type: string
+ *                 description: The car brand
+ *               year:
+ *                 type: number
+ *                 description: The year the car was manufactured
+ *               rentalRate:
+ *                 type: number
+ *                 description: The rental price per day
+ *               isAvailable:
+ *                 type: boolean
+ *                 description: Availability status of the car
+ *               carImage:
+ *                 type: string
+ *                 format: binary
+ *                 description: An optional image of the car (uploaded file)
+ *               ownerName:
+ *                 type: string
+ *                 description: The name of the car's owner
+ *               kilosRightNow:
+ *                 type: number
+ *                 description: The current kilometers on the car
+ *               lastOilChangeDate:
+ *                 type: string
+ *                 format: date
+ *                 description: The date of the last oil change
+ *     responses:
+ *       201:
+ *         description: Car added successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Car added successfully
+ *                 car:
+ *                   type: object
+ *                   properties:
+ *                     carId:
+ *                       type: number
+ *                       description: The car's unique identifier
+ *                     carName:
+ *                       type: string
+ *                     carPlate:
+ *                       type: string
+ *                     model:
+ *                       type: string
+ *                     brand:
+ *                       type: string
+ *                     year:
+ *                       type: number
+ *                     rentalRate:
+ *                       type: number
+ *                     isAvailable:
+ *                       type: boolean
+ *                     imageUrl:
+ *                       type: string
+ *                       description: URL of the car image
+ *                     ownerName:
+ *                       type: string
+ *                     kilosRightNow:
+ *                       type: number
+ *                     lastOilChangeDate:
+ *                       type: string
+ *                       format: date
+ *       500:
+ *         description: Error adding car
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Error adding car
+ *                 error:
+ *                   type: string
+ */
+
 // Add a new car
-router.post('/add', upload.single('imageUrl'), async (req, res) => {
+router.post('/add', async (req, res) => {
     const { carName, carPlate, model, brand, year, rentalRate, isAvailable, ownerName, kilosRightNow, lastOilChangeDate } = req.body;
     const imageUrl = req.file ? req.file.filename : null;
 

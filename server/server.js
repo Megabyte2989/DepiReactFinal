@@ -5,6 +5,12 @@ const mongoose = require('mongoose')
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path')
+const cloudinary = require('cloudinary').v2; // Import Cloudinary
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerOptions = require("./swagger");
+
+
 
 
 const userRoutes = require("./routes/userRoutes");
@@ -14,8 +20,10 @@ const maintainRoutes = require("./routes/maintainRoutes");
 
 dotenv.config(); // load the env data
 
-const app = express();
 
+const app = express();
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(cors({ origin: '*' }));
 
