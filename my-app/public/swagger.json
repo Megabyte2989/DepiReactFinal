@@ -1,0 +1,1718 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ramy rents API",
+    "version": "1.0.0",
+    "description": "API documentation for ramy rents"
+  },
+  "servers": [
+    {
+      "url": "https://depi-react-final.vercel.app"
+    }
+  ],
+  "paths": {
+    "/api/cars/": {
+      "get": {
+        "summary": "Get all cars",
+        "description": "Fetches a list of all cars available in the system.",
+        "tags": [
+          "car"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of cars",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "carId": {
+                        "type": "number",
+                        "description": "The car's unique identifier"
+                      },
+                      "carName": {
+                        "type": "string",
+                        "description": "The name of the car"
+                      },
+                      "model": {
+                        "type": "string",
+                        "description": "The model of the car"
+                      },
+                      "brand": {
+                        "type": "string",
+                        "description": "The brand of the car"
+                      },
+                      "year": {
+                        "type": "number",
+                        "description": "The year the car was manufactured"
+                      },
+                      "carPlate": {
+                        "type": "string",
+                        "description": "The car's license plate"
+                      },
+                      "rentalRate": {
+                        "type": "number",
+                        "description": "Rental price per day for the car"
+                      },
+                      "isAvailable": {
+                        "type": "boolean",
+                        "description": "Availability status of the car"
+                      },
+                      "imageUrl": {
+                        "type": "string",
+                        "description": "URL of the car image"
+                      },
+                      "ownerName": {
+                        "type": "string",
+                        "description": "The owner's name"
+                      },
+                      "kilosRightNow": {
+                        "type": "number",
+                        "description": "Current kilometers on the car"
+                      },
+                      "lastOilChangeDate": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of the car's last oil change"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching cars",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error fetching cars"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cars/add": {
+      "post": {
+        "summary": "Add a new car",
+        "description": "Adds a new car to the system with details like name, plate, model, brand, rental rate, and more. An image can also be uploaded.",
+        "tags": [
+          "car"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "carName",
+                  "carPlate",
+                  "model",
+                  "brand",
+                  "year",
+                  "rentalRate",
+                  "ownerName",
+                  "kilosRightNow",
+                  "lastOilChangeDate"
+                ],
+                "properties": {
+                  "carName": {
+                    "type": "string",
+                    "description": "The name of the car"
+                  },
+                  "carPlate": {
+                    "type": "string",
+                    "description": "The car's license plate"
+                  },
+                  "model": {
+                    "type": "string",
+                    "description": "The car model"
+                  },
+                  "brand": {
+                    "type": "string",
+                    "description": "The car brand"
+                  },
+                  "year": {
+                    "type": "number",
+                    "description": "The year the car was manufactured"
+                  },
+                  "rentalRate": {
+                    "type": "number",
+                    "description": "The rental price per day"
+                  },
+                  "isAvailable": {
+                    "type": "boolean",
+                    "description": "Availability status of the car"
+                  },
+                  "carImage": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "An optional image of the car (uploaded file)"
+                  },
+                  "ownerName": {
+                    "type": "string",
+                    "description": "The name of the car's owner"
+                  },
+                  "kilosRightNow": {
+                    "type": "number",
+                    "description": "The current kilometers on the car"
+                  },
+                  "lastOilChangeDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "The date of the last oil change"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Car added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Car added successfully"
+                    },
+                    "car": {
+                      "type": "object",
+                      "properties": {
+                        "carId": {
+                          "type": "number",
+                          "description": "The car's unique identifier"
+                        },
+                        "carName": {
+                          "type": "string"
+                        },
+                        "carPlate": {
+                          "type": "string"
+                        },
+                        "model": {
+                          "type": "string"
+                        },
+                        "brand": {
+                          "type": "string"
+                        },
+                        "year": {
+                          "type": "number"
+                        },
+                        "rentalRate": {
+                          "type": "number"
+                        },
+                        "isAvailable": {
+                          "type": "boolean"
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "description": "URL of the car image"
+                        },
+                        "ownerName": {
+                          "type": "string"
+                        },
+                        "kilosRightNow": {
+                          "type": "number"
+                        },
+                        "lastOilChangeDate": {
+                          "type": "string",
+                          "format": "date"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error adding car",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error adding car"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/maintain/add": {
+      "post": {
+        "summary": "Add a new maintenance record",
+        "description": "Creates a new maintenance record for a car.",
+        "tags": [
+          "maintain"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "carId": {
+                    "type": "string",
+                    "description": "The ID of the car",
+                    "example": "60f5f67abc5e63001b8d45d3"
+                  },
+                  "dateOfMaintenance": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of maintenance",
+                    "example": "2024-10-14"
+                  },
+                  "workshopName": {
+                    "type": "string",
+                    "description": "Name of the workshop where maintenance was performed",
+                    "example": "QuickFix Garage"
+                  },
+                  "notes": {
+                    "type": "string",
+                    "description": "Additional notes on the maintenance work",
+                    "example": "Changed oil filter"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the maintenance work",
+                    "example": "Oil change and tire rotation"
+                  },
+                  "totalCost": {
+                    "type": "number",
+                    "description": "Total cost of maintenance",
+                    "example": 150
+                  },
+                  "paid": {
+                    "type": "number",
+                    "description": "Amount paid for the maintenance",
+                    "example": 100
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Maintenance added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Maintenance added successfully"
+                    },
+                    "maintain": {
+                      "type": "object",
+                      "properties": {
+                        "maintenanceId": {
+                          "type": "number",
+                          "description": "The unique identifier for the maintenance record",
+                          "example": 1
+                        },
+                        "carId": {
+                          "type": "string",
+                          "description": "The ID of the car associated with the maintenance",
+                          "example": "60f5f67abc5e63001b8d45d3"
+                        },
+                        "dateOfMaintenance": {
+                          "type": "string",
+                          "format": "date",
+                          "description": "Date of maintenance",
+                          "example": "2024-10-14"
+                        },
+                        "workshopName": {
+                          "type": "string",
+                          "description": "Name of the workshop where maintenance was performed",
+                          "example": "QuickFix Garage"
+                        },
+                        "notes": {
+                          "type": "string",
+                          "description": "Additional notes on the maintenance work",
+                          "example": "Changed oil filter"
+                        },
+                        "description": {
+                          "type": "string",
+                          "description": "Description of the maintenance work",
+                          "example": "Oil change and tire rotation"
+                        },
+                        "totalCost": {
+                          "type": "number",
+                          "description": "Total cost of maintenance",
+                          "example": 150
+                        },
+                        "paid": {
+                          "type": "number",
+                          "description": "Amount paid for the maintenance",
+                          "example": 100
+                        },
+                        "remaining": {
+                          "type": "number",
+                          "description": "Remaining balance to be paid (if any)",
+                          "example": 50
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error adding maintenance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error adding maintenance"
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/maintain/": {
+      "get": {
+        "summary": "Get all maintenance records with car details",
+        "description": "Fetches all maintenance records and populates the related car details (car name).",
+        "tags": [
+          "maintain"
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of maintenance records with car details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "description": "Maintenance record ID",
+                        "example": "64d5f67e8d3f93001b8d55e3"
+                      },
+                      "carId": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string",
+                            "description": "Car ID",
+                            "example": "60f5f67abc5e63001b8d45d3"
+                          },
+                          "carName": {
+                            "type": "string",
+                            "description": "Car name",
+                            "example": "Toyota Corolla"
+                          }
+                        }
+                      },
+                      "dateOfMaintenance": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of maintenance",
+                        "example": "2024-10-14"
+                      },
+                      "workshopName": {
+                        "type": "string",
+                        "description": "Name of the workshop",
+                        "example": "QuickFix Garage"
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "Description of the maintenance work",
+                        "example": "Oil change"
+                      },
+                      "totalCost": {
+                        "type": "number",
+                        "description": "Total cost of maintenance",
+                        "example": 150
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching the maintenance records",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error fetching the maintenance records"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/maintain/{id}": {
+      "delete": {
+        "summary": "Delete a maintenance record",
+        "description": "Deletes a specific maintenance record by ID.",
+        "tags": [
+          "maintain"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the maintenance record to delete",
+            "schema": {
+              "type": "string",
+              "example": "60f5f67abc5e63001b8d45d3"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Maintenance record deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Maintenance record deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Maintenance record not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Maintenance record not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error deleting maintenance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error deleting maintenance"
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/maintain/update/{id}": {
+      "put": {
+        "summary": "Update a maintenance record",
+        "description": "Updates a specific maintenance record by ID.",
+        "tags": [
+          "maintain"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the maintenance record to update",
+            "schema": {
+              "type": "string",
+              "example": "60f5f67abc5e63001b8d45d3"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "carId": {
+                    "type": "string",
+                    "description": "The ID of the car",
+                    "example": "60f5f67abc5e63001b8d45d3"
+                  },
+                  "dateOfMaintenance": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date of maintenance",
+                    "example": "2024-10-14"
+                  },
+                  "workshopName": {
+                    "type": "string",
+                    "description": "Name of the workshop where maintenance was performed",
+                    "example": "QuickFix Garage"
+                  },
+                  "notes": {
+                    "type": "string",
+                    "description": "Additional notes on the maintenance work",
+                    "example": "Changed oil filter"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Description of the maintenance work",
+                    "example": "Oil change and tire rotation"
+                  },
+                  "totalCost": {
+                    "type": "number",
+                    "description": "Total cost of maintenance",
+                    "example": 150
+                  },
+                  "paid": {
+                    "type": "number",
+                    "description": "Amount paid for the maintenance",
+                    "example": 100
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Maintenance updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Maintenance updated successfully"
+                    },
+                    "updatedMaintain": {
+                      "type": "object",
+                      "properties": {
+                        "carId": {
+                          "type": "string",
+                          "example": "60f5f67abc5e63001b8d45d3"
+                        },
+                        "dateOfMaintenance": {
+                          "type": "string",
+                          "format": "date",
+                          "example": "2024-10-14"
+                        },
+                        "workshopName": {
+                          "type": "string",
+                          "example": "QuickFix Garage"
+                        },
+                        "notes": {
+                          "type": "string",
+                          "example": "Changed oil filter"
+                        },
+                        "description": {
+                          "type": "string",
+                          "example": "Oil change and tire rotation"
+                        },
+                        "totalCost": {
+                          "type": "number",
+                          "example": 150
+                        },
+                        "paid": {
+                          "type": "number",
+                          "example": 100
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Maintenance record not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Maintenance record not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating maintenance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error updating maintenance"
+                    },
+                    "error": {
+                      "type": "string",
+                      "example": "Internal server error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rents/": {
+      "get": {
+        "summary": "Get all rent records",
+        "description": "Retrieves all rent records from the system, including the associated car details.",
+        "tags": [
+          "rent"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of rent records fetched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "rentId": {
+                        "type": "number",
+                        "description": "The unique identifier for the rent"
+                      },
+                      "customerName": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "nationalId": {
+                        "type": "string"
+                      },
+                      "carId": {
+                        "type": "object",
+                        "description": "The car object (populated)",
+                        "properties": {
+                          "carId": {
+                            "type": "string"
+                          },
+                          "carName": {
+                            "type": "string"
+                          },
+                          "carPlate": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "carPlate": {
+                        "type": "string"
+                      },
+                      "carName": {
+                        "type": "string"
+                      },
+                      "kilosBeforeRent": {
+                        "type": "number"
+                      },
+                      "rentDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "returnDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "signedTrust": {
+                        "type": "boolean"
+                      },
+                      "totalPrice": {
+                        "type": "number"
+                      },
+                      "paid": {
+                        "type": "number"
+                      },
+                      "remaining": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "ongoing",
+                          "completed"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching rents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error fetching rents"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rents/getUserRents": {
+      "get": {
+        "summary": "Get rents by user ID",
+        "description": "Retrieves all rent records associated with the logged-in user.",
+        "tags": [
+          "rent"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of rent records for the user fetched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "rentId": {
+                        "type": "number",
+                        "description": "The unique identifier for the rent"
+                      },
+                      "customerName": {
+                        "type": "string"
+                      },
+                      "phone": {
+                        "type": "string"
+                      },
+                      "nationalId": {
+                        "type": "string"
+                      },
+                      "carId": {
+                        "type": "string",
+                        "description": "The car ID associated with the rent"
+                      },
+                      "carPlate": {
+                        "type": "string"
+                      },
+                      "carName": {
+                        "type": "string"
+                      },
+                      "kilosBeforeRent": {
+                        "type": "number"
+                      },
+                      "rentDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "returnDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "signedTrust": {
+                        "type": "boolean"
+                      },
+                      "totalPrice": {
+                        "type": "number"
+                      },
+                      "paid": {
+                        "type": "number"
+                      },
+                      "remaining": {
+                        "type": "number"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "ongoing",
+                          "completed"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error fetching user rents",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error fetching user rents"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rents/add": {
+      "post": {
+        "summary": "Add a new rent",
+        "description": "Adds a new rent record for a car, including car and rent details.",
+        "tags": [
+          "rent"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customerName": {
+                    "type": "string",
+                    "description": "Name of the customer renting the car",
+                    "example": "John Doe"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "description": "Customer's phone number",
+                    "example": "+123456789"
+                  },
+                  "nationalId": {
+                    "type": "string",
+                    "description": "Customer's national ID number",
+                    "example": "9876543210"
+                  },
+                  "carId": {
+                    "type": "string",
+                    "description": "The ID of the car being rented",
+                    "example": "60f5f67abc5e63001b8d45d3"
+                  },
+                  "carPlate": {
+                    "type": "string",
+                    "description": "The car's license plate",
+                    "example": "XYZ1234"
+                  },
+                  "kilosBeforeRent": {
+                    "type": "number",
+                    "description": "Kilometers on the car before the rent",
+                    "example": 5000
+                  },
+                  "rentDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date when the rent starts",
+                    "example": "2024-10-14"
+                  },
+                  "returnDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date when the car is expected to be returned",
+                    "example": "2024-10-21"
+                  },
+                  "signedTrust": {
+                    "type": "boolean",
+                    "description": "Whether a trust document has been signed",
+                    "example": true
+                  },
+                  "totalPrice": {
+                    "type": "number",
+                    "description": "Total price for the rent",
+                    "example": 300
+                  },
+                  "paid": {
+                    "type": "number",
+                    "description": "Amount paid for the rent",
+                    "example": 200
+                  },
+                  "remaining": {
+                    "type": "number",
+                    "description": "Remaining balance to be paid",
+                    "example": 100
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Rent added successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Rent added successfully"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "customerName": {
+                          "type": "string"
+                        },
+                        "phone": {
+                          "type": "string"
+                        },
+                        "nationalId": {
+                          "type": "string"
+                        },
+                        "carId": {
+                          "type": "string"
+                        },
+                        "carPlate": {
+                          "type": "string"
+                        },
+                        "carName": {
+                          "type": "string"
+                        },
+                        "kilosBeforeRent": {
+                          "type": "number"
+                        },
+                        "rentDate": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "returnDate": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "signedTrust": {
+                          "type": "boolean"
+                        },
+                        "totalPrice": {
+                          "type": "number"
+                        },
+                        "paid": {
+                          "type": "number"
+                        },
+                        "remaining": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Car not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Car not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error adding rent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error adding rent"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rents/update/{id}": {
+      "put": {
+        "summary": "Update a rent record",
+        "description": "Updates an existing rent record by its ID.",
+        "tags": [
+          "rent"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The ID of the rent to update",
+            "example": "60f5f67abc5e63001b8d45d3"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "customerName": {
+                    "type": "string",
+                    "description": "Name of the customer renting the car",
+                    "example": "John Doe"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "description": "Customer's phone number",
+                    "example": "+123456789"
+                  },
+                  "nationalId": {
+                    "type": "string",
+                    "description": "Customer's national ID number",
+                    "example": "9876543210"
+                  },
+                  "carId": {
+                    "type": "string",
+                    "description": "The ID of the car being rented",
+                    "example": "60f5f67abc5e63001b8d45d3"
+                  },
+                  "carPlate": {
+                    "type": "string",
+                    "description": "The car's license plate",
+                    "example": "XYZ1234"
+                  },
+                  "kilosBeforeRent": {
+                    "type": "number",
+                    "description": "Kilometers on the car before the rent",
+                    "example": 5000
+                  },
+                  "rentDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date when the rent starts",
+                    "example": "2024-10-14"
+                  },
+                  "returnDate": {
+                    "type": "string",
+                    "format": "date",
+                    "description": "Date when the car is expected to be returned",
+                    "example": "2024-10-21"
+                  },
+                  "signedTrust": {
+                    "type": "boolean",
+                    "description": "Whether a trust document has been signed",
+                    "example": true
+                  },
+                  "totalPrice": {
+                    "type": "number",
+                    "description": "Total price for the rent",
+                    "example": 300
+                  },
+                  "paid": {
+                    "type": "number",
+                    "description": "Amount paid for the rent",
+                    "example": 200
+                  },
+                  "remaining": {
+                    "type": "number",
+                    "description": "Remaining balance to be paid",
+                    "example": 100
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "ongoing",
+                      "completed"
+                    ],
+                    "description": "Status of the rent",
+                    "example": "ongoing"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rent updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Rent updated successfully"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "customerName": {
+                          "type": "string"
+                        },
+                        "phone": {
+                          "type": "string"
+                        },
+                        "nationalId": {
+                          "type": "string"
+                        },
+                        "carId": {
+                          "type": "string"
+                        },
+                        "carPlate": {
+                          "type": "string"
+                        },
+                        "carName": {
+                          "type": "string"
+                        },
+                        "kilosBeforeRent": {
+                          "type": "number"
+                        },
+                        "rentDate": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "returnDate": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "signedTrust": {
+                          "type": "boolean"
+                        },
+                        "totalPrice": {
+                          "type": "number"
+                        },
+                        "paid": {
+                          "type": "number"
+                        },
+                        "remaining": {
+                          "type": "number"
+                        },
+                        "status": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Rent record not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Rent record not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating rent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error updating rent"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rents/updateStatus/{id}": {
+      "put": {
+        "summary": "Update rent status",
+        "description": "Updates the status of a rent by its ID.",
+        "tags": [
+          "rent"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the rent to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "enum": [
+                      "ongoing",
+                      "completed"
+                    ],
+                    "example": "completed"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Rent status updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "carId": {
+                      "type": "string",
+                      "example": "60d5f67abf5e63001c8d45a7"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "completed"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Rent not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Rent not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error updating rent status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error updating rent status"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/rents/delete/{id}": {
+      "delete": {
+        "summary": "Delete a rent",
+        "description": "Deletes a rent record by its ID.",
+        "tags": [
+          "rent"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The ID of the rent to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Rent record deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Rent record deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Rent record not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Rent record not found"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error deleting rent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error deleting rent"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/register": {
+      "post": {
+        "summary": "Register a new user",
+        "description": "Creates a new user account with the provided details. The password will be hashed before saving.",
+        "tags": [
+          "user"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "firstName",
+                  "lastName",
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "firstName": {
+                    "type": "string",
+                    "description": "The user's first name"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "description": "The user's last name"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "The user's email address"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "The user's password (will be hashed)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User registered successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User registered successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "User already exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User already exists"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error registering user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error registering user"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/user/login": {
+      "post": {
+        "summary": "Login a user",
+        "description": "Authenticates a user by email and password, and returns a JWT token if credentials are correct.",
+        "tags": [
+          "user"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "The user's email address"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "description": "The user's password"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User logged in successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string",
+                      "description": "The JWT token",
+                      "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "userId": {
+                          "type": "string",
+                          "description": "The user's unique identifier (user._id)"
+                        },
+                        "firstName": {
+                          "type": "string"
+                        },
+                        "lastName": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string",
+                          "description": "The user's role (e.g., admin, user)"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Wrong Email or Password",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Wrong Email or Password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Error logging in",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Error logging in"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": []
+}

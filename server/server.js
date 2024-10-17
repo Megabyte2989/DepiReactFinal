@@ -6,10 +6,9 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path')
 const cloudinary = require('cloudinary').v2; // Import Cloudinary
-const swaggerUi = require("swagger-ui-express");
-const swaggerJsdoc = require("swagger-jsdoc");
-const swaggerOptions = require("./swagger");
-
+const swaggerJsDoc = require('swagger-jsdoc'); // Import swagger-jsdoc
+const swaggerUi = require('swagger-ui-express'); // Import swagger-ui-express
+const swaggerOptions = require('./swagger'); // Import your Swagger options
 
 
 
@@ -22,14 +21,19 @@ dotenv.config(); // load the env data
 
 
 const app = express();
-const swaggerDocs = swaggerJsdoc(swaggerOptions);
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions); // Generate Swagger docs
+app.use('/swagger.json', (req, res) => { // Serve Swagger JSON
+  res.json(swaggerDocs);
+});
+
+
+
 
 app.use(cors({ origin: '*' }));
 
 app.use(express.json());  //parse JSON 
 
-
-app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 app.use('/images', express.static(path.join(__dirname, '../my-app/src/media')));

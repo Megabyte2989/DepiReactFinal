@@ -16,8 +16,12 @@
             "dest": "server.js"
         },
         {
-            "src": "/documentation",
-            "dest": "server.js"
+            "src": "/swagger.json",
+            "dest": "/public/swagger.json"
+        },
+        {
+            "src": "/swagger-ui.html",
+            "dest": "/public/swagger-ui.html"
         }
     ]
 }
