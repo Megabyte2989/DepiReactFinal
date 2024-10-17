@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
     // Specify the destination directory for uploaded files
     destination: (req, file, cb) => {
         // Use the __dirname variable to get the current directory, and join it with the upload/images path, if error return null
-        cb(null, path.join(__dirname, "../../my-app/src/media"));
+        cb(null, path.join(__dirname, 'public/images')); // Saving to public/images
     },
     // Specify the filename for each uploaded file
     filename: (req, file, cb) => {
