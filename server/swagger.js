@@ -8,7 +8,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: "https://depi-react-final-83rt.vercel.app",
+                url: "https://depi-react-final.vercel.app",
             },
         ],
     },
