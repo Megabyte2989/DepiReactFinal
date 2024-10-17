@@ -23,11 +23,13 @@ dotenv.config(); // load the env data
 
 const app = express();
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(cors({ origin: '*' }));
 
 app.use(express.json());  //parse JSON 
+
+
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 app.use('/images', express.static(path.join(__dirname, '../my-app/src/media')));

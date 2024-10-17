@@ -16,7 +16,7 @@
             "dest": "server.js"
         },
         {
-            "src": "/api-docs",
+            "src": "/documentation",
             "dest": "server.js"
         }
     ]
