@@ -11,7 +11,7 @@ const Car = ({ car, onClick }) => {
     const { imageUrl = hiddenCarImage, carName, year, rentalRate, _id } = car;
     const dispatch = useDispatch();
     const [isEditing, setIsEditing] = useState(false); // State to toggle edit form
-    const cloudinaryBaseUrl = 'https://res.cloudinary.com/dw6zenhpu/image/upload'; // Replace YOUR_CLOUD_NAME with your Cloudinary cloud name
+    const cloudinaryBaseUrl = 'https://res.cloudinary.com/dw6zenhpu/image/upload/uploads'; // Replace YOUR_CLOUD_NAME with your Cloudinary cloud name
     const resolvedImageUrl = `${cloudinaryBaseUrl}/${imageUrl}`;
 
 
