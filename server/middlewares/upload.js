@@ -6,9 +6,9 @@ require('dotenv').config();
 
 // Configure Cloudinary
 cloudinary.config({
-    cloud_name: 'dw6zenhpu', // Your Cloudinary cloud name
-    api_key: '512191954655949',       // Your Cloudinary API key
-    api_secret: 'PhoHuKzw1xou7G0viIbXiBk2jXo'  // Your Cloudinary API secret
+    cloud_name: process.env.CLOUD_NAME, // Your Cloudinary cloud name
+    api_key: process.env.CLOUD_APIKEY,       // Your Cloudinary API key
+    api_secret: process.env.CLOUD_APISECRET  // Your Cloudinary API secret
 });
 
 // Create multer storage with Cloudinary configuration
