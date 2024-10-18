@@ -11,11 +11,7 @@ const initialState = {
 // Notice that the action.payload will be the return of the AsyncThunk function
 // Async thunk to add a new car
 const addCar = createAsyncThunk('cars/addCar', async (newCar) => {
-    const response = await axios.post('https://depi-react-final.vercel.app/api/cars/add', newCar, {
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        },
-    });
+    const response = await axios.post('https://depi-react-final.vercel.app/api/cars/add', newCar);
     return response.data.car; // Return the newly added car
 });
 

@@ -103,16 +103,14 @@ export default function Carspage() {
 
         const formData = new FormData();
 
-        formData.append('Content-Type', 'application/x-www-form-urlencoded');
-
-
+        // Append all car details including the image
         Object.keys(newCar).forEach((key) => {
             formData.append(key, newCar[key]);
         });
 
-
         // Dispatch the action to add the car
-        dispatch(addCar(formData)); // Ensure your action is set up to handle FormData
+        dispatch(addCar(formData));
+
         // Optionally reset the form
         setNewCar({
             carName: '',
@@ -127,7 +125,6 @@ export default function Carspage() {
             imageUrl: null,
         });
     };
-
 
     // Format date for better readability
     const formatDate = (dateString) => {
