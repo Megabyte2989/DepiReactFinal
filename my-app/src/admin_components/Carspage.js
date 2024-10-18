@@ -3,22 +3,36 @@ import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
 import { deleteCar } from '../slices/carsSlice.js';
 import '../styles/cars.css';
-import CarEditForm from './CarEditForm.js'; // Import the new CarEditForm
+import CarEditForm from './CarEditForm.js';
 
-const hiddenCarImage = '/media/hiddencar.png'
+const hiddenCarImage = '/media/hiddencar.png'; // Default fallback image
+
 const Car = ({ car, onClick }) => {
-
     const { imageUrl = hiddenCarImage, carName, year, rentalRate, _id } = car;
     const dispatch = useDispatch();
-    const [isEditing, setIsEditing] = useState(false); // State to toggle edit form
-    const cloudinaryBaseUrl = 'https://res.cloudinary.com/dw6zenhpu/image/upload/uploads'; // Replace YOUR_CLOUD_NAME with your Cloudinary cloud name
-    const resolvedImageUrl = imageUrl
-        ? `/media/${imageUrl}`
-        : `${cloudinaryBaseUrl}/${imageUrl}`;
+    const [isEditing, setIsEditing] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(false);
 
+    // Base URL for Cloudinary images
+    const cloudinaryBaseUrl = 'https://res.cloudinary.com/dw6zenhpu/image/upload/uploads';
+    const cloudinaryImageUrl = `${cloudinaryBaseUrl}/${imageUrl}`;
 
+    // Handler when the image successfully loads
+    const handleImageLoad = () => {
+        setIsLoading(false);
+        setError(false);
+    };
+
+    // Handler when the image fails to load
+    const handleImageError = () => {
+        setIsLoading(false);
+        setError(true);
+    };
+
+    // Delete car event handler
     const handleDelete = (e) => {
-        e.stopPropagation()
+        e.stopPropagation();
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -30,34 +44,40 @@ const Car = ({ car, onClick }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch(deleteCar(_id));
-                Swal.fire(
-                    'Deleted!',
-                    'Your car has been deleted.',
-                    'success'
-                );
+                Swal.fire('Deleted!', 'Your car has been deleted.', 'success');
             }
         });
     };
 
+    // Edit car event handler
     const handleEdit = (e) => {
         e.stopPropagation();
-        setIsEditing(true); // Show the edit form
+        setIsEditing(true);
     };
 
+    // Close the edit form
     const closeEditForm = () => {
-        setIsEditing(false); // Close the edit form
+        setIsEditing(false);
     };
 
-    const handleCarClick = (e) => {
-        // Prevent navigation if the edit form is open
+    // Car click handler to navigate to details
+    const handleCarClick = () => {
         if (!isEditing) {
-            onClick(); // Call the onClick to navigate to car details only if not editing
+            onClick();
         }
     };
 
     return (
         <div className="CarModel" onClick={handleCarClick}>
-            <img className='CarImage' src={resolvedImageUrl} alt={carName} />
+            {isLoading && <div className="image-loading">Loading...</div>}
+            <img
+                className="CarImage"
+                src={!error ? imageUrl : cloudinaryImageUrl}
+                alt={carName}
+                onLoad={handleImageLoad}
+                onError={handleImageError}
+                style={{ display: isLoading ? 'none' : 'block' }}
+            />
             <div className="carData">
                 <div className="TextData">
                     <h4 className="CarName">{carName}</h4>
@@ -77,7 +97,6 @@ const Car = ({ car, onClick }) => {
                     <button onClick={handleDelete}>X</button>
                 </div>
             </div>
-
             {isEditing && (
                 <div className="backdrop" onClick={closeEditForm}>
                     <CarEditForm car={car} onClose={closeEditForm} />
