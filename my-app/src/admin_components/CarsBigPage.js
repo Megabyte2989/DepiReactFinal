@@ -96,6 +96,8 @@ export default function Carspage() {
         }
     };
 
+
+
     const handleAddCar = (e) => {
         e.preventDefault(); // Prevent page reload
 
@@ -103,6 +105,7 @@ export default function Carspage() {
         Object.keys(newCar).forEach((key) => {
             formData.append(key, newCar[key]);
         });
+
 
         // Dispatch the action to add the car
         dispatch(addCar(formData)); // Ensure your action is set up to handle FormData
@@ -235,24 +238,24 @@ export default function Carspage() {
                                 </ul>
                             )}
 
-                            {activeSection === 'OtherInformation' && selectedCar && maintenanceRecords && maintenanceRecords.length > 0 ? (
-                                maintenanceRecords
-                                    .filter(record => record.carId.carName === selectedCar.carName)
-                                    .map((record, index) => (
-                                        <li key={index} className="maintenance-item">
-                                            <p>{`Car: ${selectedCar.carName}`}</p>
-                                            <p>{`Workshop Name: ${record.workshopName}`}</p>
-                                            <p>{`Maintenance Description: ${record.description}`}</p>
-                                            <p>{`Date: ${formatDate(record.dateOfMaintenance)}`}</p>
-                                        </li>
-
-                                    ))
-                            ) : (
-
-                                <p>
-                                </p>
-                            )
-                            }
+                            {activeSection === 'OtherInformation' && selectedCar ? (
+                                maintenanceRecords && maintenanceRecords.length > 0 ? (
+                                    maintenanceRecords
+                                        .filter(record => record.carId.carName === selectedCar.carName)
+                                        .map((record, index) => (
+                                            <li key={index} className="maintenance-item">
+                                                <p>{`Car: ${selectedCar.carName}`}</p>
+                                                <p>{`Workshop Name: ${record.workshopName}`}</p>
+                                                <p>{`Maintenance Description: ${record.description}`}</p>
+                                                <p>{`Date: ${formatDate(record.dateOfMaintenance)}`}</p>
+                                            </li>
+                                        ))
+                                ) : (
+                                    <ul className='UlLatest'>
+                                        <li className='notification-empty'>Nothing to be shown here</li>
+                                    </ul>
+                                )
+                            ) : null}
 
 
                         </div>

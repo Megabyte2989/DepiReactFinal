@@ -1,13 +1,10 @@
 // @ts-nocheck
 const express = require('express');
 const Car = require('../models/Car');
-const upload = require('../middlewares/uploadImage'); // Import the upload instance
+const upload = require('../middlewares/upload'); // Import the upload instance
 const path = require('path');
 const router = express.Router();
 const fs = require('fs');
-
-// Serve static images
-router.use("/images", express.static(path.join(__dirname, "../upload/images")));
 
 /**
  * @swagger
@@ -204,9 +201,13 @@ router.get('/', async (req, res) => {
  */
 
 // Add a new car
-router.post('/add', async (req, res) => {
+router.post('/add', express.urlencoded({ extended: true }), upload.single('imageUrl'), async (req, res) => {
     const { carName, carPlate, model, brand, year, rentalRate, isAvailable, ownerName, kilosRightNow, lastOilChangeDate } = req.body;
     const imageUrl = req.file ? req.file.filename : null;
+
+    console.log("Request Body:", req.body);
+    console.log("Uploaded File:", req.file);
+
 
     try {
         // No need to include carId since it's auto-incremented
