@@ -102,6 +102,10 @@ export default function Carspage() {
         e.preventDefault(); // Prevent page reload
 
         const formData = new FormData();
+
+        formData.append('Content-Type', 'application/x-www-form-urlencoded');
+
+
         Object.keys(newCar).forEach((key) => {
             formData.append(key, newCar[key]);
         });
