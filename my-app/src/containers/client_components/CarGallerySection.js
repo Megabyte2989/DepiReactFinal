@@ -9,7 +9,6 @@ const CarGallerySection = ({ onBookNowClick }) => {
   // Get the cars from the Redux store
   const { cars, loading, error } = useSelector((state) => state.cars);
 
-
   const [filteredCars, setFilteredCars] = useState([]);
   const [makeFilter, setMakeFilter] = useState('');
   const [yearFilter, setYearFilter] = useState('');
@@ -32,17 +31,27 @@ const CarGallerySection = ({ onBookNowClick }) => {
     setFilteredCars(filtered);
   }, [cars, makeFilter, yearFilter, priceFilter]);
 
-
-
-
+  // Filter change handlers
   const handleMakeChange = (e) => setMakeFilter(e.target.value);
   const handleYearChange = (e) => setYearFilter(e.target.value);
   const handlePriceChange = (e) => setPriceFilter(parseInt(e.target.value, 10));
 
+  // Clear Filters function
   const handleClearFilters = () => {
     setMakeFilter('');
     setYearFilter('');
     setPriceFilter(3500);
+  };
+
+  // Apply Filters function
+  const handleApplyFilters = () => {
+    // Simply calling setFilteredCars here since filtering is handled in the useEffect
+    setFilteredCars((prevFilteredCars) => prevFilteredCars);
+  };
+
+  const handleSliderChange = (e) => {
+    const value = parseInt(e.target.value, 10);
+    setPriceFilter(value);
   };
 
   return (
@@ -52,8 +61,41 @@ const CarGallerySection = ({ onBookNowClick }) => {
         {error && <p>Error: {error}</p>}
         {!loading && filteredCars.length === 0 && <p>No cars available.</p>}
 
-        <div className="filters">
-          {/* ... Filter inputs ... */}
+        <div className="filter-group">
+          <select value={makeFilter} onChange={handleMakeChange}>
+            <option value="">All Makes</option>
+            {Array.from(new Set(cars.map(car => car.brand))).map((make, index) => (
+              <option key={index} value={make}>{make}</option>
+            ))}
+          </select>
+
+          <select value={yearFilter} onChange={handleYearChange}>
+            <option value="">All Years</option>
+            {Array.from(new Set(cars.map(car => car.year))).map((year, index) => (
+              <option key={index} value={year}>{year}</option>
+            ))}
+          </select>
+
+          <div className="price-slider">
+
+            <input
+              type="range"
+              value={priceFilter}
+              onChange={handleSliderChange}
+              min="0"
+              max="10000"
+              step="100" // Adjust the step value as needed
+            />
+            <span id="price-value">{priceFilter} EGP</span>
+
+          </div>
+
+          <div className="filter-buttons">
+
+            <button className="filterbtn clear-filters-btn" onClick={handleClearFilters}>
+              Clear Filters
+            </button>
+          </div>
         </div>
 
         <div className="grid" id="grid">
@@ -65,7 +107,7 @@ const CarGallerySection = ({ onBookNowClick }) => {
               />
               <p><strong>{car.carName}</strong> ({car.brand})</p>
               <p>Year: {car.year}</p>
-              <p>Rental Rate: ${car.rentalRate}</p>
+              <p>Rental Rate: {car.rentalRate} EGP</p>
               <button className="book-now-btn" onClick={() => onBookNowClick(car)}>Book Now</button>
             </div>
           ))}
@@ -73,6 +115,6 @@ const CarGallerySection = ({ onBookNowClick }) => {
       </div>
     </section>
   );
-}
+};
 
 export default CarGallerySection;

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCars } from '../../slices/carsSlice.js'; // Make sure you import the fetchCars action
+import { fetchCars } from '../../slices/carsSlice.js';
 import './CarQuizApp.css';
 
-const hiddencar = '/media/hiddencar.png'
+const hiddencar = '/media/hiddencar.png';
+
 const CarQuizApp = () => {
     const dispatch = useDispatch();
-    const { cars, loading, error } = useSelector((state) => state.cars); // Accessing cars, loading, and error from Redux
+    const { cars, loading, error } = useSelector((state) => state.cars);
     const [seatingCapacity, setSeatingCapacity] = useState(4);
     const [luggageSpace, setLuggageSpace] = useState('Medium');
     const [budget, setBudget] = useState(1000);
     const [result, setResult] = useState(null);
     const [isQuizVisible, setQuizVisible] = useState(true);
 
-    // Dispatch the fetchCars action when the component mounts
     useEffect(() => {
         dispatch(fetchCars());
     }, [dispatch]);
@@ -22,9 +22,7 @@ const CarQuizApp = () => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        const filteredCars = cars.filter(car =>
-            car.rentalRate <= budget
-        );
+        const filteredCars = cars.filter(car => car.rentalRate <= budget);
         setResult(filteredCars.length ? filteredCars[0] : findNearestCar(budget));
         setQuizVisible(false);
     };
@@ -32,7 +30,7 @@ const CarQuizApp = () => {
     const findNearestCar = (budget) => {
         return cars.reduce((closest, car) =>
             Math.abs(car.rentalRate - budget) < Math.abs(closest.rentalRate - budget) ? car : closest,
-            {} // Provide an initial empty object
+            {}
         );
     };
 
@@ -81,7 +79,6 @@ const CarQuizApp = () => {
                 <div className="car-quiz-result">
                     {result ? (
                         <>
-
                             <h2>Recommended Car: {result.carName}</h2>
                             <img src={hiddencar} alt='carImage' className="car-quiz-result-image" />
                             <p>Model: {result.model}</p>
