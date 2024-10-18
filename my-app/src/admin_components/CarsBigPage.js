@@ -42,11 +42,7 @@ export default function Carspage() {
         img.onload = () => {
             setBackgroundImage(`url("https://res.cloudinary.com/${cloudName}/image/upload/uploads/stages/${imageUrl}")`);
         };
-        img.onerror = () => {
-            setBackgroundImage(`url("/media/stages/MainStageForNoCars.png")`);
-        };
     };
-
 
 
     const handleViewDetails = (car) => {
