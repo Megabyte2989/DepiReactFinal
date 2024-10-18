@@ -33,11 +33,14 @@ export default function Carspage() {
         }
     }, [selectedCar]);
 
+
+    const cloudName = 'dw6zenhpu';
+
     const checkImage = (imageUrl) => {
         const img = new Image();
-        img.src = `/media/stages/${imageUrl}`;
+        img.src = `https://res.cloudinary.com/${cloudName}/image/upload/uploads/stages/${imageUrl}`; // Use Cloudinary URL
         img.onload = () => {
-            setBackgroundImage(`url("/media/stages/${imageUrl}")`);
+            setBackgroundImage(`url("https://res.cloudinary.com/${cloudName}/image/upload/uploads/stages/${imageUrl}")`);
         };
         img.onerror = () => {
             setBackgroundImage(`url("/media/stages/MainStageForNoCars.png")`);
