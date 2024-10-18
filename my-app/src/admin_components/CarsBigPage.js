@@ -38,9 +38,9 @@ export default function Carspage() {
 
     const checkImage = (imageUrl) => {
         const img = new Image();
-        img.src = `https://res.cloudinary.com/${cloudName}/image/upload/${imageUrl}`; // Use Cloudinary URL
+        img.src = `https://res.cloudinary.com/${cloudName}/image/upload/uploads/stages/${imageUrl}`; // Use Cloudinary URL
         img.onload = () => {
-            setBackgroundImage(`url("https://res.cloudinary.com/${cloudName}/image/upload/${imageUrl}")`);
+            setBackgroundImage(`url("https://res.cloudinary.com/${cloudName}/image/upload/uploads/stages/${imageUrl}")`);
         };
         img.onerror = () => {
             setBackgroundImage(`url("/media/stages/MainStageForNoCars.png")`);
