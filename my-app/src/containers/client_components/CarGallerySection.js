@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from '../../slices/carsSlice'; // Import your fetchCars action
@@ -34,7 +35,6 @@ const CarGallerySection = ({ onBookNowClick }) => {
   // Filter change handlers
   const handleMakeChange = (e) => setMakeFilter(e.target.value);
   const handleYearChange = (e) => setYearFilter(e.target.value);
-  const handlePriceChange = (e) => setPriceFilter(parseInt(e.target.value, 10));
 
   // Clear Filters function
   const handleClearFilters = () => {
@@ -43,11 +43,7 @@ const CarGallerySection = ({ onBookNowClick }) => {
     setPriceFilter(3500);
   };
 
-  // Apply Filters function
-  const handleApplyFilters = () => {
-    // Simply calling setFilteredCars here since filtering is handled in the useEffect
-    setFilteredCars((prevFilteredCars) => prevFilteredCars);
-  };
+
 
   const handleSliderChange = (e) => {
     const value = parseInt(e.target.value, 10);
