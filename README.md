@@ -57,13 +57,13 @@ The system supports **customization** and **expandability**, making it adaptable
 
 ## 💻 Technologies Used  
 
-**Frontend**: React.js, Redux, Axios, React Router  
-**Backend**: Express.js, Node.js, MongoDB, Mongoose  
-**Testing**: Jest, Redux-mock-store  
-**UI Tools**: Font Awesome, SweetAlert2  
-**Deployment**: Vercel, MongoDB Atlas  
-**Environment Management**: Dotenv  
-**Version Control**: GitHub  
+**Frontend** : React.js, Redux, Axios, React Router  
+**Backend** : Express.js, Node.js, MongoDB, Mongoose  
+**Testing** : Jest, Redux-mock-store  
+**UI Tools** : Font Awesome, SweetAlert2  
+**Deployment** : Vercel, MongoDB Atlas  
+**Environment Management** : Dotenv  
+**Version Control** : GitHub  
 **Image Storage** : Cloudinary
 ---
 
