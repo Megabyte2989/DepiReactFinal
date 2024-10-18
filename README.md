@@ -64,7 +64,7 @@ The system supports **customization** and **expandability**, making it adaptable
 **Deployment**: Vercel, MongoDB Atlas  
 **Environment Management**: Dotenv  
 **Version Control**: GitHub  
-
+**Image Storage** : Cloudinary
 ---
 
 ## 📦 Installation and Setup  
@@ -72,9 +72,12 @@ The system supports **customization** and **expandability**, making it adaptable
 ### Prerequisites  
 
 - **Node.js** installed  
-- **MongoDB Atlas** account setup  
+- **MongoDB Atlas** account setup + cluster + DataBase
 - **Git** installed  
-
+- **React** installed
+- **Redux** installed
+- **Vercel** account setup + configs
+- **Cloudinary** account setup + configs
 ### Clone the Repository  
 
 ```bash
@@ -84,7 +87,16 @@ cd DepiReactFinal
 
 ### Install Dependencies  
 
+for backend 
+
 ```bash
+cd server
+npm install  
+```
+
+for Frontend
+```bash
+cd my-app
 npm install  
 ```
 
@@ -95,6 +107,10 @@ Create a `.env` file in the root directory:
 ```bash
 MONGODB_URI=your_mongoDB_url  
 JWT_SECRET=your_secret_key  
+# for Cloudinary
+CLOUD_NAME = cloudname
+api_key  = your_api_key
+api_secret = your_api_secret_key
 ```
 
 ### Start the Development Server  
@@ -109,6 +125,8 @@ The app will run at [http://localhost:3000/](http://localhost:3000/).
 
 ```bash
 nodemon server.js  
+
+The app will run at [http://localhost:5000/](http://localhost:5000/). 
 ```
 
 ---
@@ -127,7 +145,8 @@ npm test
 
 - Frontend and Backend deployed on **Vercel**  
 - Continuous integration with **GitHub** for seamless updates  
-
+- DataBase with MongoDB Atlas 
+- Images storage cloud with **Cloudinary**
 ---
 
 ## 📑 Documentation  
