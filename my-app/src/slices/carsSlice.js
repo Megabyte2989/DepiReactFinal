@@ -11,17 +11,12 @@ const initialState = {
 // Notice that the action.payload will be the return of the AsyncThunk function
 // Async thunk to add a new car
 const addCar = createAsyncThunk('cars/addCar', async (newCar) => {
-    try {
-        const response = await axios.post('https://depi-react-final.vercel.app/api/cars/add', newCar, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        });
-        return response.data.car; // Return the newly added car
-    } catch (error) {
-        // Dispatch an error action or update state with error information
-        return dispatch(addCarError(error));
-    }
+    const response = await axios.post('https://depi-react-final.vercel.app/api/cars/add', newCar, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    });
+    return response.data.car; // Return the newly added car
 });
 
 // Async thunk to fetch the list of cars
