@@ -201,7 +201,7 @@ router.get('/', async (req, res) => {
  */
 
 // Add a new car
-router.post('/add', express.urlencoded({ extended: true }), upload.single('imageUrl'), async (req, res) => {
+router.post('/add', upload.single('imageUrl'), async (req, res) => {
     const { carName, carPlate, model, brand, year, rentalRate, isAvailable, ownerName, kilosRightNow, lastOilChangeDate } = req.body;
     const imageUrl = req.file ? req.file.filename : null;
 
