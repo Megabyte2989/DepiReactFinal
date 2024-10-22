@@ -81,6 +81,7 @@ const CarGallerySection = ({ onBookNowClick }) => {
               min="0"
               max="10000"
               step="100" // Adjust the step value as needed
+              aria-label="Price range filter"
             />
             <span id="price-value">{priceFilter} EGP</span>
 
