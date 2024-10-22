@@ -7,7 +7,7 @@ const FloatingIcon = () => {
     <div className="floating-container">
       <div className="floating-button">+</div>
       <div className="element-container">
-        <Link to="https://api.whatsapp.com/send?phone=YOUR_PHONE_NUMBER">
+        <Link to="https://wa.link/zii0vm">
           <span className="float-element tooltip-left">
             <i className="fab fa-whatsapp"></i> </span>
         </Link>
