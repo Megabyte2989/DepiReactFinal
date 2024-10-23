@@ -1,9 +1,5 @@
-// routes/orderRoutes.js
 const express = require('express');
 const Order = require('../models/Order');
-const express = require('express');
-const multer = require('multer');
-const cloudinary = require('../middlewares/upload'); // Import the Cloudinary configuration
 
 const router = express.Router();
 
@@ -18,35 +14,20 @@ router.get('/', async (req, res) => {
 });
 
 // Route to add a new order
-router.post('/api/orders/add', upload.single('idPhoto'), async (req, res) => {
+router.post('/add', async (req, res) => {
+    const { customerName, orderDetails, idNumber } = req.body; // Include idNumber in the request body
+
     try {
-        // Upload the image to Cloudinary
-        const result = await cloudinary.uploader.upload(req.file.path);
-
-        // Extract required fields from the request body
-        const { customerName, orderDetails, pickupDate, pickupTime, dropoffDate, dropoffTime, location, idNumber } = req.body;
-
-        // Prepare order data with Cloudinary URL
-        const orderData = {
+        const newOrder = new Order({
             customerName,
             orderDetails,
-            pickupDate,
-            pickupTime,
-            dropoffDate,
-            dropoffTime,
-            location,
-            idNumber,
-            idPhotoUrl: result.secure_url, // Store the secure URL from Cloudinary
-        };
+            idNumber, // Add idNumber to the new order
+        });
 
-        // Create a new order
-        const newOrder = new Order(orderData);
-        await newOrder.save(); // Save the order to the database
-
-        res.status(201).json(newOrder); // Send back the created order
+        await newOrder.save();
+        res.status(201).json(newOrder);
     } catch (error) {
-        console.error('Error uploading to Cloudinary:', error);
-        res.status(500).json({ error: 'Failed to upload image to Cloudinary' });
+        res.status(400).json({ message: 'Failed to create order', error });
     }
 });
 

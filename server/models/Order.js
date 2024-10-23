@@ -1,4 +1,3 @@
-// models/Order.js
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
@@ -11,6 +10,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true
+    },
+    idNumber: { // Add the new ID number field
+        type: Number, // Use Number type for ID number
+        required: true, // Make it required if necessary
     },
     status: {
         type: String,
