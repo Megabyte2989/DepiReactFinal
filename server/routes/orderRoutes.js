@@ -15,13 +15,13 @@ router.get('/', async (req, res) => {
 
 // Route to add a new order
 router.post('/add', async (req, res) => {
-    const { customerName, orderDetails, idNumber } = req.body; // Include idNumber in the request body
+    const { customerName, orderDetails, phoneNumber } = req.body; // Change idNumber to phoneNumber
 
     try {
         const newOrder = new Order({
             customerName,
             orderDetails,
-            idNumber, // Add idNumber to the new order
+            phoneNumber, // Add phoneNumber to the new order
         });
 
         await newOrder.save();

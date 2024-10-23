@@ -11,8 +11,8 @@ const orderSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    idNumber: { // Add the new ID number field
-        type: Number, // Use Number type for ID number
+    phoneNumber: { // Renamed to phoneNumber
+        type: String, // Use String type to handle various phone number formats
         required: true, // Make it required if necessary
     },
     status: {

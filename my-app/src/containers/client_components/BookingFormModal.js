@@ -9,7 +9,7 @@ const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
   const [error, setError] = useState(null);
   const [customerName, setCustomerName] = useState(''); // State for customer name
   const [orderDetails, setOrderDetails] = useState(''); // State for order details
-  const [idNumber, setIdNumber] = useState(''); // State for ID number
+  const [phoneNumber, setPhoneNumber] = useState(''); // Change state for phone number
 
   if (!isOpen) return null;
 
@@ -19,7 +19,7 @@ const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
     const formData = {
       customerName,
       orderDetails,
-      idNumber, // Include the ID number in form data
+      phoneNumber, // Updated to include phone number
       pickupDate: e.target['pickup-date'].value,
       pickupTime: e.target['pickup-time'].value,
       dropoffDate: e.target['dropoff-date'].value,
@@ -80,15 +80,15 @@ const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
             placeholder="Enter order details here"
           />
 
-          <label htmlFor="id-number">ID Number:</label>
+          <label htmlFor="phone-number">Phone Number:</label> {/* Change label for phone number */}
           <input
-            type="number"
-            id="id-number"
-            name="id-number"
+            type="tel" // Changed input type to 'tel' for better UX on mobile
+            id="phone-number"
+            name="phone-number"
             required
-            value={idNumber}
-            onChange={(e) => setIdNumber(e.target.value)} // Update state on input change
-            placeholder="Enter your ID number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)} // Update state on input change
+            placeholder="Enter your phone number"
           />
 
           <label htmlFor="pickup-date">Pickup Date:</label>
