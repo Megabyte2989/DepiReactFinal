@@ -44,7 +44,7 @@ router.put('/accept/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const order = await Order.findByIdAndUpdate(id);
+        const order = await Order.findByIdAndDelete(id);
         if (!order) {
             return res.status(404).json({ message: 'Order not found' });
         }

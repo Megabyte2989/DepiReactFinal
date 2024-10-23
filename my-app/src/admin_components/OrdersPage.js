@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Swal from 'sweetalert2'; // Import SweetAlert2
-import { callOrder, deleteOrder, fetchOrders } from '../slices/ordersSlice'; // Import actions
+import { deleteOrder, fetchOrders } from '../slices/ordersSlice'; // Import actions
 import '../styles/OrdersPage.css'; // Import the CSS file
 
 const OrdersPage = () => {
@@ -13,16 +13,7 @@ const OrdersPage = () => {
         dispatch(fetchOrders()); // Fetch orders when component mounts
     }, [dispatch]);
 
-    const handleCall = (orderId) => {
-        // Call action logic, this can be a dispatch or an API call depending on your implementation
-        dispatch(callOrder(orderId)); // Dispatch call order action
-        Swal.fire({
-            title: 'Called!',
-            text: 'The order has been called successfully.',
-            icon: 'success',
-            confirmButtonText: 'Okay'
-        });
-    };
+
 
     const handleReject = (orderId) => {
         Swal.fire({
@@ -77,12 +68,6 @@ const OrdersPage = () => {
                                 <td className="orders-cell"> {/* Actions cell */}
                                     {order.status === 'pending' ? (
                                         <>
-                                            <button
-                                                className="orders-button call-button"
-                                                onClick={() => handleCall(order._id)}
-                                            >
-                                                Call
-                                            </button>
                                             <button
                                                 className="orders-button reject-button"
                                                 onClick={() => handleReject(order._id)}

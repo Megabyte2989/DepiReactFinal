@@ -70,7 +70,7 @@ const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
 
           <label htmlFor="order-details">PhoneNumber:</label>
           <input
-            type='number'
+            type='text'
             id="order-details"
             name="order-details"
             className='orderdet'
