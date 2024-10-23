@@ -16,6 +16,8 @@ const userRoutes = require("./routes/userRoutes");
 const carRoutes = require("./routes/carRoutes");
 const rentRoutes = require("./routes/rentRoutes");
 const maintainRoutes = require("./routes/maintainRoutes");
+const orderRoutes = require("./routes/orderRoutes");
+
 
 dotenv.config(); // load the env data
 
@@ -46,6 +48,8 @@ app.use("/api/cars", carRoutes);
 app.use("/api/rents", rentRoutes);
 app.use("/api/maintenance", maintainRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/orders", orderRoutes);
+
 
 const uri = process.env.MONGO_URI; // Use the environment variable
 
