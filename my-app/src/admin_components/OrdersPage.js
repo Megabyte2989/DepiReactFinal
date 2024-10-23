@@ -72,7 +72,7 @@ const OrdersPage = () => {
                                                 className="orders-button reject-button"
                                                 onClick={() => handleReject(order._id)}
                                             >
-                                                Reject
+                                                Delete
                                             </button>
                                         </>
                                     ) : (
