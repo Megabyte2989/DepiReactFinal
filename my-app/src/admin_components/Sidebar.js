@@ -39,6 +39,12 @@ export default function Sidebar() {
                     <i className="fas fa-tools SideBarIcon"></i>
                     <Link to='/dashboard/maintenance'>Maintain</Link>
                 </li>
+                <li className={`SideBarLi ${location.pathname === '/dashboard/orders' ? 'active' : ''}`}>
+                    <Link to='/dashboard/orders'>
+                        <i className="fas fa-box SideBarIcon"></i>
+                        Orders
+                    </Link>
+                </li>
             </ul>
         </div>
     );

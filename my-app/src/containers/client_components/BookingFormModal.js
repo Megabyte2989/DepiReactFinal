@@ -77,7 +77,7 @@ const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
             required
             value={orderDetails}
             onChange={(e) => setOrderDetails(e.target.value)} // Update state on input change
-            placeholder="Enter order details here"
+            placeholder="Enter order Phone Number here"
           />
 
           <label htmlFor="pickup-date">Pickup Date:</label>

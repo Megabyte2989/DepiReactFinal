@@ -1,0 +1,110 @@
+/* src/admin_components/OrdersPage.css */
+
+.orders-page {
+    padding: 20px;
+    /* Add padding to the container */
+    background-color: #f9f9f9;
+    /* Light background color for the page */
+    border-radius: 8px;
+    /* Rounded corners for the container */
+    min-height: 92vh;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    width: 100%;
+}
+
+.orders-title {
+    color: #333;
+    /* Dark color for the header */
+    font-size: 24px;
+    /* Font size for the header */
+    margin-bottom: 20px;
+    /* Space below the header */
+    text-align: center;
+    /* Center the header text */
+}
+
+.orders-empty {
+    text-align: center;
+    /* Center the text for no orders */
+    font-size: 18px;
+    /* Font size for the empty state */
+    color: #666;
+    /* Gray color for empty state text */
+}
+
+.orders-table {
+    width: 100%;
+    /* Full width table */
+    border-collapse: collapse;
+    /* Collapse table borders */
+}
+
+.orders-thead {
+    background-color: #007bff;
+    /* Blue background for header */
+    color: white;
+    /* White text for header */
+}
+
+.orders-header {
+    padding: 12px;
+    /* Padding inside header cells */
+    text-align: left;
+    /* Left align text in header */
+}
+
+.orders-tbody {
+    /* Additional styles can be added here if needed */
+}
+
+.orders-row:hover {
+    background-color: #f1f1f1;
+    /* Highlight row on hover */
+}
+
+.orders-cell {
+    padding: 12px;
+    /* Padding inside table cells */
+    text-align: left;
+    /* Left align text in cells */
+    border-bottom: 1px solid #ddd;
+    /* Light border for rows */
+}
+
+.orders-tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+    /* Light gray for even rows */
+}
+
+.orders-tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+    /* White for odd rows */
+}
+
+.orders-button {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.call-button {
+    background-color: #4CAF50;
+    /* Green */
+    color: white;
+}
+
+.reject-button {
+    background-color: #f44336;
+    /* Red */
+    color: white;
+}
+
+.call-button:hover,
+.reject-button:hover {
+    opacity: 0.8;
+    /* Add some hover effect */
+}

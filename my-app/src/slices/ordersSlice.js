@@ -11,6 +11,13 @@ const addOrder = createAsyncThunk('orders/addOrder', async (orderData) => {
     const response = await axios.post('https://depi-react-final.vercel.app/api/orders/add', orderData); // Post new order to the API
     return response.data; // Return the newly added order
 });
+
+export const callOrder = createAsyncThunk('orders/callOrder', async (orderId) => {
+    const response = await axios.patch(`https://depi-react-final.vercel.app/api/orders/${orderId}`, { status: 'Called' });
+    return response.data;
+});
+
+
 // Create async thunk for accepting an order
 const acceptOrder = createAsyncThunk('orders/acceptOrder', async (orderId) => {
     const response = await axios.put(`https://depi-react-final.vercel.app/api/orders/accept/${orderId}`); // Accept the order in the API
@@ -51,7 +58,14 @@ const ordersSlice = createSlice({
             })
             .addCase(deleteOrder.fulfilled, (state, action) => {
                 state.orders = state.orders.filter(order => order._id !== action.payload); // Remove the deleted order
-            });
+            })
+            .addCase(callOrder.fulfilled, (state, action) => {
+                const updatedOrders = state.orders.map(order =>
+                    order._id === action.payload._id ? action.payload : order
+                );
+                state.orders = updatedOrders;
+            })
+
     },
 });
 // Export the async thunks for use in components

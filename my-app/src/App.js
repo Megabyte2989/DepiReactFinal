@@ -6,6 +6,7 @@ import Dashboard from './admin_components/Dashboard.js';
 import Errorcomp from './admin_components/Errorcomp.js';
 import Layout from './admin_components/Layout.js';
 import Maintain from './admin_components/Maintain.js';
+import OrdersPage from './admin_components/OrdersPage.js';
 import RentParent from './admin_components/RentParent.js';
 import './App.css';
 import CarQuizApp from './containers/client_components/CarQuizApp.js';
@@ -34,6 +35,8 @@ function App() {
               <Route path="cars" element={<Carspage />} /> {/* Relative path */}
               <Route path="maintenance" element={<Maintain />} /> {/* Relative path */}
               <Route path="rents" element={<RentParent />} /> {/* Relative path */}
+              <Route path="orders" element={<OrdersPage />} /> {/* New Orders Page Route */}
+
             </Route>
           </Route>
 
