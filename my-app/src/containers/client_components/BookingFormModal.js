@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'; // Import useDispatch
-import Swal from 'sweetalert2';
-import { addOrder } from '../../slices/ordersSlice'; // Import the addOrder thunk
+import { useDispatch } from 'react-redux';
+import { addOrder } from '../../slices/ordersSlice'; // Adjust the import based on your file structure
 import './BookingFormModal.css';
 
 const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
-  const dispatch = useDispatch(); // Initialize dispatch
+  const dispatch = useDispatch();
   const [error, setError] = useState(null);
-  const [customerName, setCustomerName] = useState(''); // State for customer name
-  const [orderDetails, setOrderDetails] = useState(''); // State for order details
+  const [customerName, setCustomerName] = useState('');
+  const [orderDetails, setOrderDetails] = useState('');
+  const [idPhoto, setIdPhoto] = useState(null); // State for ID photo
+  const [pickupDate, setPickupDate] = useState('');
+  const [dropoffDate, setDropoffDate] = useState('');
 
   if (!isOpen) return null;
 
@@ -17,81 +19,90 @@ const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
 
     const formData = {
       customerName,
-      orderDetails, // Add order details based on the input from the user
-      pickupDate: e.target['pickup-date'].value,
-      pickupTime: e.target['pickup-time'].value,
-      dropoffDate: e.target['dropoff-date'].value,
-      dropoffTime: e.target['dropoff-time'].value,
+      orderDetails,
+      pickupDate,
+      dropoffDate,
       location: e.target['location'].value,
+      idNumber: e.target['id-number'].value, // Assuming you add this input
+      idPhoto, // Add the ID photo file to the formData
     };
 
     try {
-      // Dispatch the addOrder thunk
-      const action = await dispatch(addOrder(formData)); // Dispatch the action
-
-      if (addOrder.fulfilled.match(action)) { // Check if the action was fulfilled
-        // Show success message using SweetAlert2
-        await Swal.fire({
-          icon: 'success',
-          title: 'Thank you!',
-          text: 'Your booking has been received. We expect you to hear from us in 24 hours.',
-          confirmButtonText: 'OK',
-        });
-        handleCloseBmodal();
-      }
+      await dispatch(addOrder(formData)).unwrap(); // Dispatch the addOrder action
+      alert('Thank you! Your booking has been received. We expect you to hear from us in 24 hours.');
+      handleCloseBmodal();
     } catch (error) {
-      // Show error message using SweetAlert2
       setError(error.message);
-      await Swal.fire({
-        icon: 'error',
-        title: 'Oops!',
-        text: error.message,
-        confirmButtonText: 'OK',
-      });
     }
   };
 
   return (
     <div className="Bmodal" id="booking-Bmodal">
       <div className="Bmodal-content">
-        <span className="close" onClick={handleCloseBmodal}>&times;</span>
+        <span className="closebtn" onClick={handleCloseBmodal}>&times;</span>
         <h2>Book Your Car</h2>
         {error && <p className="error-message">{error}</p>}
         <form id="booking-form" onSubmit={handleSubmit}>
           <label htmlFor="customer-name">Customer Name:</label>
           <input
+            placeholder='Enter your Name'
             type="text"
             id="customer-name"
             name="customer-name"
             required
             value={customerName}
-            onChange={(e) => setCustomerName(e.target.value)} // Update state on input change
+            onChange={(e) => setCustomerName(e.target.value)}
           />
 
           <label htmlFor="order-details">Order Details:</label>
           <textarea
             id="order-details"
+            className='orderdet'
             name="order-details"
             required
             value={orderDetails}
-            onChange={(e) => setOrderDetails(e.target.value)} // Update state on input change
+            onChange={(e) => setOrderDetails(e.target.value)}
             placeholder="Enter order details here"
           />
 
           <label htmlFor="pickup-date">Pickup Date:</label>
-          <input type="date" id="pickup-date" name="pickup-date" required />
+          <input
+            type="date"
+            id="pickup-date"
+            name="pickup-date"
+            required
+            value={pickupDate}
+            onChange={(e) => setPickupDate(e.target.value)}
+          />
 
-          <label htmlFor="pickup-time">Pickup Time:</label>
-          <input type="time" id="pickup-time" name="pickup-time" required />
+          <label htmlFor="dropoff-date">Dropoff Date:</label>
+          <input
+            type="date"
+            id="dropoff-date"
+            name="dropoff-date"
+            required
+            value={dropoffDate}
+            onChange={(e) => setDropoffDate(e.target.value)}
+          />
 
-          <label htmlFor="dropoff-date">Drop-off Date:</label>
-          <input type="date" id="dropoff-date" name="dropoff-date" required />
+          <label htmlFor="id-number">ID Number:</label>
+          <input
+            type="text"
+            id="id-number"
+            name="id-number"
+            required
+            placeholder="Enter your ID number"
+          />
 
-          <label htmlFor="dropoff-time">Drop-off Time:</label>
-          <input type="time" id="dropoff-time" name="dropoff-time" required />
-
-          <label htmlFor="location">Location:</label>
-          <input type="text" id="location" name="location" required placeholder="Enter pickup location" />
+          <label htmlFor="id-photo">ID Photo:</label>
+          <input
+            type="file"
+            id="id-photo"
+            name="idPhoto"
+            placeholder='Id Photo'
+            required
+            onChange={(e) => setIdPhoto(e.target.files[0])} // Update state with the file
+          />
 
           <button className="btn book-now-btn" type="submit">
             Book Now

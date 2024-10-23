@@ -2,6 +2,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
 // Create async thunk for fetching orders
 const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
     const response = await axios.get('https://depi-react-final.vercel.app/api/orders'); // Fetch orders from the API
@@ -10,7 +11,17 @@ const fetchOrders = createAsyncThunk('orders/fetchOrders', async () => {
 
 // Create async thunk for adding an order
 const addOrder = createAsyncThunk('orders/addOrder', async (orderData) => {
-    const response = await axios.post('https://depi-react-final.vercel.app/api/orders/add', orderData); // Post new order to the API
+    const formData = new FormData(); // Create FormData object
+    Object.entries(orderData).forEach(([key, value]) => {
+        formData.append(key, value); // Append each entry to FormData
+    });
+
+    const response = await axios.post('https://depi-react-final.vercel.app/api/orders/add', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data', // Set the appropriate header
+        },
+    });
+
     return response.data; // Return the newly added order
 });
 

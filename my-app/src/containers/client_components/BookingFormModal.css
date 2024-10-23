@@ -9,6 +9,7 @@
   --button-hover-color: #4b4b5e;
   --filter-bg-color: #f1f1f1;
 }
+
 .Bmodal {
   display: flex;
   justify-content: center;
@@ -31,15 +32,15 @@
   inline-size: 80%;
 }
 
-.close {
-  color: #aaa;
+.closebtn {
+  color: #000000;
   float: inline-end;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.closebtn:hover,
+.closebtn:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
@@ -54,6 +55,7 @@
   display: block;
   margin-block-end: 5px;
   font-weight: bold;
+  color: black;
 }
 
 .Bmodal-content input[type="date"],
@@ -74,4 +76,24 @@
 
 .Bmodal-content .book-now-btn:hover {
   background-color: var(--button-hover-color);
+}
+
+.orderdet {
+
+  height: 100px;
+  resize: vertical;
+  border: 1px solid #007bff;
+  transition: border-color 0.3s ease;
+  min-width: 99.5%;
+  /* background: #09203f; */
+  padding: 10px;
+  margin-left: 5px;
+}
+
+
+.orderdet:focus {
+  border-color: #0056b3;
+  /* Darker blue on focus */
+  outline: none;
+  /* Remove default outline */
 }
