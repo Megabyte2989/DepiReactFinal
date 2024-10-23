@@ -11,6 +11,7 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     /* Subtle shadow for depth */
     width: 100%;
+    overflow: scroll;
 }
 
 .orders-title {
@@ -36,6 +37,7 @@
 .orders-table {
     width: 100%;
     /* Full width table */
+    overflow: scroll;
     border-collapse: collapse;
     /* Collapse table borders */
 }
