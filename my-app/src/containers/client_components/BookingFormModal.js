@@ -68,10 +68,12 @@ const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
             onChange={(e) => setCustomerName(e.target.value)} // Update state on input change
           />
 
-          <label htmlFor="order-details">Order Details:</label>
-          <textarea
+          <label htmlFor="order-details">PhoneNumber:</label>
+          <input
+            type='number'
             id="order-details"
             name="order-details"
+            className='orderdet'
             required
             value={orderDetails}
             onChange={(e) => setOrderDetails(e.target.value)} // Update state on input change
