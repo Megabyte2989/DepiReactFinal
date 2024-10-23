@@ -44,11 +44,10 @@ router.put('/accept/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     try {
-        const order = await Order.findById(id);
+        const order = await Order.findByIdAndUpdate(id);
         if (!order) {
             return res.status(404).json({ message: 'Order not found' });
         }
-        await order.remove();
         res.json({ message: 'Order deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Server Error', error });
