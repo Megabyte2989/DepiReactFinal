@@ -659,6 +659,26 @@ router.delete("/delete/:id", async (req, res) => {
  *       scheme: bearer
  *       bearerFormat: JWT
  */
+// Route to update the order status to 'Called'
+router.patch('/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        // Update the order by ID and set the status to 'Called'
+        const updatedOrder = await Order.findByIdAndUpdate(
+            id,
+            { status: 'Called' }, // Update fields here
+            { new: true, runValidators: true } // Return the updated document and run validators
+        );
+
+        if (!updatedOrder) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        res.json(updatedOrder); // Respond with the updated order
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error', error });
+    }
+});
 
 
 module.exports = router;
