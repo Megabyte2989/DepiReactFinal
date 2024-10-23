@@ -15,13 +15,18 @@ router.get('/', async (req, res) => {
 
 // Route to add a new order
 router.post('/add', async (req, res) => {
-    const { customerName, orderDetails, phoneNumber } = req.body; // Change idNumber to phoneNumber
+    const { customerName, orderDetails, phoneNumber, pickupDate, pickupTime, dropoffDate, dropoffTime, location } = req.body;
 
     try {
         const newOrder = new Order({
             customerName,
             orderDetails,
-            phoneNumber, // Add phoneNumber to the new order
+            phoneNumber,
+            pickupDate,   // Add these fields if required
+            pickupTime,
+            dropoffDate,
+            dropoffTime,
+            location,
         });
 
         await newOrder.save();
@@ -30,6 +35,7 @@ router.post('/add', async (req, res) => {
         res.status(400).json({ message: 'Failed to create order', error });
     }
 });
+
 
 // Route to accept an order
 router.put('/accept/:id', async (req, res) => {

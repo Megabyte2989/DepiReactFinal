@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'; // Import useDispatch
-import Swal from 'sweetalert2';
 import { addOrder } from '../../slices/ordersSlice'; // Import the addOrder thunk
 import './BookingFormModal.css';
 
@@ -16,10 +15,15 @@ const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!customerName || !orderDetails || !phoneNumber) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+
     const formData = {
       customerName,
       orderDetails,
-      phoneNumber, // Updated to include phone number
+      phoneNumber, // Include phone number in form data
       pickupDate: e.target['pickup-date'].value,
       pickupTime: e.target['pickup-time'].value,
       dropoffDate: e.target['dropoff-date'].value,
@@ -27,31 +31,17 @@ const BookingFormBmodal = ({ isOpen, handleCloseBmodal }) => {
       location: e.target['location'].value,
     };
 
+    // Proceed with dispatch
     try {
-      // Dispatch the addOrder thunk
-      const action = await dispatch(addOrder(formData)); // Dispatch the action
-
-      if (addOrder.fulfilled.match(action)) { // Check if the action was fulfilled
-        // Show success message using SweetAlert2
-        await Swal.fire({
-          icon: 'success',
-          title: 'Thank you!',
-          text: 'Your booking has been received. We expect you to hear from us in 24 hours.',
-          confirmButtonText: 'OK',
-        });
-        handleCloseBmodal();
+      const action = await dispatch(addOrder(formData));
+      if (addOrder.fulfilled.match(action)) {
+        // Success handling
       }
     } catch (error) {
-      // Show error message using SweetAlert2
-      setError(error.message);
-      await Swal.fire({
-        icon: 'error',
-        title: 'Oops!',
-        text: error.message,
-        confirmButtonText: 'OK',
-      });
+      // Error handling
     }
   };
+
 
   return (
     <div className="Bmodal" id="booking-Bmodal">
